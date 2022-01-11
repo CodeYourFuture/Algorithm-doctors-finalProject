@@ -1,25 +1,25 @@
-import { Pool } from "pg";
+import mongoose from "mongoose";
 
-const dbUrl = process.env.DATABASE_URL || "postgres://localhost:5432/cyf";
+const dbUrl = process.env.MONGODB_URI || "mongodb://localhost:27017/cyf";
 
-const pool = new Pool({
-	connectionString: dbUrl,
-	connectionTimeoutMillis: 5000,
-	ssl: dbUrl.includes("localhost") ? false : { rejectUnauthorized: false },
-});
+const configuration = {
+	serverSelectionTimeoutMS: 5000,
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
+};
 
 export const connectDb = async () => {
-	let client;
 	try {
-		client = await pool.connect();
+		await mongoose.connect(dbUrl, configuration);
+		console.log("MongoDB connected to", mongoose.connection.name);
 	} catch (err) {
 		console.error(err);
 		process.exit(1);
 	}
-	console.log("Postgres connected to", client.database);
-	client.release();
 };
 
-export const disconnectDb = () => pool.close();
-
-export default { query: pool.query.bind(pool) };
+export const disconnectDb = async () => {
+	if (mongoose.connection) {
+		await mongoose.connection.close();
+	}
+};
