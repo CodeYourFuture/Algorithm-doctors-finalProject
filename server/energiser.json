@@ -17,7 +17,8 @@
         "id":"3",
         "name":"My first job",
         "url":"https://www.funretrospectives.com/my-first-job/",
-        "participants":8
+        "participants":8,
+        "duration": 10
     },
     {
         "id":"4",

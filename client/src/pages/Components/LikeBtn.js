@@ -8,7 +8,7 @@ function LikeBtn({
 	onDislike,
 }) {
 	// let [likeCount, setLikeCount] = useState(0);
-	//let [dislikeCount, setDislikeCount] = useState(0);
+	// let [dislikeCount, setDislikeCount] = useState(0);
 	let [userHasLiked, setUserHasLiked] = useState(false);
 	let [userHasDisliked, setUserHasDisliked] = useState(false);
 
@@ -31,12 +31,12 @@ function LikeBtn({
 		<div className="">
 			<div className="like_dislike_btn">
 				<button onClick={thumbsUp} className="btn">
-					<FaThumbsUp style={{ color: "red" }} />
+					<FaThumbsUp style={{ color: "blue" }} />
 					{userHasLiked ? existingLikeCount + 1 : existingLikeCount}
-					{/* {LikeCount} */}
+					{/* {likeCount} */}
 				</button>
 				<button onClick={thumbsDown} className="btn">
-					<FaThumbsDown style={{ color: "gray" }} />
+					<FaThumbsDown style={{ color: "red" }} />
 					{userHasDisliked ? existingDislikeCount + 1 : existingDislikeCount}
 					{/* {dislikeCount} */}
 				</button>
