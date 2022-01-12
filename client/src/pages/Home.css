@@ -4,8 +4,49 @@
 
 .message {
 	color: blue;
+	text-align: center;
+	margin-top: 1px;
+	padding: 1%;
+}
+ 
+.energiserCards {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	flex-wrap: wrap;
 }
 
-.message:hover {
-	background-color: yellow;
+.btn:hover {
+	color:white
+}
+
+.card-container {
+  min-width: 25%;
+  margin: 1rem 2rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem 0;
+  border-radius: 10px;
+  transition: 1s;
+}
+
+h2{
+  font-size: 20px;
+}
+
+.energiserCards li{
+	list-style: none;
+}
+.card:hover {
+  background-color: black;
+  color: white;
+}
+.card img {
+  margin: 1rem 1rem;
+  align-self: center;
+  width: 50%;
 }
