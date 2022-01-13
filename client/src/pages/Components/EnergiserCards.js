@@ -13,14 +13,14 @@ const EnergiserCards = ({ energisersData }) => {
 				<div className="card text-center">
 					<div className="card-body">
 						<h2 className="card-title">{name}</h2>
+						<p className="card-text">{duration} Mins</p>
+						<p className="card-text">Participants: {participants}</p>
 						<LikeBtn
 							existingLikeCount={5}
 							onLike={() => console.log("like was clicked")}
 							existingDislikeCount={1}
 							onDislike={() => console.log("like was clicked")}
 						/>
-						<p className="card-text">{duration} Mins</p>
-						<p className="card-text">Participants: {participants}</p>
 						<Link to={`/energisers/${id}`}>More Info</Link>
 					</div>
 				</div>

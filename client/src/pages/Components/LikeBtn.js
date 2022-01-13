@@ -28,19 +28,17 @@ function LikeBtn({
 	};
 
 	return (
-		<div className="">
-			<div className="like_dislike_btn">
-				<button onClick={thumbsUp} className="btn">
-					<FaThumbsUp style={{ color: "blue" }} />
-					{userHasLiked ? existingLikeCount + 1 : existingLikeCount}
-					{/* {likeCount} */}
-				</button>
-				<button onClick={thumbsDown} className="btn">
-					<FaThumbsDown style={{ color: "red" }} />
-					{userHasDisliked ? existingDislikeCount + 1 : existingDislikeCount}
-					{/* {dislikeCount} */}
-				</button>
-			</div>
+		<div className="like_dislike_btn">
+			<button onClick={thumbsUp} className="btn">
+				<FaThumbsUp style={{ color: "blue" }} />
+				{userHasLiked ? existingLikeCount + 1 : existingLikeCount}
+				{/* {likeCount} */}
+			</button>
+			<button onClick={thumbsDown} className="btn">
+				<FaThumbsDown style={{ color: "red" }} />
+				{userHasDisliked ? existingDislikeCount + 1 : existingDislikeCount}
+				{/* {dislikeCount} */}
+			</button>
 		</div>
 	);
 }
