@@ -1,0 +1,51 @@
+.energiser-page-title {
+	background-color: rgb(17, 200, 224);
+	width: auto;
+	text-align: center;
+	padding: 20px;
+}
+
+.energiser-page-container {
+	border: 1px solid gray;
+	width: 80%;
+	text-align: center;
+	padding: 20px;
+	margin: 10px 10%;
+}
+
+.energiser-page-name {
+	padding: 20px;
+	font-size: 2rem;
+}
+
+.energiser-page-participants {
+	padding: 20px;
+	font-size: 1.2rem;
+}
+
+.energiser-page-duration {
+	padding: 20px;
+	font-size: 1.2rem;
+}
+
+.energiser-page-url {
+	width: 20%;
+	height: 35px;
+	background-color: rgb(17, 200, 224);;
+	transition: 1s;
+	border: 1px solid grey;
+	border-radius: 10px;
+	text-align: center;
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: black;
+	padding: 10px;
+}
+
+.energiser-page-url:hover {
+	width: 25%;
+	font-size: 2rem;
+	color: white;
+	background-color: black;
+	cursor: pointer;
+}
