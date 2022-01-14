@@ -1,12 +1,25 @@
+
+import "./styles/About.css";
+
 const About = () => (
 	<main role="main">
-		<div>
-			<h1>About</h1>
-			<p>
-				Starter kit for full-stack JavaScript projects. For more information,
-				see the wiki:
+		<div className="about-page">
+			<h1 className="heading">A little bit about us</h1>
+			<p className="about-p">
+				We are the Algorithm-docs and we are tasked to build an
+				Enrgiser/Icebreaker app. Our special thank yous first and formost go to
+				CYF, our fantastic tech mentor Orhan and our PMs Rob and Nick. You can
+				reach us via the links bellow which are linked to our linkedin profiles.
 			</p>
-			<a href="https://github.com/textbook/starter-kit/wiki">Wiki</a>
+			<div className="profile-links">
+				<a href="https://www.linkedin.com/in/konika-b-lily-481911216/">
+					Konika
+				</a>
+				<a href="https://www.linkedin.com/in/mya-skylar-290838221/">Mya</a>
+				<a href="https://www.linkedin.com/in/seyed-s-b">Seyed</a>
+				<a href="/#">Azan</a>
+				<a href="https://github.com/textbook/starter-kit/wiki">Wiki</a>
+			</div>
 		</div>
 	</main>
 );

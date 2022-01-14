@@ -34,7 +34,6 @@ export function Home() {
 				<ul className="energiserCards">
 					<EnergiserCards energisersData={energisersData} />
 				</ul>
-				<Link to="/about/this/site">About</Link>
 			</div>
 		</main>
 	);

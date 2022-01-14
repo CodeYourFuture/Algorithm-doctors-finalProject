@@ -3,12 +3,14 @@ import { Route, Routes } from "react-router-dom";
 import About from "./pages/About";
 import Home from "./pages/Home";
 import EnergiserPage from "./pages/Components/EnergiserPage";
+import Contact from "./pages/Components/Contact";
 
 const App = () => (
 	<Routes>
 		<Route path="/" element={<Home />} />
-		<Route path="/about/this/site" element={<About />} />
+		<Route path="/about" element={<About />} />
 		<Route path="/energisers/:id" element={<EnergiserPage />} />
+		<Route path="/contact" element={<Contact />} />
 	</Routes>
 );
 
