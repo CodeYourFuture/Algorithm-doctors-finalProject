@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/Navigation.css";
+import Logo from "../images/cyf_brand.png";
 
 
  export default function Navigation(){
@@ -12,8 +13,7 @@ return (
 					width="126"
 					height="40"
 					alt="cyf-logo"
-					data-src="https://codeyourfuture.io/wp-content/uploads/2019/03/cyf_brand.png"
-					src="https://codeyourfuture.io/wp-content/uploads/2019/03/cyf_brand.png"
+					src={Logo}
 				></img>
 			</Link>
 		</div>
