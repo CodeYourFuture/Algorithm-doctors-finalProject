@@ -7,7 +7,7 @@ import EnergiserPage from "./pages/Components/EnergiserPage";
 const App = () => (
 	<Routes>
 		<Route path="/" element={<Home />} />
-		<Route path="/about/this/site" element={<About />} />
+		<Route path="/about" element={<About />} />
 		<Route path="/energisers/:id" element={<EnergiserPage />} />
 	</Routes>
 );
