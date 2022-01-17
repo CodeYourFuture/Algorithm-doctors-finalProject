@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Navigation from "./Components/Navigation";
 
 import "./Home.css";
 import EnergiserCards from "./Components/EnergiserCards";
@@ -26,7 +25,6 @@ export function Home() {
 
 	return (
 		<main role="main">
-			<Navigation />
 			<div >
 				<h1 className="message" data-qa="message">
 					Welcome to CYF Energisers
