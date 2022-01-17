@@ -6,7 +6,7 @@ import LikeBtn from "./LikeBtn";
 const EnergiserCards = ({ energisersData }) => {
 	return energisersData.map((energiserCard) => {
 		const {
-			id, name, url, participants, duration,
+			id, name, participants, duration,
 		} = energiserCard;
 		return (
 			<li className="card-container" key={id}>
