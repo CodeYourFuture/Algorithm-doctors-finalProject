@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-
-
 import "./Home.css";
 import EnergiserCards from "./Components/EnergiserCards";
+import RandomizerBtn from "./Components/RandomizerBtn";
 
 export function Home() {
 	const [energisersData, setEnergisersData] = useState([]);
@@ -26,10 +24,13 @@ export function Home() {
 
 	return (
 		<main role="main">
-			<div >
+			<div>
 				<h1 className="message" data-qa="message">
 					Welcome to CYF Energisers
 				</h1>
+				<RandomizerBtn energisersData={energisersData}
+					setEnergisersData={setEnergisersData}
+				/>
 				<ul className="energiserCards">
 					<EnergiserCards energisersData={energisersData} />
 				</ul>
