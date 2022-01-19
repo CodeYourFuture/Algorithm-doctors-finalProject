@@ -1,5 +1,5 @@
 import http from "http";
-
+import "dotenv/config";
 import app from "./app";
 import { connectDb, disconnectDb } from "./db";
 

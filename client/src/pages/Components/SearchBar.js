@@ -4,19 +4,21 @@ import { Link } from "react-router-dom";
 import ManageSearchIcon from "@mui/icons-material/ManageSearch";
 import ClearIcon from "@mui/icons-material/Clear";
 
-function SearchBar({ data }) {
+function SearchBar({ energisersData, setEnergisersData, originalData }) {
 	const [filteredData, setFilteredData] = useState([]);
 	const [wordEntered, setWordEntered] = useState("");
 
 	const handleFilter = (event) => {
 		const searchWord = event.target.value;
 		setWordEntered(searchWord);
-		const newFilter = data.filter((value) => {
+		const newFilter = energisersData.filter((value) => {
 			return value.name.toLowerCase().includes(searchWord.toLowerCase());
 		});
+		setEnergisersData(newFilter);
 
 		if (searchWord === "") {
 			setFilteredData([]);
+			setEnergisersData(originalData);
 		} else {
 			setFilteredData(newFilter);
 		}
