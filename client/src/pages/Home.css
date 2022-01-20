@@ -8,7 +8,7 @@
 }
 
 .message {
-	color: white;
+	color: black;
 	text-align: center;
 	margin-top: 1px;
 	padding: 1%;
@@ -61,4 +61,11 @@ h2{
 
 a:hover {
   text-decoration: none;
+}
+
+.randomSearch {
+  margin-top: 3%;
+  margin-bottom: 2%;
+  display: flex;
+  justify-content: flex-end;
 }
