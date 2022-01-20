@@ -68,12 +68,16 @@
 	},
 	"dependencies": {
 		"@babel/runtime": "^7.16.7",
+		"cors": "^2.8.5",
+		"dotenv": "^14.2.0",
 		"emailjs-com": "^3.2.0",
 		"express": "^4.17.2",
+		"formik": "^2.2.9",
 		"helmet": "^4.6.0",
 		"morgan": "^1.10.0",
 		"pg": "^8.7.1",
-		"react-icons": "^4.3.1"
+		"react-icons": "^4.3.1",
+		"yup": "^0.32.11"
 	},
 	"engines": {
 		"node": "^12 || ^14",

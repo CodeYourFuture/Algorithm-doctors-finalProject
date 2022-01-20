@@ -4,6 +4,7 @@ import About from "./pages/About";
 import Home from "./pages/Home";
 import EnergiserPage from "./pages/Components/EnergiserPage";
 import Contact from "./pages/Components/Contact";
+import PublishEnergiserPage from "./pages/Components/PublishEnergiserPage";
 
 const App = () => (
 	<>
@@ -13,6 +14,7 @@ const App = () => (
 			<Route path="/about" element={<About />} />
 			<Route path="/energisers/:id" element={<EnergiserPage />} />
 			<Route path="/contact" element={<Contact />} />
+			<Route path="/publish" element={<PublishEnergiserPage />} />
 		</Routes>
 	</>
 );
