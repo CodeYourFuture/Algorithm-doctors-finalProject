@@ -1,5 +1,5 @@
 .energiser-page-title {
-	background-color: rgb(17, 200, 224);
+	background-color: #DC514A;
 	width: auto;
 	text-align: center;
 	padding: 20px;
@@ -31,7 +31,7 @@
 .energiser-page-url {
 	width: 20%;
 	height: 35px;
-	background-color: rgb(17, 200, 224);;
+	background-color: #DC514A;
 	transition: 1s;
 	border: 1px solid grey;
 	border-radius: 10px;

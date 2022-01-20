@@ -22,6 +22,7 @@ return (
 			<Link to="/">Home</Link>
 			<Link to="/about">About</Link>
 			<Link to="/contact">Contact us</Link>
+			<Link to="/publish">Publish Energiser</Link>
 		</div>
 	</nav>
 );
