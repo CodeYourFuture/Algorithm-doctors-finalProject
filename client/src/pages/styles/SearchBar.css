@@ -4,7 +4,6 @@
 }
 
 .searchInputs {
-  margin-top: 105px;
   display: flex;
 }
 
@@ -18,6 +17,7 @@
   padding: 15px;
   height: 60px;
   width: 300px;
+  margin-left: 280px;
 }
 
 .searchIcon {

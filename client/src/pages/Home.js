@@ -1,12 +1,5 @@
 import { useEffect, useState } from "react";
-
-
-import { Link } from "react-router-dom";
-import PublishEnergiserPage from "./Components/PublishEnergiserPage";
 import SearchBar from "./Components/SearchBar";
-
-
-
 import "./Home.css";
 import EnergiserCards from "./Components/EnergiserCards";
 import RandomizerBtn from "./Components/RandomizerBtn";
@@ -24,7 +17,7 @@ export function Home() {
 			})
 			.then((data) => {
 				setEnergisersData(data);
-                setOriginalData(data);
+				setOriginalData(data);
 			})
 			.catch((err) => {
 				console.error(err);
@@ -37,13 +30,17 @@ export function Home() {
 				<h1 className="message" data-qa="message">
 					Welcome to CYF Energisers
 				</h1>
-
-				<RandomizerBtn energisersData={energisersData}
-					setEnergisersData={setEnergisersData}
-				/>
-
-				<SearchBar energisersData={energisersData} setEnergisersData={setEnergisersData} originalData={originalData} />
- 
+				<div className="randomSearch">
+				<SearchBar
+						energisersData={energisersData}
+						setEnergisersData={setEnergisersData}
+						originalData={originalData}
+					/>
+					<RandomizerBtn
+						setEnergisersData={setEnergisersData}
+						originalData={originalData}
+					/>
+				</div>
 				<ul className="energiserCards">
 					<EnergiserCards energisersData={energisersData} />
 				</ul>

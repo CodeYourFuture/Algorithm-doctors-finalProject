@@ -1,8 +1,7 @@
 import React from "react";
 import "../styles/randomBtn.css";
-
-const RandomizerBtn = ({ energisersData, setEnergisersData }) => {
-	console.log(energisersData);
+import { Button } from "@mui/material";
+const RandomizerBtn = ({ setEnergisersData , originalData }) => {
 	const handleClick = (arr) => {
 		let randomEnergisersArray = [];
 		const randomEnergiser = arr[Math.floor(Math.random() * arr.length)];
@@ -12,13 +11,24 @@ const RandomizerBtn = ({ energisersData, setEnergisersData }) => {
 
 	return (
 		<div className="random__energizer">
-			<h3 className="energizer_text">Please Select Your Energizers</h3>
 			<div className="energizer_button">
-				<button
-					onClick={() => handleClick(energisersData)}
-					className="new_energizer">
-					Get An Energizer
-				</button>
+			<Button
+					style={{
+						borderRadius: 5,
+						color: "white",
+						backgroundColor: "#dc514a",
+						padding: "18px 36px",
+						marginLeft: "30px",
+						fontSize: "0.9rem;",
+						fontWeight: "bold",
+						outline: "none",
+					}}
+					variant="contained"
+					onClick={() => handleClick(originalData)}
+					className="new_energizer"
+				>
+					Click Here to Get a Random Energiser!!
+				</Button>
 			</div>
 		</div>
 	);
