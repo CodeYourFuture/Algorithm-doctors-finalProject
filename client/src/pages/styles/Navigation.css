@@ -29,8 +29,7 @@
 }
 .nav-links a{
   padding: 14px 16px;
-  color: red;
-  font-weight: 800;
+  color: rgb(10, 9, 9);
   transition: 0.5s ease;
 }
 .nav-links a:hover{
