@@ -1,10 +1,10 @@
-import React from "react";
+import React , { useEffect, useState }  from "react";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
 import "../styles/EnergiserPage.css";
+
 const EnergiserPage = () => {
 	const { id } = useParams();
-	const [energiser, setEnergiser] = useState([]);
+	const [energiser, setEnergiser] = useState(null);
 
 	useEffect(() => {
 		fetch(`/api/energisers/${id}`)
@@ -16,33 +16,32 @@ const EnergiserPage = () => {
 			})
 			.then((data) => {
 				setEnergiser(data);
+				console.log(data);
 			})
 			.catch((err) => {
 				console.error(err);
 			});
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [id]);
-
-	return energiser.map((item) => {
-		const { id, name, description, participants, duration, instructions } = item;
-		return (
-			<div key={id}>
-				<header className="energiser-page-title">
-					<h1>Algorithm Doctors' Energisers</h1>
+	return (
+		<main>
+			{energiser?<div>
+				<header className='energiser-page-title'>
+					<h1>Algorithm Doctors’ Energisers</h1>
 				</header>
-				<div className="energiser-page-container">
-					<h2 className="energiser-page-name">{name}</h2>
-					<p className="energiser-page-description">{description}</p>
-					<div className="energiser-page-partduration">
-						<p>Participants: {participants}</p>
-						<p>{duration} Mins</p>
+				<div className='energiser-page-container'>
+					<h2 className='energiser-page-name'>{energiser[0].name}</h2>
+					<p className='energiser-page-description'>{energiser[0].description}</p>
+					<div className='energiser-page-partduration'>
+						<p>Participants: {energiser[0].participants}</p>
+						<p>{energiser[0].duration} Mins</p>
 					</div>
-					<p className="energiser-page-how">How To Run:</p>
-					<p className="energiser-page-duration">{instructions}</p>
+					<p className='energiser-page-how'>How To Run:</p>
+					<p className='energiser-page-duration'>{energiser[0].instructions}</p>
 				</div>
-			</div>
-		);
-	});
+				</div>:<div>...Loading</div>
+				}
+		</main>
+	);
 };
 
 export default EnergiserPage;
