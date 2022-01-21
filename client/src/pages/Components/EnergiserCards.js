@@ -1,6 +1,5 @@
-/* eslint-disable react/jsx-key */
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import LikeBtn from "./LikeBtn";
 
 const EnergiserCards = ({ energisersData }) => {
@@ -12,7 +11,7 @@ const EnergiserCards = ({ energisersData }) => {
 	return energisersData.map((energiserCard) => {
 		const { id, name, description, participants, duration } = energiserCard;
 		return (
-			<div className="card-container" key={id}>
+			<li className="card-container" key={id}>
 				<div className="card text-center" >
 					<div className="card-body"  onClick={() => handleNavigate(id)}>
 						<h2 className="card-title">{name}</h2>
@@ -27,7 +26,7 @@ const EnergiserCards = ({ energisersData }) => {
 					onDislike={() => console.log("dislike was clicked")}
 				/>
 				</div>
-			</div>
+			</li>
 		);
 	});
 };
