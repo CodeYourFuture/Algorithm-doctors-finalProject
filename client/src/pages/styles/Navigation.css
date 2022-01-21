@@ -2,8 +2,9 @@
     display:flex;
     justify-content: space-between;
     background-color: #FFFFFF;
-    border-bottom: solid 0.5px lightgray;
+    border-bottom: lightgrey solid 0.5px;
 }
+
 
 .nav-links {
   font-weight: bold;
@@ -14,18 +15,33 @@
   height: 80px;
 }
 
-a {
-  color: black;
+.navbar{
+  display:flex;
+  justify-content: space-between;
+  background-color: transparent;
 }
-
-a:visited {
-  color: black;
+.nav-links {
+  display: flex;
+  align-items:center;
+  justify-content:flex-end;
+  width: 40%;
+  height: 80px;
 }
-
-a:hover {
-  color: #DC514A;
+.nav-links a{
+  padding: 14px 16px;
+  color: red;
+  font-weight: 800;
+  transition: 0.5s ease;
 }
-
-a:active {
-  color: #DC514A;
+.nav-links a:hover{
+  background-color: transparent;
+  border-radius: 20px;
+  transform: translateY(-2px);
+  text-decoration: underline;
+}
+ .cyf-logo a img:hover{
+  border-radius: 20px;
+  transform: translateY(-2px);
+  transition:0.5s ease-in-out;
+  text-decoration: underline;
 }
