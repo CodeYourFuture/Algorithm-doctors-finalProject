@@ -1,13 +1,28 @@
 .navbar{
-    display:flex;
-    justify-content: space-between;
-    background-color: lightgrey;
+  display:flex;
+  justify-content: space-between;
+  background-color: transparent;
+
 }
 
 .nav-links {
   display: flex;
   align-items:center;
-  justify-content: space-between;
+  justify-content:flex-end;
   width: 40%;
   height: 80px;
+}
+.nav-links a{
+  padding: 14px 16px;
+  color: red;
+  font-weight: 800;
+  transition: top ease 0.5sec;
+}
+.nav-links a:hover{
+  background-color: rgb(10, 10, 10);
+  border-radius: 20px;
+  top:-2px;
+}
+.cyf-logo a{
+height: inherit; 
 }

@@ -1,13 +1,10 @@
 import { useEffect, useState } from "react";
-
-
-import { Link } from "react-router-dom";
 import SearchBar from "./Components/SearchBar";
-
-
+import Filters from "./Components/Filter";
 import "./Home.css";
 import EnergiserCards from "./Components/EnergiserCards";
 import RandomizerBtn from "./Components/RandomizerBtn";
+// import Sidebar from "./Components/Sidebar";
 
 export function Home() {
 	const [energisersData, setEnergisersData] = useState([]);
@@ -35,13 +32,25 @@ export function Home() {
 				<h1 className="message" data-qa="message">
 					Welcome to CYF Energisers
 				</h1>
-
-				<RandomizerBtn energisersData={energisersData}
+				<Filters
+					energisersData={energisersData}
 					setEnergisersData={setEnergisersData}
+					originalData={originalData}
+				/>
+				{/* <Sidebar /> */}
+
+				<RandomizerBtn
+					energisersData={energisersData}
+					setEnergisersData={setEnergisersData}
+					originalData={originalData}
 				/>
 
-				<SearchBar energisersData={energisersData} setEnergisersData={setEnergisersData} originalData={originalData} />
- 
+				<SearchBar
+					energisersData={energisersData}
+					setEnergisersData={setEnergisersData}
+					originalData={originalData}
+				/>
+
 				<ul className="energiserCards">
 					<EnergiserCards energisersData={energisersData} />
 				</ul>
