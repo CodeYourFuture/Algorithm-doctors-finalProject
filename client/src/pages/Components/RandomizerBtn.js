@@ -11,7 +11,6 @@ const RandomizerBtn = ({ setEnergisersData , originalData }) => {
 
 	return (
 		<div className="random__energizer">
-			<div className="energizer_button">
 			<Button
 					style={{
 						borderRadius: 5,
@@ -27,9 +26,8 @@ const RandomizerBtn = ({ setEnergisersData , originalData }) => {
 					onClick={() => handleClick(originalData)}
 					className="new_energizer"
 				>
-					Click Here to Get a Random Energiser!!
+					Random Energiser!!
 				</Button>
-			</div>
 		</div>
 	);
 };
