@@ -32,6 +32,8 @@ export function Home({ user }) {
 			});
 	}, [user]);
 
+
+
 	const handleChangePage = (event, newPage) => {
 		setPage(newPage);
 	};
@@ -49,6 +51,7 @@ export function Home({ user }) {
 
 			<DropdownPage setRowsPerPage={setRowsPerPage} />
 
+
 			<div className="randomSearch">
 				<SearchBar
 					energisersData={energisersData}
@@ -60,6 +63,9 @@ export function Home({ user }) {
 					originalData={originalData}
 				/>
 			</div>
+			<ul className="energiserCards">
+				<EnergiserCards energisersData={energisersData} />
+			</ul>
 
 			<div>
 				<ul className="energiserCards">

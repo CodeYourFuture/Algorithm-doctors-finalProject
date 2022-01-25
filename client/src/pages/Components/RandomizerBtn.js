@@ -18,7 +18,7 @@ const RandomizerBtn = ({ setEnergisersData , originalData }) => {
 						backgroundColor: "#dc514a",
 						padding: "18px 36px",
 						marginLeft: "30px",
-						fontSize: "0.9rem;",
+						fontSize: "0.9rem",
 						fontWeight: "bold",
 						outline: "none",
 					}}
