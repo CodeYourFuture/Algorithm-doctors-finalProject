@@ -4,11 +4,15 @@ import "./Home.css";
 import EnergiserCards from "./Components/EnergiserCards";
 import RandomizerBtn from "./Components/RandomizerBtn";
 import Sidebar from "./Components/Sidebar";
+import AppPagination from "./Components/Pagination";
+import DropdownPage from "./Components/DropdownPage";
 
 export function Home() {
 	const [energisersData, setEnergisersData] = useState([]);
 	const [originalData, setOriginalData] = useState([]);
 	const [filter, setFilter] = useState([]);
+	const [page, setPage] = useState(1);
+	const [rowsPerPage, setRowsPerPage] = useState(2);
 	useEffect(() => {
 		fetch("/api/energisers")
 			.then((res) => {
@@ -27,33 +31,50 @@ export function Home() {
 			});
 	}, []);
 
+	const handleChangePage = (event, newPage) => {
+		setPage(newPage);
+	};
+
 	return (
 		<main role="main">
-				<h1 className="message" data-qa="message">
-					Welcome to CYF Energisers
-				</h1>
-				<Sidebar
+			<h1 className="message" data-qa="message">
+				Welcome to CYF Energisers
+			</h1>
+			<Sidebar
+				setEnergisersData={setEnergisersData}
+				originalData={originalData}
+				filterData={filter}
+			/>
+			<DropdownPage setRowsPerPage={setRowsPerPage} />
+			<div className="randomSearch">
+				<SearchBar
+					energisersData={energisersData}
 					setEnergisersData={setEnergisersData}
 					originalData={originalData}
-					filterData={filter}
 				/>
-				<div className="randomSearch">
-					<SearchBar
-						energisersData={energisersData}
-						setEnergisersData={setEnergisersData}
-						originalData={originalData}
-					/>
-					<RandomizerBtn
-						setEnergisersData={setEnergisersData}
-						originalData={originalData}
-					/>
-				</div>
+				<RandomizerBtn
+					setEnergisersData={setEnergisersData}
+					originalData={originalData}
+				/>
+			</div>
+			<div>
 				<ul className="energiserCards">
-					<EnergiserCards energisersData={energisersData} />
+					<EnergiserCards
+						energisersData={energisersData}
+						page={page}
+						rowsPerPage={rowsPerPage}
+					/>
 				</ul>
+			</div>
+
+			<AppPagination
+				page={page}
+				energisersData={energisersData}
+				handleChangePage={handleChangePage}
+				rowsPerPage={rowsPerPage}
+			/>
 		</main>
 	);
 }
-
 
 export default Home;
