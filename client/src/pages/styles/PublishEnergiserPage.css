@@ -30,7 +30,16 @@
 	background-color: #f4f4f4;
   padding: 20px;
 }
-
+.my-select{
+height: 35px;
+border: 1px solid grey;
+border-radius: 10px;
+ margin-top: 20px;
+ color: gray;
+ text-align: center;
+ background-color: #f4f4f4;
+ font-size: 16px;
+}
 .fieldInstructions {
 	height: 150px;
 	border: 1px solid grey;

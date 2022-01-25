@@ -5,7 +5,6 @@ import ListItemText from "@mui/material/ListItemText";
 import ListSubheader from "@mui/material/ListSubheader";
 
 export default function SideList({ filterData, setEnergisersData, originalData }) {
-	console.log(originalData);
 	const handleFilterUpto10 = () => {
 		const newFilter = originalData.filter(
 			(energiser) => energiser.duration >= 5 && energiser.duration <= 10
