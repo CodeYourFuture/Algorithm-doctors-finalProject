@@ -75,7 +75,7 @@
 		"@mui/icons-material": "^5.3.0",
 		"@mui/material": "^5.3.0",
 		"cors": "^2.8.5",
-		"dotenv": "^14.3.0",
+		"dotenv": "^14.3.1",
 		"emailjs-com": "^3.2.0",
 		"express": "^4.17.2",
 		"formik": "^2.2.9",
