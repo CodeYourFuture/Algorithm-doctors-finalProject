@@ -4,11 +4,15 @@ import "./Home.css";
 import EnergiserCards from "./Components/EnergiserCards";
 import RandomizerBtn from "./Components/RandomizerBtn";
 import Sidebar from "./Components/Sidebar";
+import AppPagination from "./Components/Pagination";
+import DropdownPage from "./Components/DropdownPage";
 
 export function Home({ user }) {
 	const [energisersData, setEnergisersData] = useState([]);
 	const [originalData, setOriginalData] = useState([]);
 	const [filter, setFilter] = useState([]);
+	const [page, setPage] = useState(1);
+	const [rowsPerPage, setRowsPerPage] = useState(2);
 	useEffect(() => {
 		console.log(user);
 		fetch("/api/energisers")
@@ -28,6 +32,10 @@ export function Home({ user }) {
 			});
 	}, [user]);
 
+	const handleChangePage = (event, newPage) => {
+		setPage(newPage);
+	};
+
 	return (
 		<main role="main">
 			<h1 className="message" data-qa="message">
@@ -38,6 +46,9 @@ export function Home({ user }) {
 				originalData={originalData}
 				filterData={filter}
 			/>
+
+			<DropdownPage setRowsPerPage={setRowsPerPage} />
+
 			<div className="randomSearch">
 				<SearchBar
 					energisersData={energisersData}
@@ -49,12 +60,30 @@ export function Home({ user }) {
 					originalData={originalData}
 				/>
 			</div>
+
+			<div>
+				<ul className="energiserCards">
+					<EnergiserCards
+						energisersData={energisersData}
+						page={page}
+						rowsPerPage={rowsPerPage}
+					/>
+				</ul>
+			</div>
+
+			<AppPagination
+				page={page}
+				energisersData={energisersData}
+				handleChangePage={handleChangePage}
+				rowsPerPage={rowsPerPage}
+			/>
+
 			<ul className="energiserCards">
 				<EnergiserCards energisersData={energisersData} />
 			</ul>
+
 		</main>
 	);
 }
-
 
 export default Home;
