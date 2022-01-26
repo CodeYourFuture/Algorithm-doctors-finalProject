@@ -57,6 +57,7 @@ export function Home({ user }) {
 					energisersData={energisersData}
 					setEnergisersData={setEnergisersData}
 					originalData={originalData}
+					setPage={setPage}
 				/>
 				<RandomizerBtn
 					setEnergisersData={setEnergisersData}
