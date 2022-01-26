@@ -1,7 +1,6 @@
 import { GoogleLogin } from "react-google-login";
 import { RefreshTokenSetup } from "../../utils/RefreshToken";
 
-// const clientId ="479667636182 - ntli9lll3feqb5dgkmqlvnofterqjjc9.apps.googleusercontent.com";
 const clientId = process.env.REACT_APP_CLIENT_ID;
 
 
