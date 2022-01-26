@@ -1,20 +1,17 @@
 function Filters( { setEnergisersData, originalData }) {
 	const handleFilter10 = () => {
-		// console.log(energisersData, "10");
 		const newFilter = originalData.filter(
 			(energiser) => energiser.duration === 10
 		);
 		setEnergisersData(newFilter);
 	};
 	const handleFilter12 = () => {
-		// console.log(energisersData, "12");
 		const newFilter = originalData.filter(
 			(energiser) => energiser.duration === 12
 		);
 		setEnergisersData(newFilter);
 	};
 	const handleFilter15 = () => {
-		// console.log(energisersData, "15");
 		const newFilter = originalData.filter(
 			(energiser) => energiser.duration === 15
 		);
