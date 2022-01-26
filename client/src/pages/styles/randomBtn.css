@@ -1,0 +1,13 @@
+.random__energizer{
+  display:grid;
+  place-items: center;
+  position: absolute;
+  top:200px;
+  left:40%;
+  right: auto;
+}
+.new_energizer:hover {
+  opacity: 0.6;
+}
+
+

@@ -1,0 +1,41 @@
+.form-section{
+    display: grid;
+    width: 40%;
+    margin: 2% auto;
+    border: solid 3px #DC514A;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.contactPage {
+	text-align: center;
+	width: 50%;
+	margin: 2% auto;
+	border: solid 3px #DC514A;
+	border-radius: 10px;
+	padding: 20px;
+}
+
+.feedbackForm {
+	display: flex;
+	flex-direction: column;
+	max-width: 70%;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+.btn {
+margin-top: 1rem;
+}
+
+.fieldSuggestion {
+    height: 100px;
+    margin-top: 20px;
+}
+
+.errorMessage {
+    text-align: left;
+    color: red;
+    font-size: 1rem;
+    margin: 0px;
+}

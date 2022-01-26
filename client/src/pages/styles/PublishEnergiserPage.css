@@ -1,0 +1,41 @@
+.publishPage {
+	text-align: center;
+	width: 50%;
+	margin: 2% auto;
+	border: solid 3px #DC514A;
+	border-radius: 10px;
+	padding: 20px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.publishMessage {
+	padding-top: 30px;
+}
+
+.publishForm {
+	display: flex;
+	flex-direction: column;
+	max-width: 70%;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+.field {
+	height: 35px;
+	border: 1px solid grey;
+	border-radius: 10px;
+	text-align: center;
+	font-size: 16px;
+	margin-top: 20px;
+	background-color: #f4f4f4;
+  padding: 20px;
+}
+
+.fieldInstructions {
+	height: 150px;
+	border: 1px solid grey;
+	border-radius: 10px;
+	text-align: left;
+	font-size: 16px;
+	margin-top: 20px;
+}

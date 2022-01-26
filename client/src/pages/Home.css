@@ -1,11 +1,69 @@
+/* #231f20 black
+#DC514A red
+#ffffff
+#FFFFFF */
+
 .logo {
 	width: 100px;
 }
 
 .message {
-	color: blue;
+	color: black;
+	text-align: center;
+	margin-top: 1px;
+	padding: 1%;
+}
+ 
+.energiserCards {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	flex-wrap: wrap;
 }
 
-.message:hover {
-	background-color: yellow;
+.card-container {
+  min-width: 25%;
+  max-width: 25%;
+  margin: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem 0;
+  border-radius: 10px;
+  transition: 1s;
+  height: 100%;
+  padding-bottom: 10px;
+}
+
+h2{
+  font-size: 20px;
+}
+
+.energiserCards li{
+	list-style: none;
+}
+.card:hover {
+  background-color: #DC514A;
+  color: white;
+  cursor: pointer;
+}
+.card img {
+  margin: 1rem 1rem;
+  align-self: center;
+  width: 50%;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.randomSearch {
+  display: flex;
+  flex-direction: column;
 }

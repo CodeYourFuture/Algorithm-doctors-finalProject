@@ -1,0 +1,46 @@
+.navbar{
+    display:flex;
+    justify-content: space-between;
+    background-color: #FFFFFF;
+    border-bottom: lightgrey solid 0.5px;
+}
+
+
+.nav-links {
+  font-weight: bold;
+  display: flex;
+  align-items:center;
+  justify-content: space-evenly;
+  width: 40%;
+  height: 80px;
+}
+
+.navbar{
+  display:flex;
+  justify-content: space-between;
+  background-color: transparent;
+}
+.nav-links {
+  display: flex;
+  align-items:center;
+  justify-content:flex-end;
+  width: 40%;
+  height: 80px;
+}
+.nav-links a{
+  padding: 14px 16px;
+  color: rgb(10, 9, 9);
+  transition: 0.5s ease;
+}
+.nav-links a:hover{
+  background-color: transparent;
+  border-radius: 20px;
+  transform: translateY(-2px);
+  text-decoration: underline;
+}
+ .cyf-logo a img:hover{
+  border-radius: 20px;
+  transform: translateY(-2px);
+  transition:0.5s ease-in-out;
+  text-decoration: underline;
+}

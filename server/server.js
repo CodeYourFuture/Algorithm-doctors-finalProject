@@ -1,5 +1,5 @@
 import http from "http";
-
+import "dotenv/config";
 import app from "./app";
 import { connectDb, disconnectDb } from "./db";
 
@@ -17,3 +17,4 @@ server.on("listening", () => {
 process.on("SIGTERM", () => server.close(() => disconnectDb()));
 
 connectDb().then(() => server.listen(port));
+
