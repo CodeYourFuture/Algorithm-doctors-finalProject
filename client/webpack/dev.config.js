@@ -3,6 +3,8 @@ const common = require("./common.config");
 const Dotenv = require("dotenv-webpack");
 
 
+
+
 module.exports = merge(common, {
 	devtool: "inline-source-map",
 	devServer: {
@@ -13,7 +15,5 @@ module.exports = merge(common, {
 		},
 	},
 	mode: "development",
-	plugins: [
-    new Dotenv(),
-  ],
+
 });

@@ -1,8 +1,8 @@
 const HtmlWebpackTagsPlugin = require("html-webpack-tags-plugin");
 const path = require("path");
 const { merge } = require("webpack-merge");
-
 const common = require("./common.config");
+
 const { devDependencies } = require("../../package.json");
 
 module.exports = merge(common, {
