@@ -6,8 +6,9 @@ import RandomizerBtn from "./Components/RandomizerBtn";
 import Sidebar from "./Components/Sidebar";
 import AppPagination from "./Components/Pagination";
 import DropdownPage from "./Components/DropdownPage";
+import UserImage from "./Components/UserImage";
 
-export function Home({ user }) {
+export function Home({ user, isLoggedIn }) {
 	const [energisersData, setEnergisersData] = useState([]);
 	const [originalData, setOriginalData] = useState([]);
 	const [filter, setFilter] = useState([]);
@@ -43,6 +44,9 @@ export function Home({ user }) {
 			<h1 className="message" data-qa="message">
 				Welcome to CYF Energisers
 			</h1>
+			{/* {isLoggedIn?
+			<UserImage user={user} />:null
+			} */}
 			<Sidebar
 				setEnergisersData={setEnergisersData}
 				originalData={originalData}

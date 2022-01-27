@@ -8,15 +8,29 @@ import PublishEnergiserPage from "./pages/Components/PublishEnergiserPage";
 import { useState } from "react";
 
 
-const App = ()=>{
-	const [isLoggedIn, setIsLoggedIn]= useState(false);
+const App = () => {
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [user, setUser] = useState({});
+
+	const handleSubmit = async (object) => {
+		fetch("/api/user", {
+			method: "POST",
+			body: JSON.stringify(object),
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
+	};
+
+
+
 	return (
 		<>
 			<Navigation
 				isLoggedIn={isLoggedIn}
 				setIsLoggedIn={setIsLoggedIn}
 				setUser={setUser}
+				user={user}
 			/>
 			<Routes>
 				<Route
@@ -43,7 +57,6 @@ const App = ()=>{
 			</Routes>
 		</>
 	);
-
 };
 
 export default App;

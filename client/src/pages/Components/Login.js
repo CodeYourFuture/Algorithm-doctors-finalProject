@@ -10,7 +10,7 @@ function LoginHooks({ setIsLoggedIn, setUser }) {
         setIsLoggedIn(true);
 		console.log("Login success: currentUser:", res.profileObj);
 		RefreshTokenSetup(res);
-	    setUser(res.profileObj);
+		setUser(res.profileObj);
     };
 	const onFailure = (res) => {
 		console.log("login failed:", res);

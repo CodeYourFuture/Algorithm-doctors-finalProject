@@ -1,0 +1,13 @@
+.image{
+    /* position: fixed; */
+    top:100px;
+    left: 10px;
+}
+.user-image{
+    height: 60px;
+    width : 60px;
+    border-radius: 50%;
+}
+.para{
+    font-size: 0.6rem;
+}

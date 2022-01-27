@@ -5,11 +5,13 @@ import Logo from "../images/cyf_brand.png";
 import GLogin from "./GLogin";
 import GLogout from "./GLogout";
 import { Logout } from "@mui/icons-material";
+import UserImage from "./UserImage";
 // import LogoutHooks from "./Logout";
 // import LoginHooks from "./Login";
 
 
- export default function Navigation({ isLoggedIn,setIsLoggedIn, setUser }){
+ export default function Navigation({ isLoggedIn,setIsLoggedIn, setUser, user }){
+
 return (
 	<nav className="navbar">
 		<div className="cyf-logo">
@@ -24,11 +26,12 @@ return (
 			<Link to="/publish">Publish</Link>
 			{isLoggedIn ? (
 				<GLogout setIsLoggedIn={setIsLoggedIn} />
-				// <LogoutHooks setIsLoggedIn={setIsLoggedIn} />
 			) : (
+				// <LogoutHooks setIsLoggedIn={setIsLoggedIn} />
 				<GLogin setIsLoggedIn={setIsLoggedIn} setUser={setUser} />
 				// <LoginHooks setIsLoggedIn={setIsLoggedIn} setUser={setUser} />
 			)}
+			<div>{isLoggedIn ? <UserImage user={user} /> : null}</div>
 		</div>
 	</nav>
 );

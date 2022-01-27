@@ -125,7 +125,7 @@ export const PublishEnergiserPage = () => {
 						{errors.instructions && touched.instructions ? (
 							<div className="errorMessage">{errors.instructions}</div>
 						) : null}
-						<button type="submit" className="btn btn-danger">
+						<button type="submit" className="publish-button">
 							Publish
 						</button>
 					</Form>
