@@ -17,7 +17,12 @@ export const configuredHelmet = () =>
 					"https://maxcdn.bootstrapcdn.com",
 					"https://accounts.google.com",
 				],
-				styleSrc: ["'self'", "https: 'unsafe-inline'"],
+				frameSrc: ["'self'", "https://accounts.google.com"],
+				styleSrc: [
+					"'self'",
+					"https: 'unsafe-inline'",
+					"https://apis.google.com",
+				],
 				upgradeInsecureRequests: [],
 			},
 		},
