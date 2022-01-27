@@ -15,6 +15,7 @@ export const configuredHelmet = () =>
 					"https://code.jquery.com",
 					"https://cdnjs.cloudflare.com",
 					"https://maxcdn.bootstrapcdn.com",
+					"https://accounts.google.com",
 				],
 				styleSrc: ["'self'", "https: 'unsafe-inline'"],
 				upgradeInsecureRequests: [],
