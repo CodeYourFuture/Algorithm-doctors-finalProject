@@ -17,6 +17,7 @@ const App = ()=>{
 				isLoggedIn={isLoggedIn}
 				setIsLoggedIn={setIsLoggedIn}
 				setUser={setUser}
+				user={user}
 			/>
 			<Routes>
 				<Route

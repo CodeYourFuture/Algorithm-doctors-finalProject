@@ -4,9 +4,10 @@ import "../styles/Navigation.css";
 import Logo from "../images/cyf_brand.png";
 import GLogin from "./GLogin";
 import GLogout from "./GLogout";
+import UserImage from "./UserImages";
 
 
- export default function Navigation({ isLoggedIn,setIsLoggedIn, setUser }){
+ export default function Navigation({ isLoggedIn,setIsLoggedIn, setUser, user }){
 return (
 	<nav className="navbar">
 		<div className="cyf-logo">
@@ -24,6 +25,8 @@ return (
 			) : (
 				<GLogin setIsLoggedIn={setIsLoggedIn} setUser={setUser} />
 			)}
+			{isLoggedIn?
+				<UserImage user={user} />: null}
 		</div>
 	</nav>
 );
