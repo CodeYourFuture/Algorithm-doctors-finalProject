@@ -16,6 +16,7 @@ export const configuredHelmet = () =>
 					"https://cdnjs.cloudflare.com",
 					"https://maxcdn.bootstrapcdn.com",
 					"https://accounts.google.com",
+					"https://lh3.googleusercontent.com",
 				],
 				frameSrc: ["'self'", "https://accounts.google.com"],
 				styleSrc: [
