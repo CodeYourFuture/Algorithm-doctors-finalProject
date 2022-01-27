@@ -11,7 +11,7 @@ function LoginHooks({ setIsLoggedIn, setUser }) {
 		console.log("Login success: currentUser:", res.profileObj);
 		RefreshTokenSetup(res);
 	    setUser(res.profileObj);
-	};
+    };
 	const onFailure = (res) => {
 		console.log("login failed:", res);
 	};
@@ -25,6 +25,7 @@ function LoginHooks({ setIsLoggedIn, setUser }) {
 
 	return (
 		<button onClick={signIn} className="button">
+			<img src="icons/google.svg" alt="google login"></img>
 			<span className="buttonText">Sign in with Google</span>
 		</button>
 	);
