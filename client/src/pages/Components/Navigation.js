@@ -2,8 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/Navigation.css";
 import Logo from "../images/cyf_brand.png";
-import GLogin from "./GLogin";
-import GLogout from "./GLogout";
+// import GLogin from "./GLogin";
+// import GLogout from "./GLogout";
+// import { Logout } from "@mui/icons-material";
+import LogoutHooks from "./Logout";
+import LoginHooks from "./Login";
 
 
  export default function Navigation({ isLoggedIn,setIsLoggedIn, setUser }){
@@ -20,9 +23,11 @@ return (
 			<Link to="/contact">Contact</Link>
 			<Link to="/publish">Publish</Link>
 			{isLoggedIn ? (
-				<GLogout setIsLoggedIn={setIsLoggedIn} />
+				// <GLogout setIsLoggedIn={setIsLoggedIn} />
+				<LogoutHooks setIsLoggedIn={setIsLoggedIn} />
 			) : (
-				<GLogin setIsLoggedIn={setIsLoggedIn} setUser={setUser} />
+				// <GLogin setIsLoggedIn={setIsLoggedIn} setUser={setUser} />
+				<LoginHooks setIsLoggedIn={setIsLoggedIn} setUser={setUser} />
 			)}
 		</div>
 	</nav>
