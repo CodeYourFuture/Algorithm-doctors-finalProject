@@ -41,9 +41,11 @@ export function Home({ user , isLoggedIn }) {
 	return (
 		<main role="main">
 			<h1 className="message" data-qa="message">
+
 				{isLoggedIn
 					? `${user.givenName}, Welcome to CYF Energisers`
 					: "Welcome to CYF Energisers"}
+
 			</h1>
 			<Sidebar
 				setEnergisersData={setEnergisersData}

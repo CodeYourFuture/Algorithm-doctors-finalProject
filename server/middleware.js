@@ -24,7 +24,9 @@ export const configuredHelmet = () =>
 					"https: 'unsafe-inline'",
 					"https://apis.google.com",
 				],
+
 				imgSrc: ["'self'","https://lh3.googleusercontent.com"],
+
 				upgradeInsecureRequests: [],
 			},
 		},
