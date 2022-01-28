@@ -7,12 +7,11 @@ import Sidebar from "./Components/Sidebar";
 import AppPagination from "./Components/Pagination";
 import DropdownPage from "./Components/DropdownPage";
 
-export function Home({ user , isLoggedIn }) {
+export function Home({ user, isLoggedIn }) {
 	const [energisersData, setEnergisersData] = useState([]);
 	const [originalData, setOriginalData] = useState([]);
-	const [filter, setFilter] = useState([]);
 	const [page, setPage] = useState(1);
-	const [rowsPerPage, setRowsPerPage] = useState(2);
+	const [rowsPerPage, setRowsPerPage] = useState(6);
 	useEffect(() => {
 		console.log(user);
 		fetch("/api/energisers")
@@ -23,16 +22,13 @@ export function Home({ user , isLoggedIn }) {
 				return res.json();
 			})
 			.then((data) => {
-				setEnergisersData(data);
 				setOriginalData(data);
-				setFilter(data);
+				setEnergisersData(data);
 			})
 			.catch((err) => {
 				console.error(err);
 			});
 	}, [user]);
-
-
 
 	const handleChangePage = (event, newPage) => {
 		setPage(newPage);
@@ -40,53 +36,47 @@ export function Home({ user , isLoggedIn }) {
 
 	return (
 		<main role="main">
-			<h1 className="message" data-qa="message">
-
-				{isLoggedIn
-					? `${user.givenName}, Welcome to CYF Energisers`
-					: "Welcome to CYF Energisers"}
-
-			</h1>
-			<Sidebar
-				setEnergisersData={setEnergisersData}
-				originalData={originalData}
-				filterData={filter}
-			/>
-
-			<DropdownPage setRowsPerPage={setRowsPerPage} />
-
-			<div className="randomSearch">
-				<SearchBar
-					energisersData={energisersData}
+			<div className="main-content">
+				<Sidebar
 					setEnergisersData={setEnergisersData}
 					originalData={originalData}
 				/>
-				<RandomizerBtn
-					setEnergisersData={setEnergisersData}
-					originalData={originalData}
-				/>
+				<div className="homeMain">
+					<h1 className="message" data-qa="message">
+						{isLoggedIn
+							? `${user.givenName}, Welcome to CYF Energisers`
+							: "Welcome to CYF Energisers"}
+					</h1>
+					{/* <DropdownPage setRowsPerPage={setRowsPerPage} /> */}
+					<div className="randomSearch">
+						<RandomizerBtn
+							setEnergisersData={setEnergisersData}
+							originalData={originalData}
+						/>
+						<SearchBar
+							energisersData={energisersData}
+							setEnergisersData={setEnergisersData}
+							originalData={originalData}
+							setPage={setPage}
+						/>
+					</div>
+					<div>
+						<ul className="energiserCards">
+							<EnergiserCards
+								energisersData={energisersData}
+								page={page}
+								rowsPerPage={rowsPerPage}
+							/>
+						</ul>
+					</div>
+				</div>
 			</div>
-
-			<div>
-				<ul className="energiserCards">
-					<EnergiserCards
-						energisersData={energisersData}
-						page={page}
-						rowsPerPage={rowsPerPage}
-					/>
-				</ul>
-			</div>
-
 			<AppPagination
 				page={page}
 				energisersData={energisersData}
 				handleChangePage={handleChangePage}
 				rowsPerPage={rowsPerPage}
 			/>
-
-			<ul className="energiserCards">
-				<EnergiserCards energisersData={energisersData} />
-			</ul>
 		</main>
 	);
 }

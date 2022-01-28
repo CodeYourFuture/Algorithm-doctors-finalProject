@@ -36,7 +36,6 @@ export default function Contact(){
 				}}
 				validationSchema={contactFeedbackSchema}
 				onSubmit={(values) => {
-					console.log(values);
 					handleSubmit(values);
 				}}
 			>
