@@ -41,7 +41,10 @@ export function Home({ user , isLoggedIn }) {
 	return (
 		<main role="main">
 			<h1 className="message" data-qa="message">
-				{isLoggedIn?`Welcome ${user.givenName} to CYF Energisers`:"Welcome to CYF Energisers"}
+
+				{isLoggedIn
+					? `${user.givenName}, Welcome to CYF Energisers`
+					: "Welcome to CYF Energisers"}
 
 			</h1>
 			<Sidebar
@@ -51,7 +54,6 @@ export function Home({ user , isLoggedIn }) {
 			/>
 
 			<DropdownPage setRowsPerPage={setRowsPerPage} />
-
 
 			<div className="randomSearch">
 				<SearchBar
@@ -85,7 +87,6 @@ export function Home({ user , isLoggedIn }) {
 			<ul className="energiserCards">
 				<EnergiserCards energisersData={energisersData} />
 			</ul>
-
 		</main>
 	);
 }
