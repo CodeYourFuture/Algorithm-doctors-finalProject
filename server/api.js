@@ -24,12 +24,12 @@ router.post("/publish", (req, res) => {
 	const newEnergiserDescription = req.body.description;
 	const newEnergiserParticipants = req.body.participants;
 	const newEnergiserDuration = req.body.duration;
-	const newEnergiserCategory = req.body.category;
 	const newEnergiserInstructions = req.body.instructions;
-	const newEnergiserVotes = 0;
-	const insertPost = "INSERT INTO energisers (name, description, participants, duration, votes, instructions,category) VALUES ($1, $2, $3, $4, $5, $6, $7);";
+	const newEnergiserLikes = 0;
+	const newEnergiserDislikes = 0;
+	const insertPost = "INSERT INTO energisers (name, description, participants, duration, likes, dislikes, instructions) VALUES ($1, $2, $3, $4, $5, $6, $7);";
 	query
-		.query(insertPost, [newEnergiserName, newEnergiserDescription, newEnergiserParticipants, newEnergiserDuration, newEnergiserVotes, newEnergiserInstructions,newEnergiserCategory])
+		.query(insertPost, [newEnergiserName, newEnergiserDescription, newEnergiserParticipants, newEnergiserDuration, newEnergiserLikes, newEnergiserDislikes, newEnergiserInstructions])
 		.then(() => res.status(200).send("Energiser Published"))
 		.catch((error) => console.error(error));
 });
