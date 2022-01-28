@@ -11,7 +11,7 @@
 	display: grid;
 	grid-template-areas:
 		"sidebar homemain";
-  grid-template-columns: 10% 1fr;
+  grid-template-columns: 15% 85%;
 }
 
 .homeMain {
@@ -32,6 +32,9 @@ grid-area: homemain;
 	flex-wrap: wrap;
 }
 
+ul {
+	padding-left: 0;
+}
 .card-container {
 	min-width: 25%;
 	max-width: 25%;
@@ -85,7 +88,12 @@ a:hover {
 	height: 100vh;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-  grid-area: sidebar;
+	align-items: flex-start;
+	
+  	grid-area: sidebar;
+}
+
+.filters {
+	margin: 2rem 0 0 2rem;
 }
 

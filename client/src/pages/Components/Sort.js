@@ -30,7 +30,7 @@ export default function BasicSelect({ originalData, setEnergisersData }) {
 					id="demo-simple-select"
 					label="Sort"
 				>
-						<Link to="/" style={{ display: "flex", flexDirection: "column", color: "black" }}>
+						<Link to="/" style={{ display: "flex", flexDirection: "column", alignItems: "flex-Start", color: "black", paddingLeft: "0.5rem"  }}>
 							<MenuItem onClick={handleSortByAlphabets}>
 								Alphabetical Order
 							</MenuItem>

@@ -22,9 +22,12 @@ return (
 			<Link to="/">Home</Link>
 			<Link to="/about">About</Link>
 			<Link to="/contact">Contact</Link>
-			<Link to="/publish" onClick={handleClick}>Publish</Link>
+
+
 			{isLoggedIn ? (
-				<GLogout setIsLoggedIn={setIsLoggedIn} />
+				<>
+				<Link to="/publish" onClick={handleClick}>Publish</Link>
+				<GLogout setIsLoggedIn={setIsLoggedIn} /></>
 			) : (
 				<GLogin setIsLoggedIn={setIsLoggedIn} setUser={setUser} />
 			)}
