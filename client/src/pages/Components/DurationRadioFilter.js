@@ -21,6 +21,7 @@ export default function DurationRadioButtons({
 				<RadioGroup
 					aria-labelledby="demo-radio-buttons-group-label"
 					name="radio-buttons-group"
+					defaultValue="0-100"
 					onChange={handleChange}
 				>
 					<FormControlLabel
