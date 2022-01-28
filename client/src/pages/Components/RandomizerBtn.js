@@ -16,7 +16,7 @@ const RandomizerBtn = ({ setEnergisersData , originalData }) => {
 						borderRadius: 5,
 						color: "white",
 						backgroundColor: "#dc514a",
-						padding: "18px 36px",
+						padding: "10px 20px",
 						marginLeft: "30px",
 						fontSize: "0.9rem",
 						fontWeight: "bold",
@@ -26,7 +26,7 @@ const RandomizerBtn = ({ setEnergisersData , originalData }) => {
 					onClick={() => handleClick(originalData)}
 					className="new_energizer"
 				>
-					Random Energiser!!
+					Energise Me!!!
 				</Button>
 		</div>
 	);
