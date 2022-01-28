@@ -5,7 +5,6 @@ import EnergiserCards from "./Components/EnergiserCards";
 import RandomizerBtn from "./Components/RandomizerBtn";
 import Sidebar from "./Components/Sidebar";
 import AppPagination from "./Components/Pagination";
-import DropdownPage from "./Components/DropdownPage";
 
 export function Home({ user, isLoggedIn }) {
 	const [energisersData, setEnergisersData] = useState([]);
@@ -47,7 +46,6 @@ export function Home({ user, isLoggedIn }) {
 							? `${user.givenName}, Welcome to CYF Energisers`
 							: "Welcome to CYF Energisers"}
 					</h1>
-					{/* <DropdownPage setRowsPerPage={setRowsPerPage} /> */}
 					<div className="randomSearch">
 						<RandomizerBtn
 							setEnergisersData={setEnergisersData}
@@ -68,15 +66,15 @@ export function Home({ user, isLoggedIn }) {
 								rowsPerPage={rowsPerPage}
 							/>
 						</ul>
+						{ energisersData.length>0&&<AppPagination
+							page={page}
+							energisersData={energisersData}
+							handleChangePage={handleChangePage}
+							rowsPerPage={rowsPerPage}
+						/>}
 					</div>
 				</div>
 			</div>
-			<AppPagination
-				page={page}
-				energisersData={energisersData}
-				handleChangePage={handleChangePage}
-				rowsPerPage={rowsPerPage}
-			/>
 		</main>
 	);
 }

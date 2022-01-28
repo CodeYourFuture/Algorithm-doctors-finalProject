@@ -20,105 +20,74 @@ const MenuProps = {
 
 export default function Filter({
 	originalData,
+	energisersData,
 	setEnergisersData,
 }) {
-    const [durationFilter, setDurationFilter] = React.useState([]);
 	const [personName, setPersonName] = React.useState([]);
 	const handleChange = (event) => {
 		const {
 			target: { value },
 		} = event;
+		console.log(event.target.value);
 		setPersonName(
 			// On autofill we get a stringified value.
 			typeof value === "string" ? value.split(",") : value
 		);
+
 	};
 
-	const handleFilterDurationOneToFive = () => {
-		const filterData = originalData.filter(
-			(energiser) => energiser.duration >= 1 && energiser.duration <= 5
-		);
-		setEnergisersData(filterData);
-	};
-	const handleFilterParticipants1To5 = () => {
-		const filterData = originalData.filter(
-			(energiser) => energiser.participants >= 1 && energiser.participants <= 5
-		);
-		setEnergisersData(filterData);
-	};
-	const handleFilterDurationSixToTen = () => {
-		const filterData = originalData.filter(
-			(energiser) => energiser.duration >= 6 && energiser.duration <= 10
-		);
-		setEnergisersData(filterData);
-	};
-	const handleFilterParticipants6To10 = () => {
-		const filterData = originalData.filter(
-			(energiser) => energiser.participants >= 6 && energiser.participants <= 10
-		);
-		setEnergisersData(filterData);
-	};
-	const handleFilterDurationElevenToFifteen = () => {
-		const filterData = originalData.filter(
-			(energiser) => energiser.duration >= 11 && energiser.duration <= 15
-		);
-		setEnergisersData(filterData);
-	};
-	const handleFilterParticipants11To15 = () => {
-		const filterData = originalData.filter(
-			(energiser) =>
-				energiser.participants >= 11 && energiser.participants <= 15
-		);
-		setEnergisersData(filterData);
-	};
-	const handleFilterDurationSixteenToTwenty = () => {
-		const filterData = originalData.filter(
-			(energiser) => energiser.duration >= 16 && energiser.duration <= 20
-		);
-		setEnergisersData(filterData);
-	};
-	const handleFilterParticipants16To20 = () => {
-		const filterData = originalData.filter(
-			(energiser) =>
-				energiser.participants >= 16 && energiser.participants <= 20
-		);
-		setEnergisersData(filterData);
-	};
+	// const handleFilterDurationOneToFive = () => {
+	// 	const filterData = originalData.filter(
+	// 		(energiser) => energiser.duration >= 1 && energiser.duration <= 5
+	// 	);
+	// 	setEnergisersData(filterData);
+	// };
+	// const handleFilterParticipants1To5 = () => {
+	// 	const filterData = originalData.filter(
+	// 		(energiser) => energiser.participants >= 1 && energiser.participants <= 5
+	// 	);
+	// 	setEnergisersData(filterData);
+	// };
+	// const handleFilterDurationSixToTen = () => {
+	// 	const filterData = originalData.filter(
+	// 		(energiser) => energiser.duration >= 6 && energiser.duration <= 10
+	// 	);
+	// 	setEnergisersData(filterData);
+	// };
+	// const handleFilterParticipants6To10 = () => {
+	// 	const filterData = originalData.filter(
+	// 		(energiser) => energiser.participants >= 6 && energiser.participants <= 10
+	// 	);
+	// 	setEnergisersData(filterData);
+	// };
+	// const handleFilterDurationElevenToFifteen = () => {
+	// 	const filterData = originalData.filter(
+	// 		(energiser) => energiser.duration >= 11 && energiser.duration <= 15
+	// 	);
+	// 	setEnergisersData(filterData);
+	// };
+	// const handleFilterParticipants11To15 = () => {
+	// 	const filterData = originalData.filter(
+	// 		(energiser) =>
+	// 			energiser.participants >= 11 && energiser.participants <= 15
+	// 	);
+	// 	setEnergisersData(filterData);
+	// };
+	// const handleFilterDurationSixteenToTwenty = () => {
+	// 	const filterData = originalData.filter(
+	// 		(energiser) => energiser.duration >= 16 && energiser.duration <= 20
+	// 	);
+	// 	setEnergisersData(filterData);
+	// };
+	// const handleFilterParticipants16To20 = () => {
+	// 	const filterData = originalData.filter(
+	// 		(energiser) =>
+	// 			energiser.participants >= 16 && energiser.participants <= 20
+	// 	);
+	// 	setEnergisersData(filterData);
+	// };
 
-	const filterOptions = [
-		{
-			op: "Duration: 1-5 Mins",
-			func: handleFilterDurationOneToFive,
-		},
-		{
-			op: "Duration: 6-10 Mins",
-			func: handleFilterDurationSixToTen,
-		},
-		{
-			op: "Duration: 11-15 Mins",
-			func: handleFilterDurationElevenToFifteen,
-		},
-		{
-			op: "Duration: 16-20 Mins",
-			func: handleFilterDurationSixteenToTwenty,
-		},
-		{
-			op: "Participants: 1-5",
-			func: handleFilterParticipants1To5,
-		},
-		{
-			op: "Participants: 6-10",
-			func: handleFilterParticipants6To10,
-		},
-		{
-			op: "Participants: 11-15",
-			func: handleFilterParticipants11To15,
-		},
-		{
-			op: "Participants: 16-20",
-			func: handleFilterParticipants16To20,
-		},
-	];
+	const filterOptions = [ "1-5", "6-10", "11-15", "16-20"];
 
 	return (
 		<div>
@@ -134,14 +103,14 @@ export default function Filter({
 					renderValue={(selected) => selected.join(", ")}
 					MenuProps={MenuProps}
 				>
-					<div style={{ display: "flex", flexDirection: "column" }}>
+					{/* <div style={{ display: "flex", flexDirection: "column" }}> */}
 						{filterOptions.map((name) => (
-							<MenuItem key={name.op} value={name.op} onClick={name.func}>
-								<Checkbox />
-								<ListItemText primary={name.op} />
+							<MenuItem key={name} value={name} >
+								<Checkbox checked={personName.indexOf(name) > -1} />
+								<ListItemText primary={`Duration: ${name} mins`} />
 							</MenuItem>
 						))}
-					</div>
+					{/* </div> */}
 				</Select>
 			</FormControl>
 		</div>

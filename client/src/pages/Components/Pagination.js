@@ -6,7 +6,6 @@ const useStyles = makeStyles(() => ({
 	root: {
 		bottom: 0,
 		zIndex: 200,
-		backgroundColor: "#dcdcdc",
 		padding: "10px 80px",
 		color: "black",
 		width: "100%",
