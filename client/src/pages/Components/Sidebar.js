@@ -3,7 +3,6 @@ import Sort from "./Sort";
 import Filter from "./Filter";
 // import DurationRadioButtons from "./DurationRadioFilter";
 // import ParticipantsRadioFilter from "./ParticipantsRadioFilter";
-
 export default function Sidebar({ originalData, setEnergisersData }) {
     const handleResetEnergisers = () => {
         setEnergisersData(originalData);
