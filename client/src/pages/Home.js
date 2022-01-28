@@ -10,7 +10,6 @@ import DropdownPage from "./Components/DropdownPage";
 export function Home({ user, isLoggedIn }) {
 	const [energisersData, setEnergisersData] = useState([]);
 	const [originalData, setOriginalData] = useState([]);
-	const [filter, setFilter] = useState([]);
 	const [page, setPage] = useState(1);
 	const [rowsPerPage, setRowsPerPage] = useState(6);
 	useEffect(() => {
@@ -25,7 +24,6 @@ export function Home({ user, isLoggedIn }) {
 			.then((data) => {
 				setOriginalData(data);
 				setEnergisersData(data);
-				setFilter(data);
 			})
 			.catch((err) => {
 				console.error(err);

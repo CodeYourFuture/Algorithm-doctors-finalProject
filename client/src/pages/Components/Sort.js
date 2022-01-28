@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Link } from "react-router-dom";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -11,7 +12,7 @@ export default function BasicSelect({ originalData, setEnergisersData }) {
 		setEnergisersData(sortData);
 	};
 	const handleSortByDurationLH = () => {
-		const sortData = originalData.sort((a, b) =>  a.duration - b.duration);
+		const sortData = originalData.sort((a, b) => a.duration - b.duration);
 		setEnergisersData(sortData);
 	};
 	const handleSortByParticipantsLH = () => {
@@ -29,11 +30,17 @@ export default function BasicSelect({ originalData, setEnergisersData }) {
 					id="demo-simple-select"
 					label="Sort"
 				>
-                    <div style={{ display: "flex", flexDirection: "column" }}>
-					<MenuItem onClick={handleSortByAlphabets} >Alphabetical Order</MenuItem>
-					<MenuItem onClick={handleSortByDurationLH}>Duration: Low To High</MenuItem>
-					<MenuItem onClick={handleSortByParticipantsLH}>Participants: Low To High</MenuItem>
-                    </div>
+						<Link to="/" style={{ display: "flex", flexDirection: "column", color: "black" }}>
+							<MenuItem onClick={handleSortByAlphabets}>
+								Alphabetical Order
+							</MenuItem>
+							<MenuItem onClick={handleSortByDurationLH}>
+								Duration: Low To High
+							</MenuItem>
+							<MenuItem onClick={handleSortByParticipantsLH}>
+								Participants: Low To High
+							</MenuItem>
+						</Link>
 				</Select>
 			</FormControl>
 		</Box>
