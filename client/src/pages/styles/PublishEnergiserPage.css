@@ -2,7 +2,6 @@
 	text-align: center;
 	width: 50%;
 	margin: 2% auto;
-	border: solid 3px #DC514A;
 	border-radius: 10px;
 	padding: 20px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -47,4 +46,12 @@ border-radius: 10px;
 	text-align: left;
 	font-size: 16px;
 	margin-top: 20px;
+}
+.publish-button {
+	background-color: rgba(247, 71, 71, 0.76);
+	height: 40px;
+	border: none;
+	border-radius: 10px;
+	margin-top: 10px;
+	color: white;
 }

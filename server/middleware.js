@@ -12,8 +12,21 @@ export const configuredHelmet = () =>
 					"unpkg.com",
 					"polyfill.io",
 					"https://apis.google.com",
+					"https://code.jquery.com",
+					"https://cdnjs.cloudflare.com",
+					"https://maxcdn.bootstrapcdn.com",
+					"https://accounts.google.com",
+					"https://lh3.googleusercontent.com",
 				],
-				styleSrc: ["'self'", "https: 'unsafe-inline'"],
+				frameSrc: ["'self'", "https://accounts.google.com"],
+				styleSrc: [
+					"'self'",
+					"https: 'unsafe-inline'",
+					"https://apis.google.com",
+				],
+
+				imgSrc: ["'self'","https://lh3.googleusercontent.com"],
+
 				upgradeInsecureRequests: [],
 			},
 		},
