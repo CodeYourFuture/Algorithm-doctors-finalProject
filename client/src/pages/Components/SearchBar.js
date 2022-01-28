@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import ManageSearchIcon from "@mui/icons-material/ManageSearch";
 import ClearIcon from "@mui/icons-material/Clear";
 
-function SearchBar({ setEnergisersData, originalData, setPage }) {
+function SearchBar({ setEnergisersData, originalData }) {
 	const [filteredData, setFilteredData] = useState([]);
 	const [wordEntered, setWordEntered] = useState("");
 
@@ -21,14 +21,12 @@ function SearchBar({ setEnergisersData, originalData, setPage }) {
 			setEnergisersData(originalData);
 		} else {
 			setFilteredData(newFilter);
-			setPage(1);
 		}
 	};
 
 	const clearInput = () => {
 		setFilteredData([]);
 		setWordEntered("");
-		setEnergisersData(originalData);
 	};
 
 	return (

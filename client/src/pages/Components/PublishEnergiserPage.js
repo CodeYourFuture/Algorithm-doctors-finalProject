@@ -1,16 +1,8 @@
-
-import { React , useState } from "react";
+import React from "react";
 import "../styles/PublishEnergiserPage.css";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 
-		const categoryOptions = [
-			{ key: "Select Category", value: "Select Category" },
-			{ key: "In-Person", value: "In-person" },
-			{ key: "Remote", value: "Remote" },
-			{ key: "fun", value: "Fun" },
-			{ key: "Team-building", value: "Team-building" },
-		];
 const publishEnergiserSchema = Yup.object().shape({
 	name: Yup.string()
 		.min(2, "Too Short!")
@@ -22,8 +14,6 @@ const publishEnergiserSchema = Yup.object().shape({
 		.required("Required"),
 	participants: Yup.number(),
 	duration: Yup.number(),
-	category: Yup.string()
-		.required("Required"),
 	instructions: Yup.string()
 		.min(100, "Too Short!")
 		.max(6000, "Too Long!")
@@ -50,13 +40,11 @@ export const PublishEnergiserPage = () => {
 					description: "",
 					participants: "",
 					duration: "",
-					category: "",
 					instructions: "",
 				}}
 				validationSchema={publishEnergiserSchema}
-				onSubmit={(values, { resetForm }) => {
+				onSubmit={(values) => {
 					handleSubmit(values);
-					resetForm();
 				}}
 			>
 				{({ errors, touched }) => (
@@ -66,9 +54,7 @@ export const PublishEnergiserPage = () => {
 							name="name"
 							placeholder="Enter energiser name..."
 						/>
-						{errors.name && touched.name ? (
-							<div className="errorMessage">{errors.name}</div>
-						) : null}
+						{errors.name && touched.name ? <div className="errorMessage">{errors.name}</div> : null}
 						<Field
 							className="field"
 							name="description"
@@ -95,27 +81,6 @@ export const PublishEnergiserPage = () => {
 						{errors.duration && touched.duration ? (
 							<div className="errorMessage">{errors.duration}</div>
 						) : null}
-
-						{/* category */}
-						<Field
-							className="my-select"
-							as="select"
-							name="category"
-						>
-							{categoryOptions.map((option) => {
-								return (
-									<option key={option.value} value={option.value}>
-										{option.key}
-									</option>
-								);
-							})}
-						</Field>
-
-						{errors.category && touched.category ? (
-							<div className="errorMessage">{errors.category}</div>
-						) : null}
-						{/* category ends */}
-
 						<Field
 							className="fieldInstructions"
 							name="instructions"
@@ -125,9 +90,7 @@ export const PublishEnergiserPage = () => {
 						{errors.instructions && touched.instructions ? (
 							<div className="errorMessage">{errors.instructions}</div>
 						) : null}
-
 						<button type="submit" className="publish-button">Publish</button>
-
 					</Form>
 				)}
 			</Formik>
