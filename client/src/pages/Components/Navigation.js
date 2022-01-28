@@ -8,6 +8,9 @@ import UserImage from "./UserImages";
 
 
  export default function Navigation({ isLoggedIn,setIsLoggedIn, setUser, user }){
+	const handleClick = ()=>{
+		{!isLoggedIn?alert("Please log in to publish your energiser!"):null;}
+	};
 return (
 	<nav className="navbar">
 		<div className="cyf-logo">
@@ -19,7 +22,7 @@ return (
 			<Link to="/">Home</Link>
 			<Link to="/about">About</Link>
 			<Link to="/contact">Contact</Link>
-			<Link to="/publish">Publish</Link>
+			<Link to="/publish" onClick={handleClick}>Publish</Link>
 			{isLoggedIn ? (
 				<GLogout setIsLoggedIn={setIsLoggedIn} />
 			) : (
