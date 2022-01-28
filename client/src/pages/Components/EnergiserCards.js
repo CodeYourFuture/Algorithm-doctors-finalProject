@@ -5,7 +5,6 @@ import LikeBtn from "./LikeBtn";
 const EnergiserCards = ({ energisersData, page, rowsPerPage }) => {
 	const navigate = useNavigate();
 	const handleNavigate = (id) => {
-		console.log(id);
 		navigate(`/energisers/${id}`);
 	};
 	return energisersData
