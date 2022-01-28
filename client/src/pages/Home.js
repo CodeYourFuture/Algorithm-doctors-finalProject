@@ -12,7 +12,7 @@ export function Home({ user }) {
 	const [originalData, setOriginalData] = useState([]);
 	const [filter, setFilter] = useState([]);
 	const [page, setPage] = useState(1);
-	const [rowsPerPage, setRowsPerPage] = useState(2);
+	const [rowsPerPage, setRowsPerPage] = useState(6);
 	useEffect(() => {
 		console.log(user);
 		fetch("/api/energisers")
@@ -23,8 +23,8 @@ export function Home({ user }) {
 				return res.json();
 			})
 			.then((data) => {
-				setEnergisersData(data);
 				setOriginalData(data);
+				setEnergisersData(data);
 				setFilter(data);
 			})
 			.catch((err) => {
@@ -32,42 +32,35 @@ export function Home({ user }) {
 			});
 	}, [user]);
 
-
-
 	const handleChangePage = (event, newPage) => {
 		setPage(newPage);
 	};
 
 	return (
 		<main role="main">
-			<h1 className="message" data-qa="message">
-				Welcome to CYF Energisers
-			</h1>
+			<div className="main-content">
 			<Sidebar
 				setEnergisersData={setEnergisersData}
 				originalData={originalData}
-				filterData={filter}
 			/>
-
-			<DropdownPage setRowsPerPage={setRowsPerPage} />
-
+			<div className="homeMain">
+			<h1 className="message" data-qa="message">
+				Welcome to CYF Energisers
+			</h1>
+			{/* <DropdownPage setRowsPerPage={setRowsPerPage} /> */}
 
 			<div className="randomSearch">
+				<RandomizerBtn
+					setEnergisersData={setEnergisersData}
+					originalData={originalData}
+				/>
 				<SearchBar
 					energisersData={energisersData}
 					setEnergisersData={setEnergisersData}
 					originalData={originalData}
 					setPage={setPage}
 				/>
-				<RandomizerBtn
-					setEnergisersData={setEnergisersData}
-					originalData={originalData}
-				/>
 			</div>
-			<ul className="energiserCards">
-				<EnergiserCards energisersData={energisersData} />
-			</ul>
-
 			<div>
 				<ul className="energiserCards">
 					<EnergiserCards
@@ -77,18 +70,14 @@ export function Home({ user }) {
 					/>
 				</ul>
 			</div>
-
+			</div>
+			</div>
 			<AppPagination
 				page={page}
 				energisersData={energisersData}
 				handleChangePage={handleChangePage}
 				rowsPerPage={rowsPerPage}
 			/>
-
-			<ul className="energiserCards">
-				<EnergiserCards energisersData={energisersData} />
-			</ul>
-
 		</main>
 	);
 }
