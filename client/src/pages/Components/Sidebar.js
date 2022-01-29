@@ -7,8 +7,8 @@ export default function Sidebar({
 	originalData,
 	setEnergisersData,
 }) {
-	const [duration, setDuration] = useState("none");
-	const [participants, setParticipants] = useState("none");
+	const [duration, setDuration] = useState("0-100");
+	const [participants, setParticipants] = useState("0-100");
 	const handleResetEnergisers = () => {
 		setEnergisersData(originalData);
 	};
@@ -27,7 +27,6 @@ export default function Sidebar({
     handleFilters();
     },[duration, participants]);
 
-	console.log(duration, participants);
 	return (
 		<div className="sideBar">
 			<div className="resetBtn">

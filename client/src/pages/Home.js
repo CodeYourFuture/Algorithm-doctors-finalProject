@@ -5,14 +5,14 @@ import EnergiserCards from "./Components/EnergiserCards";
 import RandomizerBtn from "./Components/RandomizerBtn";
 import Sidebar from "./Components/Sidebar";
 import AppPagination from "./Components/Pagination";
+import { display } from "@mui/system";
 
 export function Home({ user, isLoggedIn }) {
 	const [energisersData, setEnergisersData] = useState([]);
 	const [originalData, setOriginalData] = useState([]);
 	const [page, setPage] = useState(1);
-	const [rowsPerPage, setRowsPerPage] = useState(6);
+	const rowsPerPage = 6;
 	useEffect(() => {
-		console.log(user);
 		fetch("/api/energisers")
 			.then((res) => {
 				if (!res.ok) {
@@ -66,12 +66,14 @@ export function Home({ user, isLoggedIn }) {
 								rowsPerPage={rowsPerPage}
 							/>
 						</ul>
-						{ energisersData.length>0&&<AppPagination
+						<div className="pagDiv" style={{ visibility: energisersData.length<=0? "hidden":"visible" }}>
+						<AppPagination
 							page={page}
 							energisersData={energisersData}
 							handleChangePage={handleChangePage}
 							rowsPerPage={rowsPerPage}
-						/>}
+						/>
+						</div>
 					</div>
 				</div>
 			</div>
