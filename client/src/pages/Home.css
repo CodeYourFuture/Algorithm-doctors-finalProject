@@ -89,11 +89,14 @@ a:hover {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	
   	grid-area: sidebar;
 }
 
 .filters {
 	margin: 2rem 0 0 2rem;
+}
+.pagDiv {
+	 display: flex; 
+	 justify-content: center;
 }
 

@@ -34,7 +34,6 @@ const AppPagination = ({
 		<div className={classes.container}>
 			<div className={classes.root}>
 				<Pagination
-					style={{ display: "flex", justifyContent: "center" }}
 					count={pageCount}
 					page={page}
 					onChange={handleChangePage}
