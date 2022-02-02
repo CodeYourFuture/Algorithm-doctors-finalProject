@@ -6,10 +6,10 @@ import EnergiserPage from "./pages/Components/EnergiserPage";
 import Contact from "./pages/Components/Contact";
 import PublishEnergiserPage from "./pages/Components/PublishEnergiserPage";
 import { useState } from "react";
+import Footer from "./pages/Components/Footer";
 
-
-const App = ()=>{
-	const [isLoggedIn, setIsLoggedIn]= useState(false);
+const App = () => {
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [user, setUser] = useState({});
 	return (
 		<>
@@ -42,9 +42,8 @@ const App = ()=>{
 					<Route path="*" element={<Navigate to="/" />} />
 				)}
 			</Routes>
+			<Footer isLoggedIn={isLoggedIn} />
 		</>
 	);
-
 };
-
 export default App;
