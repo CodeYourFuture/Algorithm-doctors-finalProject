@@ -2,36 +2,30 @@
 #DC514A red
 #ffffff
 #FFFFFF */
-
 .logo {
 	width: 100px;
 }
-
 .main-content {
 	display: grid;
 	grid-template-areas:
 		"sidebar homemain";
   grid-template-columns: 15% 85%;
 }
-
 .homeMain {
 grid-area: homemain;
 }
-
 .message {
 	color: black;
 	text-align: center;
 	margin-top: 1px;
 	padding: 1%;
 }
-
 .energiserCards {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 	flex-wrap: wrap;
 }
-
 ul {
 	padding-left: 0;
 }
@@ -43,7 +37,6 @@ ul {
 	flex-direction: column;
 	align-items: center;
 }
-
 .card {
 	display: flex;
 	flex-direction: column;
@@ -54,11 +47,9 @@ ul {
 	height: 100%;
 	padding-bottom: 10px;
 }
-
 h2 {
 	font-size: 20px;
 }
-
 .energiserCards li {
 	list-style: none;
 }
@@ -72,11 +63,9 @@ h2 {
 	align-self: center;
 	width: 50%;
 }
-
 a:hover {
 	text-decoration: none;
 }
-
 .randomSearch {
 	display: flex;
 	flex-direction: column;
@@ -84,12 +73,20 @@ a:hover {
 
 .sideBar {
 	border-right: lightgrey solid 0.5px;
-	position: fixed;
-	height: 100vh;
+	width: auto;
+	height: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
   	grid-area: sidebar;
+	width: 250px;
+}
+.message{
+	width: fit-content;
+	margin: auto;
+	background-image: linear-gradient(to left, pink, red, orange,yellow,green, turquoise,indigo,violet);
+	-webkit-background-clip: text;
+	color: transparent;
 }
 
 .filters {
@@ -99,4 +96,3 @@ a:hover {
 	 display: flex; 
 	 justify-content: center;
 }
-
