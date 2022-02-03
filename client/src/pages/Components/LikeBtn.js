@@ -11,14 +11,16 @@ function LikeBtn({
 	let [userHasDisliked, setUserHasDisliked] = useState(false);
 
 	// Create LikeCount event handler
-	const thumbsUp = () => {
+	const thumbsUp = (e) => {
+		e.stopPropagation();
 		if (!userHasLiked) {
 			onLike();
 		}
 		setUserHasLiked(true);
 	};
 	//Create DislikeCount event handler
-	const thumbsDown = () => {
+	const thumbsDown = (e) => {
+		e.stopPropagation();
 		if (!userHasDisliked) {
 			onDislike();
 		}
@@ -41,5 +43,3 @@ function LikeBtn({
 }
 
 export default LikeBtn;
-
-

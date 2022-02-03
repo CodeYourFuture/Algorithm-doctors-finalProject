@@ -56,7 +56,7 @@ export default function Contact(){
 						{errors.suggestions && touched.suggestions ? (
 							<div className="errorMessage">{errors.suggestions}</div>
 						) : null}
-						<button type="submit" className="btn btn-danger">Send Feedback</button>
+						<button type="submit" className="contact-button">Send Feedback</button>
 					</Form>
 				)}
 			</Formik>

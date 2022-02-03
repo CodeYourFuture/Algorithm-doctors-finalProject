@@ -1,12 +1,13 @@
 .energiser-page-title {
-	background-color: #DC514A;
 	width: auto;
 	text-align: center;
 	padding: 15px;
 }
 
 .energiser-page-container {
-	border: 3px solid #DC514A;
+	color: white;
+    background-color: #d12f2f;
+	border: 3px solid white;
 	width: 65%;
 	text-align: center;
 	padding: 20px;
