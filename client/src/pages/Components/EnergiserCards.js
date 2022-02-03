@@ -45,10 +45,10 @@ const EnergiserCards = ({ energisersData, page, rowsPerPage }) => {
 								className={classes.CardHoverArea}
 							>
 								<div>
-									<Typography sx={{ height: "4rem" }} variant="h5" component="div">
+									<Typography sx={{ height: "3rem" }} variant="h5" component="div">
 										{name}
 									</Typography>
-									<Typography sx={{ mt: 1.5, height: "4rem" }}>{description.length<98 ? description : `${description.substring(0, 99)}...`}</Typography>
+									<Typography sx={{ mt: 1.5, mb: 5, height: "4rem" }}>{description.length<98 ? description : `${description.substring(0, 99)}...`}</Typography>
 									<Typography sx={{ mt: 1.5, fontSize: 15 }}>
 										Duration: {duration} Mins
 									</Typography>
