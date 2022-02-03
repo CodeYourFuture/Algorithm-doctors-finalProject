@@ -4,12 +4,12 @@
 	margin: 1% auto;
 	text-align: center;
 	border: transparent;
-    border: solid 3px #DC514A;
+    border: solid 3px #d12f2f;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     padding: 20px;
 }
 .heading {
-	background-color: rgba(247, 71, 71, 0.76);
+	background-color: #d12f2f;
 	margin-top: 10px;
 	margin-bottom: 20px;
 	color: white;
