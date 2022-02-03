@@ -1,12 +1,20 @@
-import React from "react";
+import { React, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LikeBtn from "./LikeBtn";
+import StarRating from "./Rating";
 
-const EnergiserCards = ({ energisersData, page, rowsPerPage }) => {
+const EnergiserCards = ({
+	energisersData,
+	page,
+	rowsPerPage,
+	isLoggedIn,
+	user,
+}) => {
 	const navigate = useNavigate();
 	const handleNavigate = (id) => {
 		navigate(`/energisers/${id}`);
 	};
+
 	return energisersData
 		.slice((page - 1) * rowsPerPage, (page - 1) * rowsPerPage + rowsPerPage)
 		.map((energiserCard) => {
@@ -16,16 +24,12 @@ const EnergiserCards = ({ energisersData, page, rowsPerPage }) => {
 					<div className="card text-center">
 						<div className="card-body" onClick={() => handleNavigate(id)}>
 							<h2 className="card-title">{name}</h2>
+							{/* <StarRating id={id} /> */}
 							<p className="card-text">{description}</p>
 							<p className="card-text">{duration} Mins</p>
 							<p className="card-text">Participants: {participants}</p>
 						</div>
-						<LikeBtn
-							existingLikeCount={5}
-							onLike={() => console.log("like was clicked")}
-							existingDislikeCount={1}
-							onDislike={() => console.log("dislike was clicked")}
-						/>
+						{isLoggedIn ? <LikeBtn id={id} user={user} /> : null}
 					</div>
 				</li>
 			);

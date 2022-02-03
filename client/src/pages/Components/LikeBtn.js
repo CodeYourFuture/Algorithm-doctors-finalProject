@@ -1,45 +1,72 @@
-import React, { useState } from "react";
-import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-function LikeBtn({
-	existingLikeCount,
-	onLike,
-	existingDislikeCount,
-	onDislike,
-}) {
-	let [userHasLiked, setUserHasLiked] = useState(false);
-	let [userHasDisliked, setUserHasDisliked] = useState(false);
+const LikeBtn = ({ id, user }) => {
+	const [vote, setVote] = useState({
+		id: id,
+		voteStatus: null,
+		userId: "",
+	});
 
-	// Create LikeCount event handler
-	const thumbsUp = () => {
-		if (!userHasLiked) {
-			onLike();
-		}
-		setUserHasLiked(true);
+	useEffect(() => {
+		axios
+			.get(`/api/likes/${id}`)
+			.then((data) => {
+				console.log(data);
+				// setVote({ ...vote, voteStatus: data })
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	}, [id]);
+
+	useEffect(() => {
+		setVote({ ...vote, userId: user.googleId });
+	}, [user]);
+
+	useEffect(() => {
+		setVote({ ...vote, voteStatus: 1 });
+	}, []);
+
+	const fetchData = (data) => {
+		axios
+			.post("/api/likes", data)
+			.then((response) => {
+				console.log("-------------this respond---------------->", response);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
 	};
-	//Create DislikeCount event handler
-	const thumbsDown = () => {
-		if (!userHasDisliked) {
-			onDislike();
-		}
-		setUserHasDisliked(true);
+
+	const likeButton = (e) => {
+		e.preventDefault();
+		const { voteStatus } = vote;
+
+		voteStatus != 1
+			? setVote({ id: id, voteStatus: 1, userId: user.googleId })
+			: setVote({ id: id, voteStatus: 0, userId: user.googleId });
+
+		fetchData(vote);
+	};
+
+	const dislikeButton = (e) => {
+		e.preventDefault();
+		const { voteStatus } = vote;
+
+		voteStatus != 2
+			? setVote({ id: id, voteStatus: 2, userId: user.googleId })
+			: setVote({ id: id, voteStatus: 0, userId: user.googleId });
+
+		fetchData(vote);
 	};
 
 	return (
 		<div className="like_dislike_btn">
-			<button onClick={thumbsUp} className="btn">
-				<FaThumbsUp style={{ color: "blue" }} />
-				{userHasLiked ? existingLikeCount + 1 : existingLikeCount}
-				{/* {likeCount} */}
-			</button>
-			<button onClick={thumbsDown} className="btn">
-				<FaThumbsDown style={{ color: "red" }} />
-				{userHasDisliked ? existingDislikeCount + 1 : existingDislikeCount}
-			</button>
+			<button onClick={likeButton}>{"like"}</button>
+			<button onClick={dislikeButton}>{"dislike"}</button>
 		</div>
 	);
-}
+};
 
 export default LikeBtn;
-
-

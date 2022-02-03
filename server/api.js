@@ -27,9 +27,18 @@ router.post("/publish", (req, res) => {
 	const newEnergiserCategory = req.body.category;
 	const newEnergiserInstructions = req.body.instructions;
 	const newEnergiserVotes = 0;
-	const insertPost = "INSERT INTO energisers (name, description, participants, duration, votes, instructions,category) VALUES ($1, $2, $3, $4, $5, $6, $7);";
+	const insertPost =
+		"INSERT INTO energisers (name, description, participants, duration, votes, instructions,category) VALUES ($1, $2, $3, $4, $5, $6, $7);";
 	query
-		.query(insertPost, [newEnergiserName, newEnergiserDescription, newEnergiserParticipants, newEnergiserDuration, newEnergiserVotes, newEnergiserInstructions,newEnergiserCategory])
+		.query(insertPost, [
+			newEnergiserName,
+			newEnergiserDescription,
+			newEnergiserParticipants,
+			newEnergiserDuration,
+			newEnergiserVotes,
+			newEnergiserInstructions,
+			newEnergiserCategory,
+		])
 		.then(() => res.status(200).send("Energiser Published"))
 		.catch((error) => console.error(error));
 });
@@ -38,10 +47,67 @@ router.post("/publish", (req, res) => {
 router.post("/feedback", (req, res) => {
 	const name = req.body.name;
 	const suggestion = req.body.suggestions;
-	const feedbackQuery = "INSERT INTO feedback (name, suggestion) VALUES ($1, $2);";
+	const feedbackQuery =
+		"INSERT INTO feedback (name, suggestion) VALUES ($1, $2);";
 	query
 		.query(feedbackQuery, [name, suggestion])
 		.then(() => res.status(200).send("Feedback Sent"))
 		.catch((error) => console.error(error));
 });
+
+// POST rating  detail from this route "/rating".
+router.post("/likes", (req, res) => {
+	const id = req.body.id;
+	const likes = req.body.voteStatus;
+	const userId = req.body.userId;
+
+	const checkExistingVote =
+		"SELECT * FROM likes WHERE energiser_id = $1  AND user_id= $2 ;";
+	query.query(checkExistingVote, [id, userId]).then((result) => {
+		if (result.rows.length > 0) {
+			const ratingUpdateQuery =
+				"UPDATE likes SET like_status=$1 WHERE energiser_id=$2 AND  user_id= $3 ;";
+			query
+				.query(ratingUpdateQuery, [likes, id, userId])
+				.then(() => res.status(200).send("vote updated"))
+				.catch((error) => console.error(error));
+		} else {
+			const ratingQuery =
+				"INSERT INTO likes (energiser_id, like_status, user_id) VALUES ($1, $2, $3);";
+			query
+				.query(ratingQuery, [id, likes, userId])
+				.then(() => res.status(200).send("vote updated"))
+				.catch((error) => console.error(error));
+		}
+	});
+});
+
+router.get("/likes/:id", (req, res) => {
+	let energiserId = req.params.id;
+	console.log(energiserId);
+	query
+		.query("SELECT like_status FROM likes WHERE energiser_id=$1", [energiserId])
+		.then((result) => {
+			if (result.rows.length != 0) {
+				res.json(result.rows);
+			}
+		})
+		.catch((err) => console.error(err));
+});
+
 export default router;
+
+
+
+// router.get("/star_ratings/:id", (req, res) => {
+// 	let energiserId = req.params.id;
+// 	query
+// 		.query("SELECT likes FROM votes WHERE energiser_id=$1", [energiserId])
+// 		.then((result) => {
+// 			if (result.rows.length != 0) {
+// 				res.json(result.rows);
+// 			}
+// 		})
+// 		.catch((err) => console.error(err));
+// });
+// export default router;
