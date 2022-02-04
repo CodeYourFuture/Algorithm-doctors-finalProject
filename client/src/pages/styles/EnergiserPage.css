@@ -4,9 +4,15 @@
 	padding: 15px;
 }
 
+.timer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
 .energiser-page-container {
 	color: white;
-    background-color: #d12f2f;
+	background-color: #d12f2f;
 	border: 3px solid white;
 	width: 65%;
 	text-align: center;
@@ -18,10 +24,16 @@
 .energiser-page-name {
 	padding: 20px;
 	font-size: 2rem;
+	margin-left: 100px;
+	width: 80%;
+}
+
+.energiser-page-description {
+margin-top: 6%;
 }
 
 .energiser-page-partduration {
-	display:flex;
+	display: flex;
 	justify-content: space-evenly;
 	padding: 20px;
 	font-size: 1.2rem;
