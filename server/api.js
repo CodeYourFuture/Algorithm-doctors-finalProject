@@ -60,7 +60,6 @@ router.post("/likes", (req, res) => {
 	const id = req.body.id;
 	const likes = req.body.voteStatus;
 	const userId = req.body.userId;
-
 	const checkExistingVote =
 		"SELECT * FROM likes WHERE energiser_id = $1  AND user_id= $2 ;";
 	query.query(checkExistingVote, [id, userId]).then((result) => {
@@ -82,11 +81,11 @@ router.post("/likes", (req, res) => {
 	});
 });
 
-router.get("/likes/:id", (req, res) => {
-	let energiserId = req.params.id;
-	console.log(energiserId);
+router.get("/likes", (req, res) => {
+	let energiserId = req.query.id;
+	let userId = req.query.user;
 	query
-		.query("SELECT like_status FROM likes WHERE energiser_id=$1", [energiserId])
+		.query("SELECT like_status FROM likes WHERE energiser_id=$1 AND user_id=$2;", [energiserId, userId])
 		.then((result) => {
 			if (result.rows.length != 0) {
 				res.json(result.rows);
@@ -95,19 +94,15 @@ router.get("/likes/:id", (req, res) => {
 		.catch((err) => console.error(err));
 });
 
+router.get("/star_ratings/:id", (req, res) => {
+	let energiserId = req.params.id;
+	query
+		.query("SELECT like_status FROM likes WHERE energiser_id=$1", [energiserId])
+		.then((result) => {
+			if (result.rows.length >= 0) {
+				res.json(result.rows);
+			}
+		})
+		.catch((err) => console.error(err));
+});
 export default router;
-
-
-
-// router.get("/star_ratings/:id", (req, res) => {
-// 	let energiserId = req.params.id;
-// 	query
-// 		.query("SELECT likes FROM votes WHERE energiser_id=$1", [energiserId])
-// 		.then((result) => {
-// 			if (result.rows.length != 0) {
-// 				res.json(result.rows);
-// 			}
-// 		})
-// 		.catch((err) => console.error(err));
-// });
-// export default router;

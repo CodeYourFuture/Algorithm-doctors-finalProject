@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
 import StarIcon from "@mui/icons-material/Star";
 import RatingCalculation from "./RatingCalculation";
+import axios from "axios";
 
 const labels = {
 	0.5: "Useless",
@@ -17,17 +18,17 @@ const labels = {
 	5: "Excellent+",
 };
 
-const StarRating = ({ id }) => {
+const StarRating = ({ id , req }) => {
 	const [totalVotes, setTotalVotes] = useState([]);
 	const [rateValue, setRateValue] = useState(null);
 
 	useEffect(() => {
-		fetch(`/api/star_ratings/${id}`)
+		axios.get(`/api/star_ratings/${id}`)
 			.then((res) => {
-				if (!res.ok) {
+				if (res.status!= 200) {
 					throw new Error(res.statusText);
 				}
-				return res.json();
+				return res.data;
 			})
 			.then((data) => {
 				setTotalVotes(data);
@@ -35,7 +36,7 @@ const StarRating = ({ id }) => {
 			.catch((err) => {
 				console.error(err);
 			});
-	}, [id]);
+	}, [id, req]);
 
 	useEffect(()=>{
 		let value = totalVotes.length > 0 ? RatingCalculation(totalVotes) : null;
