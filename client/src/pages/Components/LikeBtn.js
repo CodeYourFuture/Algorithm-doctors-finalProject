@@ -1,7 +1,9 @@
 import React from "react";
+import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 
 const LikeBtn = ({ id, user, setLike, voteStatus }) => {
-	const handleLike = (like) => {
+	const handleLike = (e,like) => {
+		e.stopPropagation();
 		if(like==1 && voteStatus!=1) {
 			setLike({ id: id, voteStatus: 1, userId: user.googleId });
 		} else if(like==2 && voteStatus!=2) {
@@ -12,8 +14,12 @@ const LikeBtn = ({ id, user, setLike, voteStatus }) => {
 	};
 	return (
 		<div className="like_dislike_btn">
-			<button style={{ backgroundColor: voteStatus==1? "blue" : "yellow" }} onClick={()=> handleLike(1)}>{"like"}</button>
-			<button style={{ backgroundColor: voteStatus==2? "red" : "yellow" }} onClick={()=> handleLike(2)}>{"dislike"}</button>
+			<button onClick={(e) => handleLike(e,1)} className="btn">
+				<FaThumbsUp style={{ color: voteStatus == 1 ? "blue" : "grey" }} />
+			</button>
+			<button onClick={(e) => handleLike(e,2)} className="btn">
+				<FaThumbsDown style={{ color: voteStatus == 2 ? "red" : "grey" }} />
+			</button>
 		</div>
 	);
 };
