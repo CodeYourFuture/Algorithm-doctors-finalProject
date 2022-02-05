@@ -5,6 +5,7 @@
 	border-radius: 10px;
 	padding: 20px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	border: solid 3px #d12f2f;
 }
 
 .publishMessage {
@@ -26,18 +27,16 @@
 	text-align: center;
 	font-size: 16px;
 	margin-top: 20px;
-	background-color: #f4f4f4;
-  padding: 20px;
+	padding: 20px;
 }
-.my-select{
-height: 35px;
-border: 1px solid grey;
-border-radius: 10px;
- margin-top: 20px;
- color: gray;
- text-align: center;
- background-color: #f4f4f4;
- font-size: 16px;
+.my-select {
+	height: 35px;
+	border: 1px solid grey;
+	border-radius: 10px;
+	margin-top: 20px;
+	color: gray;
+	text-align: center;
+	font-size: 16px;
 }
 .fieldInstructions {
 	height: 150px;
@@ -48,7 +47,7 @@ border-radius: 10px;
 	margin-top: 20px;
 }
 .publish-button {
-	background-color: rgba(247, 71, 71, 0.76);
+	background-color: #d12f2f;
 	height: 40px;
 	border: none;
 	border-radius: 10px;

@@ -16,7 +16,6 @@ const EnergiserPage = () => {
 			})
 			.then((data) => {
 				setEnergiser(data);
-				console.log(data);
 			})
 			.catch((err) => {
 				console.error(err);

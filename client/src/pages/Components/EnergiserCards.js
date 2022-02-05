@@ -13,7 +13,6 @@ const EnergiserCards = ({
 	const handleNavigate = (id) => {
 		navigate(`/energisers/${id}`);
 	};
-
 	return energisersData
 		.slice((page - 1) * rowsPerPage, (page - 1) * rowsPerPage + rowsPerPage)
 		.map((energiserCard) => {
