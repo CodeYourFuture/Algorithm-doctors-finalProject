@@ -5,33 +5,38 @@ import StarRating from "./Rating";
 
 const EnergiserCard = ({ energiserCard, handleNavigate, isLoggedIn, user }) => {
 	const { id, name, description, participants, duration } = energiserCard;
-	const [like, setLike] = useState({});
-    const [voteStatus, setVoteStatus] = useState(null);
-    const [req, setReq] = useState(false);
+	const [like, setLike] = useState(null);
+	const [voteStatus, setVoteStatus] = useState(null);
+	const [req, setReq] = useState(false);
 
 	useEffect(() => {
-        if (id && user.googleId){
-		axios
-			.get(`/api/likes?id=${id}&user=${user.googleId}`)
-			.then((res) => {
-				setVoteStatus(res.data[0].like_status);
-			})
-			.catch((error) => {
-				console.log(error);
-			});
-}
+		if (id && user.googleId) {
+			axios
+				.get(`/api/likes?id=${id}&user=${user.googleId}`)
+				.then((res) => {
+					setVoteStatus(res.data[0].like_status);
+				})
+				.catch((error) => {
+					console.log(error);
+				});
+		}
 	}, [id, user, req]);
 
 	useEffect(() => {
-		postData();
+		console.log(like);
+		const postData = async (vote) => {
+			const res = await axios.post("/api/likes", vote);
+			if (res) {
+				console.log(res);
+				setReq(!req);
+			}
+		};
+		if (like) {
+			postData(like);
+			console.log("second",like);
+		}
 	}, [like]);
 
-    const postData = async () =>{
-       const res = await axios.post("/api/likes", like);
-       if(res) {
-           setReq(!req);
-       }
-    };
 
 	return (
 		<li className="card-container" key={id}>
@@ -44,7 +49,12 @@ const EnergiserCard = ({ energiserCard, handleNavigate, isLoggedIn, user }) => {
 					<p className="card-text">Participants: {participants}</p>
 				</div>
 				{isLoggedIn ? (
-					<LikeBtn id={id} user={user} setLike={setLike} voteStatus={voteStatus} />
+					<LikeBtn
+						id={id}
+						user={user}
+						setLike={setLike}
+						voteStatus={voteStatus}
+					/>
 				) : null}
 			</div>
 		</li>
