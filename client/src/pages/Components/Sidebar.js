@@ -28,10 +28,10 @@ export default function Sidebar({
     },[duration, participants]);
 
 	return (
-		<div className="sideBar">
+		<>
 			<div className="resetBtn">
 				<Button
-					sx={{ width: 270, marginTop: "1rem" }}
+					sx={{ width: "100%" }}
 					variant="outlined"
 					onClick={handleResetEnergisers}
 				>
@@ -47,6 +47,6 @@ export default function Sidebar({
 				setParticipants={setParticipants}
 			/>
             </div>
-		</div>
+			</>
 	);
 }

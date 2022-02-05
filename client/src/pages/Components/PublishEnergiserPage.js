@@ -101,6 +101,7 @@ export const PublishEnergiserPage = () => {
 							className="my-select"
 							as="select"
 							name="category"
+							placeholder="Select a category..."
 						>
 							{categoryOptions.map((option) => {
 								return (

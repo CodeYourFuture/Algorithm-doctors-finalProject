@@ -22,7 +22,7 @@ export default function BasicSelect({ originalData, setEnergisersData }) {
 		setEnergisersData(sortData);
 	};
 	return (
-		<Box sx={{ m: 2, width: 230 }}>
+		<Box sx={{ m: 1, width: 230 }}>
 			<FormControl fullWidth>
 				<InputLabel id="demo-simple-select-label">Sort By</InputLabel>
 				<Select
