@@ -64,6 +64,8 @@ export function Home({ user, isLoggedIn }) {
 								energisersData={energisersData}
 								page={page}
 								rowsPerPage={rowsPerPage}
+								isLoggedIn={isLoggedIn}
+								user={user}
 							/>
 						</ul>
 						<div className="pagDiv" style={{ visibility: energisersData.length<=0? "hidden":"visible" }}>
