@@ -26,18 +26,18 @@ router.post("/publish", (req, res) => {
 	const newEnergiserDuration = req.body.duration;
 	const newEnergiserCategory = req.body.category;
 	const newEnergiserInstructions = req.body.instructions;
-	const newEnergiserVotes = 0;
+	const newUserId = req.body.googleId;
 	const insertPost =
-		"INSERT INTO energisers (name, description, participants, duration, votes, instructions,category) VALUES ($1, $2, $3, $4, $5, $6, $7);";
+		"INSERT INTO energisers (name, description, participants, duration, instructions,category,publisher) VALUES ($1, $2, $3, $4, $5, $6, $7);";
 	query
 		.query(insertPost, [
 			newEnergiserName,
 			newEnergiserDescription,
 			newEnergiserParticipants,
 			newEnergiserDuration,
-			newEnergiserVotes,
 			newEnergiserInstructions,
 			newEnergiserCategory,
+			newUserId,
 		])
 		.then(() => res.status(200).send("Energiser Published"))
 		.catch((error) => console.error(error));
@@ -84,14 +84,19 @@ router.post("/likes", (req, res) => {
 router.get("/likes", (req, res) => {
 	let energiserId = req.query.id;
 	let userId = req.query.user;
-	query
-		.query("SELECT like_status FROM likes WHERE energiser_id=$1 AND user_id=$2;", [energiserId, userId])
-		.then((result) => {
-			if (result.rows.length != 0) {
+	if (!userId && !energiserId) {
+		res.send("invalid login");
+	} else {
+		query
+			.query(
+				"SELECT like_status FROM likes WHERE energiser_id=$1 AND user_id=$2;",
+				[energiserId, userId]
+			)
+			.then((result) => {
 				res.json(result.rows);
-			}
-		})
-		.catch((err) => console.error(err));
+			})
+			.catch((err) => console.error(err));
+	}
 });
 
 router.get("/star_ratings/:id", (req, res) => {
