@@ -84,14 +84,19 @@ router.post("/likes", (req, res) => {
 router.get("/likes", (req, res) => {
 	let energiserId = req.query.id;
 	let userId = req.query.user;
-	query
-		.query("SELECT like_status FROM likes WHERE energiser_id=$1 AND user_id=$2;", [energiserId, userId])
-		.then((result) => {
-			if (result.rows.length != 0) {
+	if (!userId && !energiserId) {
+		res.send("invalid login");
+	} else {
+		query
+			.query(
+				"SELECT like_status FROM likes WHERE energiser_id=$1 AND user_id=$2;",
+				[energiserId, userId]
+			)
+			.then((result) => {
 				res.json(result.rows);
-			}
-		})
-		.catch((err) => console.error(err));
+			})
+			.catch((err) => console.error(err));
+	}
 });
 
 router.get("/star_ratings/:id", (req, res) => {

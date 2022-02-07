@@ -37,21 +37,18 @@ const EnergiserCard = ({ energiserCard, handleNavigate, isLoggedIn, user }) => {
 	}, [id, user, req]);
 
 	useEffect(() => {
-		console.log(like);
 		const postData = async (vote) => {
 			const res = await axios.post("/api/likes", vote);
 			if (res) {
-				console.log(res);
 				setReq(!req);
 			}
 		};
 		if (like) {
 			postData(like);
-			console.log("second",like);
 		}
 	}, [like]);
 
-const classes = useStyles();
+	const classes = useStyles();
 	return (
 		<li className="card-container" key={id}>
 			<Card

@@ -28,7 +28,7 @@ export default function Filter({
 		const {
 			target: { value },
 		} = event;
-		console.log(event.target.value);
+		
 		setPersonName(
 			// On autofill we get a stringified value.
 			typeof value === "string" ? value.split(",") : value
