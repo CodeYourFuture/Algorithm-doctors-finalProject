@@ -6,16 +6,16 @@ import RatingCalculation from "./RatingCalculation";
 import axios from "axios";
 
 const labels = {
-	0.5: "Useless",
-	1: "Useless+",
-	1.5: "Poor",
-	2: "Poor+",
-	2.5: "Ok",
-	3: "Ok+",
-	3.5: "Good",
-	4: "Good+",
+	0.5: "Very Poor",
+	1: "Poor",
+	1.5: "Less Interesting",
+	2: "Ok",
+	2.5: "Good",
+	3: "Good",
+	3.5: "Interesting",
+	4: "Very Interesting",
 	4.5: "Excellent",
-	5: "Excellent+",
+	5: "Excellent",
 };
 
 const StarRating = ({ id , req }) => {
@@ -46,8 +46,9 @@ const StarRating = ({ id , req }) => {
 	return (
 		<Box
 			sx={{
-				width: 200,
+				width: "100%",
 				display: "flex",
+				justifyContent: "center",
 				alignItems: "center",
 			}}
 		>
@@ -58,7 +59,6 @@ const StarRating = ({ id , req }) => {
 				precision={0.5}
 				emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
 			/>
-			<Box sx={{ ml: 2 }}>{labels[rateValue]}</Box>
 		</Box>
 	);
 };
