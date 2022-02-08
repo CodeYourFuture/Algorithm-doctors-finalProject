@@ -11,7 +11,8 @@ const useStyles = makeStyles(() => ({
 		padding: "5px",
 		width: "150px",
 		borderRadius: "10px",
-		boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+		boxShadow:
+			"0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
 		background: "#FFFFFF",
 		"&:hover": {
 			color: "white",
@@ -35,12 +36,10 @@ export default function SideBarDrawer({ originalData, setEnergisersData }) {
 		setState({ state, [anchor]: open });
 	};
 
-	const list = (anchor) => (
+	const list = () => (
 		<Box
 			sx={{ width: "100%", backgroundColor: "transparent" }}
 			role="presentation"
-			onClick={toggleDrawer(anchor, false)}
-			onKeyDown={toggleDrawer(anchor, false)}
 		>
 			<div className="sortFilterInSidebar">
 				<Sidebar

@@ -1,7 +1,7 @@
 import "../styles/CountdownTimer.css";
 const CountdownTimer = ({ duration }) => {
 	const FULL_DASH_ARRAY = 283;
-	const WARNING_THRESHOLD = duration*60/2;
+	const WARNING_THRESHOLD = (duration * 60) / 2;
 	const ALERT_THRESHOLD = 10;
 
 	const COLOR_CODES = {
@@ -18,19 +18,23 @@ const CountdownTimer = ({ duration }) => {
 		},
 	};
 
-	const TIME_LIMIT = 20;
+	const TIME_LIMIT = 5;
 	let timePassed = 0;
 	let timeLeft = TIME_LIMIT;
 	let timerInterval = null;
 	let remainingPathColor = COLOR_CODES.info.color;
 
 	const formatTimeLeft = (time) => {
-		const minutes = Math.floor(time / 60);
-		let seconds = time % 60;
-		if (seconds < 10) {
-			seconds = `0${seconds}`;
+		if (time < 1) {
+			return "0:0";
+		} else {
+			const minutes = Math.floor(time / 60);
+			let seconds = time % 60;
+			if (seconds < 10) {
+				seconds = `0${seconds}`;
+			}
+			return `${minutes}:${seconds}`;
 		}
-		return `${minutes}:${seconds}`;
 	};
 
 	const startTimer = () => {
@@ -42,16 +46,16 @@ const CountdownTimer = ({ duration }) => {
 			setCircleDasharray();
 			setRemainingPathColor(timeLeft);
 
-			if (timeLeft <= 0) {
+			if (timeLeft < 0) {
 				onTimesUp();
 			}
 		}, 1000);
 	};
 
-    function onTimesUp() {
-        clearInterval(timerInterval);
-        alert("Time's Up");
-      }
+	function onTimesUp() {
+		clearInterval(timerInterval);
+		alert("Time's Up");
+	}
 	function setRemainingPathColor(timeLeft) {
 		const { alert, warning, info } = COLOR_CODES;
 		if (timeLeft <= alert.threshold) {
@@ -115,7 +119,9 @@ const CountdownTimer = ({ duration }) => {
 			<span id="base-timer-label" className="base-timer__label">
 				{formatTimeLeft(timeLeft)}
 			</span>
-            <button className="startTimer" onClick={startTimer}>Start Timer</button>
+			<button className="startTimer" onClick={startTimer}>
+				Start Timer
+			</button>
 		</div>
 	);
 };
