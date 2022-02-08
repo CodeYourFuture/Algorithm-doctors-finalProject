@@ -1,45 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
 import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 
-function LikeBtn({
-	existingLikeCount,
-	onLike,
-	existingDislikeCount,
-	onDislike,
-}) {
-	let [userHasLiked, setUserHasLiked] = useState(false);
-	let [userHasDisliked, setUserHasDisliked] = useState(false);
-
-	// Create LikeCount event handler
-	const thumbsUp = (e) => {
+const LikeBtn = ({ id, user, setLike, voteStatus }) => {
+	const handleLike = (e,like) => {
 		e.stopPropagation();
-		if (!userHasLiked) {
-			onLike();
+		if(like==1 && voteStatus!=1) {
+			setLike({ id: id, voteStatus: 1, userId: user.googleId });
+		} else if(like==2 && voteStatus!=2) {
+			setLike({ id: id, voteStatus: 2, userId: user.googleId });
+		} else {
+			setLike({ id: id, voteStatus: 0, userId: user.googleId });
 		}
-		setUserHasLiked(true);
 	};
-	//Create DislikeCount event handler
-	const thumbsDown = (e) => {
-		e.stopPropagation();
-		if (!userHasDisliked) {
-			onDislike();
-		}
-		setUserHasDisliked(true);
-	};
-
 	return (
 		<div className="like_dislike_btn">
-			<button onClick={thumbsUp} className="btn">
-				<FaThumbsUp style={{ color: "blue" }} />
-				{userHasLiked ? existingLikeCount + 1 : existingLikeCount}
-				{/* {likeCount} */}
+			<button onClick={(e) => handleLike(e,1)} className="btn">
+				<FaThumbsUp style={{ color: voteStatus == 1 ? "blue" : "grey" }} />
 			</button>
-			<button onClick={thumbsDown} className="btn">
-				<FaThumbsDown style={{ color: "red" }} />
-				{userHasDisliked ? existingDislikeCount + 1 : existingDislikeCount}
+			<button onClick={(e) => handleLike(e,2)} className="btn">
+				<FaThumbsDown style={{ color: voteStatus == 2 ? "red" : "grey" }} />
 			</button>
 		</div>
 	);
-}
+};
 
 export default LikeBtn;

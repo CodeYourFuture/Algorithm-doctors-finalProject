@@ -22,16 +22,22 @@
 }
 
 .energiser-page-name {
+	text-transform: lowercase;
 	padding: 20px;
 	font-size: 2rem;
 	margin-left: 100px;
 	width: 80%;
 }
 
-.energiser-page-description {
-	margin-top: 6%;
-	}
-	
+.energiser-page-name::first-letter {
+  text-transform: uppercase;
+}
+
+.energiser-page-description{
+	font-size: 1rem;
+	font-weight: bold;
+}
+
 .energiser-page-partduration {
 	display:flex;
 	justify-content: space-evenly;
@@ -39,7 +45,20 @@
 	font-size: 1.2rem;
 }
 
+
 .energiser-page-how {
+	text-align: left;
 	font-size: 1.5rem;
 	font-weight: bold;
+}
+
+.energiser-page-Instruction {
+	 text-align: left;
+    list-style-type: none;
+    padding-right: 20px;
+	margin-bottom: 20px;
+}
+
+.energiser-page-Instruction li{
+	margin-bottom: 10px;
 }
