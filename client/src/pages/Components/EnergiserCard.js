@@ -15,6 +15,12 @@ const useStyles = makeStyles(() => ({
 			background: "#d12f2f",
 		},
 	},
+	EnergiserName: {
+		"text-transform": " lowercase",
+		"&:first-letter": {
+			"text-transform": "uppercase",
+		},
+	},
 }));
 
 const EnergiserCard = ({ energiserCard, handleNavigate, isLoggedIn, user }) => {
@@ -68,7 +74,12 @@ const EnergiserCard = ({ energiserCard, handleNavigate, isLoggedIn, user }) => {
 						className={classes.CardHoverArea}
 					>
 						<div>
-							<Typography sx={{ height: "4rem" }} variant="h5" component="div">
+							<Typography
+								sx={{ height: "4rem" }}
+								variant="h5"
+								component="div"
+								className={classes.EnergiserName}
+							>
 								{name}
 							</Typography>
 							<StarRating id={id} req={req} />
