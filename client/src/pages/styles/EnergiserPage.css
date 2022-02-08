@@ -2,6 +2,7 @@
 	width: auto;
 	text-align: center;
 	padding: 15px;
+	margin-top: 3rem;
 }
 
 .energiser-page-container {
@@ -34,8 +35,8 @@
 }
 
 .energiser-page-description{
-	font-size: 1rem;
-	font-weight: bold;
+	font-size: 1.5rem;
+	margin-top: 3rem;
 }
 
 .energiser-page-partduration {

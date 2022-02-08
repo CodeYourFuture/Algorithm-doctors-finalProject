@@ -32,8 +32,12 @@ const EnergiserPage = () => {
 					<header className="energiser-page-title">
 						<h1>Algorithm Doctors’ Energisers</h1>
 					</header>
+
 					<div className="energiser-page-container">
-						<h2 className="energiser-page-name">{energiser[0].name}</h2>
+					<div className="timer">
+					<h2 className="energiser-page-name">{energiser[0].name}</h2>
+					<CountdownTimer duration={energiser[0].duration} />
+						</div>
 						<p className="energiser-page-description">
 							{energiser[0].description}
 						</p>

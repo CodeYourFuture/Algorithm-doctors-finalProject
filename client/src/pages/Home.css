@@ -22,9 +22,6 @@ grid-area: homemain;
 	padding: 1%;
 	width: fit-content;
 	margin: auto;
-	background-image: linear-gradient(to left, pink, red, orange,yellow,green, turquoise,indigo,violet);
-	-webkit-background-clip: text;
-	color: transparent;
 }
 
 .energiserCards {
@@ -60,11 +57,7 @@ h2 {
 .energiserCards li {
 	list-style: none;
 }
-.card:hover {
-	background-color: #dc514a;
-	color: white;
-	cursor: pointer;
-}
+
 .card img {
 	margin: 1rem 1rem;
 	align-self: center;

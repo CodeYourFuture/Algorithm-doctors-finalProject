@@ -26,27 +26,27 @@ export default function DurationRadioButtons({
 				>
 					<FormControlLabel
 						value="0-100"
-						control={<Radio />}
+						control={<Radio color="default" />}
 						label="None"
 					/>
 					<FormControlLabel
 						value="1-5"
-						control={<Radio />}
+						control={<Radio color="default" />}
 						label="1-5 Mins"
 					/>
 					<FormControlLabel
 						value="6-10"
-						control={<Radio />}
+						control={<Radio color="default" />}
 						label="6-10 Mins"
 					/>
 					<FormControlLabel
 						value="11-15"
-						control={<Radio />}
+						control={<Radio color="default" />}
 						label="11-15 Mins"
 					/>
 					<FormControlLabel
 						value="16-20"
-						control={<Radio />}
+						control={<Radio color="default" />}
 						label="16-20 Mins"
 					/>
 				</RadioGroup>

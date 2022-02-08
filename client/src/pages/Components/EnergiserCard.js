@@ -11,8 +11,7 @@ const useStyles = makeStyles(() => ({
 	CardHoverArea: {
 		background: "#FFFFFF",
 		"&:hover": {
-			color: "white",
-			background: "#d12f2f",
+			background: "rgba(214, 214, 214, 0.5)",
 		},
 	},
 	EnergiserName: {

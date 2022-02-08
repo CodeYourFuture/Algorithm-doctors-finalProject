@@ -18,7 +18,7 @@ const CountdownTimer = ({ duration }) => {
 		},
 	};
 
-	const TIME_LIMIT = 5;
+	const TIME_LIMIT = duration * 60;
 	let timePassed = 0;
 	let timeLeft = TIME_LIMIT;
 	let timerInterval = null;
