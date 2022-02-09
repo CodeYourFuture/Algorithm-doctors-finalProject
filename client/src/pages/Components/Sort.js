@@ -22,7 +22,7 @@ export default function BasicSelect({ originalData, setEnergisersData }) {
 		setEnergisersData(sortData);
 	};
 	return (
-		<Box sx={{ m: 2, width: 230 }}>
+		<Box sx={{ m: 1, width: 230 }}>
 			<FormControl fullWidth>
 				<InputLabel id="demo-simple-select-label">Sort By</InputLabel>
 				<Select
@@ -31,13 +31,13 @@ export default function BasicSelect({ originalData, setEnergisersData }) {
 					label="Sort"
 				>
 						<Link to="/" style={{ display: "flex", flexDirection: "column", alignItems: "flex-Start", color: "black", paddingLeft: "0.5rem"  }}>
-							<MenuItem onClick={handleSortByAlphabets}>
+							<MenuItem value="Alphabetical Order" onClick={handleSortByAlphabets}>
 								Alphabetical Order
 							</MenuItem>
-							<MenuItem onClick={handleSortByDurationLH}>
+							<MenuItem value="Duration: Low To High" onClick={handleSortByDurationLH}>
 								Duration: Low To High
 							</MenuItem>
-							<MenuItem onClick={handleSortByParticipantsLH}>
+							<MenuItem value="Participants: Low To High" onClick={handleSortByParticipantsLH}>
 								Participants: Low To High
 							</MenuItem>
 						</Link>

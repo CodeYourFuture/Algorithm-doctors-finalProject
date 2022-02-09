@@ -11,8 +11,13 @@ const useStyles = makeStyles(() => ({
 	CardHoverArea: {
 		background: "#FFFFFF",
 		"&:hover": {
-			color: "white",
-			background: "#d12f2f",
+			background: "rgba(214, 214, 214, 0.5)",
+		},
+	},
+	EnergiserName: {
+		"text-transform": " lowercase",
+		"&:first-letter": {
+			"text-transform": "uppercase",
 		},
 	},
 }));
@@ -37,21 +42,18 @@ const EnergiserCard = ({ energiserCard, handleNavigate, isLoggedIn, user }) => {
 	}, [id, user, req]);
 
 	useEffect(() => {
-		console.log(like);
 		const postData = async (vote) => {
 			const res = await axios.post("/api/likes", vote);
 			if (res) {
-				console.log(res);
 				setReq(!req);
 			}
 		};
 		if (like) {
 			postData(like);
-			console.log("second",like);
 		}
 	}, [like]);
 
-const classes = useStyles();
+	const classes = useStyles();
 	return (
 		<li className="card-container" key={id}>
 			<Card
@@ -71,7 +73,12 @@ const classes = useStyles();
 						className={classes.CardHoverArea}
 					>
 						<div>
-							<Typography sx={{ height: "3rem" }} variant="h5" component="div">
+							<Typography
+								sx={{ height: "4rem" }}
+								variant="h5"
+								component="div"
+								className={classes.EnergiserName}
+							>
 								{name}
 							</Typography>
 							<StarRating id={id} req={req} />
@@ -100,22 +107,6 @@ const classes = useStyles();
 					</CardContent>
 				</div>
 			</Card>
-			{/* <div className="card-body" onClick={() => handleNavigate(id)}>
-					<h2 className="card-title">{name}</h2>
-					<StarRating id={id} req={req} />
-					<p className="card-text">{description}</p>
-					<p className="card-text">{duration} Mins</p>
-					<p className="card-text">Participants: {participants}</p>
-				</div>
-				{isLoggedIn ? (
-					<LikeBtn
-						id={id}
-						user={user}
-						setLike={setLike}
-						voteStatus={voteStatus}
-					/>
-				) : null}
-			</div> */}
 		</li>
 	);
 };
