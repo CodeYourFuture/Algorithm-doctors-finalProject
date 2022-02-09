@@ -24,11 +24,11 @@ router.post("/publish", (req, res) => {
 	const newEnergiserDescription = req.body.description;
 	const newEnergiserParticipants = req.body.participants;
 	const newEnergiserDuration = req.body.duration;
-	const newEnergiserCategory = req.body.category;
+	const newEnergiserType = req.body.type;
 	const newEnergiserInstructions = req.body.instructions;
 	const newUserId = req.body.googleId;
 	const insertPost =
-		"INSERT INTO energisers (name, description, participants, duration, instructions,category,publisher) VALUES ($1, $2, $3, $4, $5, $6, $7);";
+		"INSERT INTO energisers (name, description, participants, duration, instructions,type,publisher) VALUES ($1, $2, $3, $4, $5, $6, $7);";
 	query
 		.query(insertPost, [
 			newEnergiserName,
@@ -36,7 +36,7 @@ router.post("/publish", (req, res) => {
 			newEnergiserParticipants,
 			newEnergiserDuration,
 			newEnergiserInstructions,
-			newEnergiserCategory,
+			newEnergiserType,
 			newUserId,
 		])
 		.then(() => res.status(200).send("Energiser Published"))

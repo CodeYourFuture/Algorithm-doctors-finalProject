@@ -15,7 +15,7 @@ const useStyles = makeStyles(() => ({
 		},
 	},
 	EnergiserName: {
-		"text-transform": " lowercase",
+		"text-transform": "lowercase",
 		"&:first-letter": {
 			"text-transform": "uppercase",
 		},
@@ -23,7 +23,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 const EnergiserCard = ({ energiserCard, handleNavigate, isLoggedIn, user }) => {
-	const { id, name, description, participants, duration } = energiserCard;
+	const { id, name, description, participants, duration, type } = energiserCard;
 	const [like, setLike] = useState(null);
 	const [voteStatus, setVoteStatus] = useState(null);
 	const [req, setReq] = useState(false);
@@ -92,6 +92,9 @@ const EnergiserCard = ({ energiserCard, handleNavigate, isLoggedIn, user }) => {
 							</Typography>
 							<Typography sx={{ fontSize: 15 }} gutterBottom>
 								Participants: {participants}
+							</Typography>
+							<Typography sx={{ fontSize: 15 }} gutterBottom>
+								{type}
 							</Typography>
 						</div>
 						<div>

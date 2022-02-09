@@ -45,6 +45,7 @@ const EnergiserPage = () => {
 							<p>Participants: {energiser[0].participants}</p>
 							<p>{energiser[0].duration} Mins</p>
 						</div>
+						<p className='energiser-page-type'>{energiser[0].type}</p>
 						<p className="energiser-page-how">How To Run:</p>
 						<ul className="energiser-page-Instruction">
 							{split.map((elem, index) => (

@@ -1,34 +1,25 @@
-import { React, useState } from "react";
+import { React } from "react";
 import "../styles/PublishEnergiserPage.css";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 
-const categoryOptions = [
-	{ key: "Select Category", value: "Select Category" },
-	{ key: "In-Person", value: "In-person" },
-	{ key: "Remote", value: "Remote" },
-	{ key: "fun", value: "Fun" },
-	{ key: "Team-building", value: "Team-building" },
-];
 const publishEnergiserSchema = Yup.object().shape({
 	name: Yup.string()
-		.min(2, "Too Short!")
-		.max(100, "Too Long!")
+		.min(2, "Too Short! (Min 2 Chars Required)")
+		.max(100, "Too Long! (Max 100 Chars Allowed)")
 		.required("Required"),
 	description: Yup.string()
-		.min(10, "Too Short!")
-		.max(6000, "Too Long!")
+		.min(10, "Too Short! (Min 10 Chars Required)")
+		.max(6000, "Too Long! (Max 6000 Chars Allowed)")
 		.required("Required"),
 	participants: Yup.number()
-		.min(2, "Too Little!")
-		.max(100, "Too many people!!"),
-	duration: Yup.number()
-    .min(1, "Too Short!")
-    .max(60, "Too Long!"),
-	category: Yup.string().required("Required"),
+		.min(2, "Too Low! (Min 2 Participants Required)")
+		.max(100, "Too many people! (Max 100 Participants Allowed)"),
+	duration: Yup.number().min(1, "Too Short! (Min 1 Min Required)").max(60, "Too Long! (Max 60 Mins Allowed)"),
+	type: Yup.string().required("Required"),
 	instructions: Yup.string()
-		.min(100, "Too Short!")
-		.max(6000, "Too Long!")
+		.min(100, "Too Short! (Min 100 Chars Required)")
+		.max(6000, "Too Long! (Max 6000 Chars Allowed)")
 		.required("Required"),
 });
 
@@ -42,10 +33,10 @@ export const PublishForm = ({ user, setPublishStatus }) => {
 					"Content-Type": "application/json",
 				},
 			})
-				.then((res) => {
+				.then(() => {
 					setPublishStatus("ok");
 				})
-				.catch((err) => setPublishStatus("error"));
+				.catch(() => setPublishStatus("error"));
 		}
 	};
 
@@ -58,7 +49,7 @@ export const PublishForm = ({ user, setPublishStatus }) => {
 					description: "",
 					participants: "",
 					duration: "",
-					category: "",
+					type: "",
 					instructions: "",
 				}}
 				validationSchema={publishEnergiserSchema}
@@ -103,22 +94,15 @@ export const PublishForm = ({ user, setPublishStatus }) => {
 						{errors.duration && touched.duration ? (
 							<div className="errorMessage">{errors.duration}</div>
 						) : null}
-
-						{/* category */}
-						<Field className="my-select" as="select" name="category">
-							{categoryOptions.map((option) => {
-								return (
-									<option key={option.value} value={option.value}>
-										{option.key}
-									</option>
-								);
-							})}
+						<Field className="my-select" as="select" name="type">
+							<option defaultValue>Select type</option>
+							<option value="In-person">In-person</option>
+							<option value="Remote">Remote</option>
 						</Field>
 
-						{errors.category && touched.category ? (
-							<div className="errorMessage">{errors.category}</div>
+						{errors.type && touched.type ? (
+							<div className="errorMessage">{errors.type}</div>
 						) : null}
-						{/* category ends */}
 
 						<Field
 							className="fieldInstructions"

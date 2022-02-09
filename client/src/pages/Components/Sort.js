@@ -1,48 +1,66 @@
-import * as React from "react";
-import { Link } from "react-router-dom";
-import Box from "@mui/material/Box";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
+import { React, useState, useEffect } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
 
-export default function BasicSelect({ originalData, setEnergisersData }) {
-	const handleSortByAlphabets = () => {
-		const sortData = originalData.sort((a, b) => a.name.localeCompare(b.name));
-		setEnergisersData(sortData);
+const useStyles = makeStyles((theme) => ({
+	formControl: {
+		margin: theme.spacing(1),
+		minWidth: 230,
+		marginTop: "1rem",
+	},
+	selectEmpty: {
+		marginTop: theme.spacing(2),
+	},
+}));
+
+export default function Sort({ originalData, setEnergisersData }) {
+	const classes = useStyles();
+	const [selected, setSelected] = useState("");
+	const handleChange = (e) => {
+		setSelected(e.target.value);
 	};
-	const handleSortByDurationLH = () => {
-		const sortData = originalData.sort((a, b) => a.duration - b.duration);
-		setEnergisersData(sortData);
-	};
-	const handleSortByParticipantsLH = () => {
-		const sortData = originalData.sort(
-			(a, b) => a.participants - b.participants
+
+	useEffect(() => {
+		if (selected === "name") {
+			handleSortByName();
+		} else if (selected === "duration" || selected === "participants") {
+			handleSortByDuraPart();
+		}
+	}, [selected]);
+
+	const handleSortByName = () => {
+		const sortData = [...originalData].sort((a, b) =>
+			a[selected].localeCompare(b[selected])
 		);
 		setEnergisersData(sortData);
 	};
+	const handleSortByDuraPart = () => {
+		const sortData = [...originalData].sort(
+			(a, b) => a[selected] - b[selected]
+		);
+		setEnergisersData(sortData);
+	};
+
 	return (
-		<Box sx={{ m: 1, width: 230 }}>
-			<FormControl fullWidth>
-				<InputLabel id="demo-simple-select-label">Sort By</InputLabel>
-				<Select
-					labelId="demo-simple-select-label"
-					id="demo-simple-select"
-					label="Sort"
-				>
-						<Link to="/" style={{ display: "flex", flexDirection: "column", alignItems: "flex-Start", color: "black", paddingLeft: "0.5rem"  }}>
-							<MenuItem value="Alphabetical Order" onClick={handleSortByAlphabets}>
-								Alphabetical Order
-							</MenuItem>
-							<MenuItem value="Duration: Low To High" onClick={handleSortByDurationLH}>
-								Duration: Low To High
-							</MenuItem>
-							<MenuItem value="Participants: Low To High" onClick={handleSortByParticipantsLH}>
-								Participants: Low To High
-							</MenuItem>
-						</Link>
-				</Select>
+		<div>
+			<FormControl variant="outlined" className={classes.formControl}>
+				<InputLabel id="demo-simple-select-outlined-label">Sort By</InputLabel>
+					<Select
+						labelId="demo-simple-select-outlined-label"
+						id="demo-simple-select-outlined"
+						value={selected}
+						onChange={(e) => handleChange(e)}
+						label="Sort By"
+					>
+						<MenuItem value="name">Alphabetical Order </MenuItem>
+
+						<MenuItem value="duration">Duration: Low To High</MenuItem>
+						<MenuItem value="participants">Participants: Low To High</MenuItem>
+					</Select>
 			</FormControl>
-		</Box>
+		</div>
 	);
 }
