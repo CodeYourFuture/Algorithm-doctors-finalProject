@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { ImMenu, ImCross } from "react-icons/im";
 import "../styles/Navigation.css";
 import Logo from "../images/cyf_brand.png";
 import GLogin from "./GLogin";
@@ -8,8 +9,9 @@ import UserImage from "./UserImages";
 
 
  export default function Navigation({ isLoggedIn,setIsLoggedIn, setUser, user }){
+    const [openMenu, setOpenMenu]= useState(false);
 	const handleClick = ()=>{
-		{!isLoggedIn?alert("Please log in to publish your energiser!"):null;}
+     setOpenMenu(!openMenu);
 	};
 return (
 	<nav className="navbar">
@@ -18,22 +20,42 @@ return (
 				<img width="126" height="40" alt="cyf-logo" src={Logo}></img>
 			</Link>
 		</div>
-		<div className="nav-links">
-			<Link to="/">Home</Link>
-			<Link to="/about">About</Link>
-			<Link to="/contact">Contact</Link>
-
+		<div className="menu-icons" onClick={handleClick}>
+			{openMenu ? <ImCross /> : <ImMenu />}
+		</div>
+		<ul className="nav-links">
+			<li>
+				<Link to="/">Home</Link>
+			</li>
+			<li>
+				<Link to="/about">About</Link>
+			</li>
+			<li>
+				<Link to="/contact">Contact</Link>
+			</li>
 
 			{isLoggedIn ? (
 				<>
-				<Link to="/publish" onClick={handleClick}>Publish</Link>
-				<GLogout setIsLoggedIn={setIsLoggedIn} /></>
+					<li>
+						<Link to="/publish" onClick={handleClick}>
+							Publish
+						</Link>
+					</li>
+					<li>
+						<GLogout setIsLoggedIn={setIsLoggedIn} />
+					</li>
+				</>
 			) : (
-				<GLogin setIsLoggedIn={setIsLoggedIn} setUser={setUser} />
+				<li>
+					<GLogin setIsLoggedIn={setIsLoggedIn} setUser={setUser} />
+				</li>
 			)}
-			{isLoggedIn?
-				<UserImage user={user} />: null}
-		</div>
+			{isLoggedIn ? (
+				<li>
+					<UserImage user={user} />{" "}
+				</li>
+			) : null}
+		</ul>
 	</nav>
 );
  }

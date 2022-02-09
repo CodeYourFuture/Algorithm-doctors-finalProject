@@ -1,4 +1,4 @@
-import React from "react";
+import React,{ useState } from "react";
 import "../styles/Contact.css";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
@@ -15,19 +15,24 @@ const contactFeedbackSchema = Yup.object().shape({
 });
 
 export default function Contact(){
+	const[response, setResponse] = useState("");
 	const handleSubmit = async (obj) => {
-		fetch("/api/feedback", {
+		const res = await fetch("/api/feedback", {
 			method: "POST",
 			body: JSON.stringify(obj),
 			headers: {
 				"Content-Type": "application/json",
 			},
 		});
+		const status = await (res.status);
+		setResponse(status);
 	};
+
 
 
 	return (
 		<div className="contactPage">
+			<div className="alet-message">{response ===200? <p style={{ color:"green" }}>Thank you for your feedback, we value your input!</p>: response>=350 ?<p style={{ color:"red" }}>Something went wring with your submition, please try again!</p>:null}</div>
 			<h1 className="contactMessage">Please send us your honest feedback</h1>
 			<Formik
 				initialValues={{
@@ -35,8 +40,9 @@ export default function Contact(){
 					suggestions: "",
 				}}
 				validationSchema={contactFeedbackSchema}
-				onSubmit={(values) => {
+				onSubmit={(values, { resetForm }) => {
 					handleSubmit(values);
+					resetForm();
 				}}
 			>
 				{({ errors, touched }) => (
