@@ -19,10 +19,15 @@ return (
 			<Link to="/">
 				<img width="126" height="40" alt="cyf-logo" src={Logo}></img>
 			</Link>
+			<div className="menu-icons" onClick={handleClick}>
+				{openMenu ? (
+					<ImCross className="cross-icon" />
+				) : (
+					<ImMenu className="ham-menu-icon" />
+				)}
+			</div>
 		</div>
-		<div className="menu-icons" onClick={handleClick}>
-			{openMenu ? <ImCross /> : <ImMenu />}
-		</div>
+
 		<ul className="nav-links">
 			<li>
 				<Link to="/">Home</Link>

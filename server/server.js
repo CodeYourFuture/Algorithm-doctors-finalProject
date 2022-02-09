@@ -1,20 +1,22 @@
-// import http from "http";
+import http from "http";
 import "dotenv/config";
-// import app from "./app";
-// import { connectDb, disconnectDb } from "./db";
+import app from "./app";
+import { connectDb, disconnectDb } from "./db";
+
+
 
 const { App } = require("@slack/bolt");
 
 // Initializes your app with your bot token and signing secret
-const app = new App({
+const newApp = new App({
 	token: process.env.SLACK_BOT_TOKEN,
 	signingSecret: process.env.SLACK_SIGNING_SECRET,
 });
-app.message("hello", async ({ message, say }) => {
+newApp.message("hello", async ({ message, say }) => {
 	// say() sends a message to the channel where the event was triggered
 	await say(`Hey there <@${message.user}>!`);
 });
-app.message("hello Mr bot", async ({ message, say }) => {
+newApp.message("hello Mr bot", async ({ message, say }) => {
 	// say() sends a message to the channel where the event was triggered
 	await say({
 		blocks: [
@@ -39,25 +41,27 @@ app.message("hello Mr bot", async ({ message, say }) => {
 });
 
 (async () => {
-	// Start your app
-	await app.start(process.env.PORT || 3000);
+	// Start your newApp
+	const port = process.env.BOLT_PORT || 4500;
+	await newApp.start(port);
 
-	console.log("⚡️ Bolt app is running!");
+
+	console.log(`⚡️ Bolt newApp is running on port: ${port}`);
 })();
 
 
-// const port = parseInt(process.env.PORT || "3000");
+const port = parseInt(process.env.APP_PORT || "3000");
 
-// const server = http.createServer(app);
+const server = http.createServer(app);
 
-// server.on("listening", () => {
-// 	const addr = server.address();
-// 	const bind = typeof addr === "string" ? `pipe ${addr}` : `port ${addr.port}`;
-// 	// eslint-disable-next-line no-console
-// 	console.log(`Listening on ${bind}`);
-// });
+server.on("listening", () => {
+	const addr = server.address();
+	const bind = typeof addr === "string" ? `pipe ${addr}` : `port ${addr.port}`;
+	// eslint-disable-next-line no-console
+	console.log(`Listening on ${bind}`);
+});
 
-// process.on("SIGTERM", () => server.close(() => disconnectDb()));
+process.on("SIGTERM", () => server.close(() => disconnectDb()));
 
-// connectDb().then(() => server.listen(port));
+connectDb().then(() => server.listen(port));
 
