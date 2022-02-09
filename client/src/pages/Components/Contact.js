@@ -1,20 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/Contact.css";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 
 const contactFeedbackSchema = Yup.object().shape({
 	name: Yup.string()
-		.min(2, "Too Short!")
-		.max(100, "Too Long!")
+		.min(2, "Too Short! (Min 2 Chars Required)")
+		.max(100, "Too Long! (Max 100 Chars Allowed)")
 		.required("Required"),
 	suggestions: Yup.string()
-		.min(100, "Too Short!")
-		.max(6000, "Too Long!")
+		.min(50, "Too Short! (Min 50 Chars Required)")
+		.max(6000, "Too Long! (Max 6000 Chars Allowed)")
 		.required("Required"),
 });
 
 export default function Contact(){
+	const [feedbackStatus, setFeedbackStatus] = useState(null);
 	const handleSubmit = async (obj) => {
 		fetch("/api/feedback", {
 			method: "POST",
@@ -22,7 +23,11 @@ export default function Contact(){
 			headers: {
 				"Content-Type": "application/json",
 			},
-		});
+		}).then(() => {
+			setFeedbackStatus("ok");
+		})
+		.catch(() => setFeedbackStatus("error"));
+
 	};
 
 
@@ -35,8 +40,14 @@ export default function Contact(){
 					suggestions: "",
 				}}
 				validationSchema={contactFeedbackSchema}
-				onSubmit={(values) => {
+				onSubmit={(values, { resetForm }) => {
 					handleSubmit(values);
+					resetForm();
+					if(feedbackStatus=="ok"){
+						alert("Thank You For Your Feedback!");
+					} else if (feedbackStatus=="error"){
+						alert("Something went wrong! Please try again.");
+					}
 				}}
 			>
 				{({ errors, touched }) => (
