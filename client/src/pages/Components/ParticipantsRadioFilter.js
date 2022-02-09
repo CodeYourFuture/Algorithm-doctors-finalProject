@@ -26,27 +26,27 @@ return (
             >
                 <FormControlLabel
                     value="0-100"
-                    control={<Radio />}
+                    control={<Radio color="default" />}
                     label="None"
                 />
                 <FormControlLabel
                     value="1-5"
-                    control={<Radio />}
+                    control={<Radio color="default" />}
                     label="1-5"
                 />
                 <FormControlLabel
                     value="6-10"
-                    control={<Radio />}
+                    control={<Radio color="default" />}
                     label="6-10"
                 />
                 <FormControlLabel
                     value="11-15"
-                    control={<Radio />}
+                    control={<Radio color="default" />}
                     label="11-15"
                 />
                 <FormControlLabel
                     value="16-20"
-                    control={<Radio />}
+                    control={<Radio color="default" />}
                     label="16-20"
                 />
             </RadioGroup>

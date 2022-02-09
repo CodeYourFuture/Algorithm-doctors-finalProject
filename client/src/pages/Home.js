@@ -5,7 +5,7 @@ import EnergiserCards from "./Components/EnergiserCards";
 import RandomizerBtn from "./Components/RandomizerBtn";
 import Sidebar from "./Components/Sidebar";
 import AppPagination from "./Components/Pagination";
-import { display } from "@mui/system";
+import SideBarDrawer from "./Components/SidebarDrawer";
 
 export function Home({ user, isLoggedIn }) {
 	const [energisersData, setEnergisersData] = useState([]);
@@ -36,10 +36,18 @@ export function Home({ user, isLoggedIn }) {
 	return (
 		<main role="main">
 			<div className="main-content">
-				<Sidebar
-					setEnergisersData={setEnergisersData}
-					originalData={originalData}
-				/>
+				<div className="sideBar">
+					<Sidebar
+						setEnergisersData={setEnergisersData}
+						originalData={originalData}
+					/>
+				</div>
+				<div className="sidebarDrawer">
+					<SideBarDrawer
+						setEnergisersData={setEnergisersData}
+						originalData={originalData}
+					/>
+				</div>
 				<div className="homeMain">
 					<h1 className="message" data-qa="message">
 						{isLoggedIn
@@ -68,13 +76,18 @@ export function Home({ user, isLoggedIn }) {
 								user={user}
 							/>
 						</ul>
-						<div className="pagDiv" style={{ visibility: energisersData.length<=0? "hidden":"visible" }}>
-						<AppPagination
-							page={page}
-							energisersData={energisersData}
-							handleChangePage={handleChangePage}
-							rowsPerPage={rowsPerPage}
-						/>
+						<div
+							className="pagDiv"
+							style={{
+								visibility: energisersData.length <= 0 ? "hidden" : "visible",
+							}}
+						>
+							<AppPagination
+								page={page}
+								energisersData={energisersData}
+								handleChangePage={handleChangePage}
+								rowsPerPage={rowsPerPage}
+							/>
 						</div>
 					</div>
 				</div>

@@ -2,6 +2,7 @@
 	width: auto;
 	text-align: center;
 	padding: 15px;
+	margin-top: 3rem;
 }
 
 .energiser-page-container {
@@ -15,10 +16,18 @@
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.timer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
 .energiser-page-name {
 	text-transform: lowercase;
 	padding: 20px;
 	font-size: 2rem;
+	margin-left: 100px;
+	width: 80%;
 }
 
 .energiser-page-name::first-letter {
@@ -26,8 +35,8 @@
 }
 
 .energiser-page-description{
-	font-size: 1rem;
-	font-weight: bold;
+	font-size: 1.5rem;
+	margin-top: 3rem;
 }
 
 .energiser-page-partduration {

@@ -15,10 +15,10 @@ const LikeBtn = ({ id, user, setLike, voteStatus }) => {
 	return (
 		<div className="like_dislike_btn">
 			<button onClick={(e) => handleLike(e,1)} className="btn">
-				<FaThumbsUp style={{ color: voteStatus == 1 ? "blue" : "grey" }} />
+				<FaThumbsUp style={{ color: voteStatus == 1 ? "grey" : "lightgrey" }} />
 			</button>
 			<button onClick={(e) => handleLike(e,2)} className="btn">
-				<FaThumbsDown style={{ color: voteStatus == 2 ? "red" : "grey" }} />
+				<FaThumbsDown style={{ color: voteStatus == 2 ? "grey" : "lightgrey" }} />
 			</button>
 		</div>
 	);
