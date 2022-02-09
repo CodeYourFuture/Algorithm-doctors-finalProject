@@ -1,13 +1,14 @@
 .form-section{
-    display: grid;
     width: 40%;
     margin: 2% auto;
     border: solid 3px #d12f2f;
     border-radius: 10px;
     padding: 20px;
+	
 }
 
 .contactPage {
+	height: 100%;
 	text-align: center;
 	width: 50%;
 	margin: 2% auto;
@@ -44,4 +45,44 @@
     color: #d12f2f;
     font-size: 1rem;
     margin: 0px;
+}
+
+@media (max-width:1200px) {
+	.contactPage{
+		height:100%;
+		width:60%;
+	}
+}
+@media (max-width:900px) {
+	.contactPage{
+		height:100%;
+		width:80%;
+	}
+}
+@media (max-width:789px) {
+	.contactPage{
+		height:100%;
+		width:80%;
+	}
+	.contactMessage{
+		font-size:1.5rem ;
+	}
+	.contact-button {
+		width:100%;
+		margin: 10px auto;
+		height: 100%;
+	}
+	.feedbackForm{
+		width:100%;
+		max-width: 100%;
+
+	}
+}
+@media (max-width:481px) {
+	.contactMessage{
+		font-size:1.2rem ;
+		font-weight: bold;
+	}
+
+
 }

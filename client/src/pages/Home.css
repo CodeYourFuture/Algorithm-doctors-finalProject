@@ -6,7 +6,30 @@
 	width: 100px;
 }
 .main-content {
-display: flex;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	margin-right: auto;
+	margin-left: auto;
+}
+.sideBar {
+	border-right: lightgrey solid 0.5px;
+	width: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	width: 250px;
+	position: static;
+	margin-right: 10px;
+}
+.sidebarDrawer {
+	display: none;
+}
+.resetBtn {
+	min-width: 100%;
+}
+.filters {
+	margin: 2rem 0 0 2rem;
 }
 
 .message {
@@ -17,12 +40,13 @@ display: flex;
 	width: fit-content;
 	margin: auto;
 }
-
 .energiserCards {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	flex-wrap: wrap;
+	width: 100%;
+	gap:1.5rem;
 }
 
 @media (min-width: 700px) {
@@ -34,14 +58,6 @@ display: flex;
 ul {
 	padding-left: 0;
 }
-.card-container {
-	min-width: 25%;
-	max-width: 25%;
-	margin: 1rem 2rem;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
 .card {
 	display: flex;
 	flex-direction: column;
@@ -52,13 +68,15 @@ ul {
 	height: 100%;
 	padding-bottom: 10px;
 }
+.card-container {
+	width:25%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
 h2 {
 	font-size: 20px;
 }
-.energiserCards li {
-	list-style: none;
-}
-
 .card img {
 	margin: 1rem 1rem;
 	align-self: center;
@@ -67,49 +85,110 @@ h2 {
 a:hover {
 	text-decoration: none;
 }
+
 .randomSearch {
 	display: flex;
 	flex-direction: column;
 }
 
-.sideBar {
-	border-right: lightgrey solid 0.5px;
-	width: auto;
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	width: 250px;
-	position: static;
-}
-
-.sidebarDrawer {
-	display: none;
-}
-
-.resetBtn {
-	min-width: 100%;
-}
-.filters {
-	margin: 2rem 0 0 2rem;
-}
 .pagDiv {
-	 display: flex; 
-	 justify-content: center;
-}
-
-.sortFilterInDrawer {
-	width: 100%; 
-	height: 100%;
-}
-
-@media only screen and (max-width: 1300px) {
-.sideBar {
-	display: none;
-}
-
-.sidebarDrawer {
 	display: flex;
 	justify-content: center;
 }
 
+.sortFilterInDrawer {
+	width: 100%;
+	height: 100%;
 }
+
+@media only screen and (max-width: 1300px){
+.message {
+	font-size: 3.5rem;
+}
+.energiserCards {
+	gap:4rem;
+}
+}
+@media only screen and (max-width: 1200px){
+	.main-content{
+		flex-direction: column;
+	}
+.energiserCards {
+	gap:2rem;
+}
+.sideBar {
+		display: none;
+	}
+	.sidebarDrawer {
+		display: block;
+		margin-left: 20px;
+		margin-bottom: 10px;
+		align-self: flex-start;
+	}
+}
+
+@media only screen and (max-width: 1180px){
+.message {
+	font-size: 3rem;
+}
+.energiserCards {
+	gap:1.5rem;
+}
+}
+@media only screen and (max-width: 900px){
+	
+	.message {
+	font-size: 2.5rem;
+}
+.energiserCards {
+	gap:5rem;
+}
+
+}
+@media only screen and (max-width: 768px) {
+	.main-content {
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	.message {
+		font-size: 2.5rem;
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}
+	.energiserCards {
+		width: 100%;
+		justify-content: center;
+		gap:1.5rem;
+	}
+	
+	.card-container {
+		min-width: 30%;
+		max-width: 30%;
+		justify-content: center;
+		margin-right: 3rem;
+	}
+}
+@media only screen and (max-width: 700px){
+	.main-content{
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+.message {
+	font-size: 2rem;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.energiserCards {
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.card-container {
+		min-width: 50%;
+		max-width: 50%;
+	}
+} 
