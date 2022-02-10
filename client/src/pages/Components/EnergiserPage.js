@@ -11,10 +11,10 @@ const EnergiserPage = () => {
 	useEffect(() => {
 		axios.get(`/api/energisers/${id}`)
 			.then((res) => {
-				if (!res.ok) {
+				if (res.status != 200) {
 					throw new Error(res.statusText);
 				}
-				return res.json();
+				return res.data;
 			})
 			.then((data) => {
 				let newSplit = data[0].instructions.split("\n");
