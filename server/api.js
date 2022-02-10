@@ -12,10 +12,14 @@ router.get("/energisers", (_, res) => {
 
 router.get("/energisers/:id", (req, res) => {
 	let energiserId = req.params.id;
-	query
-		.query("select * from energisers where id = $1", [energiserId])
-		.then((result) => res.json(result.rows))
-		.catch((err) => console.error(err));
+	if (!energiserId) {
+		return res.status(400).send("Invalid energiser Id");
+	} else {
+		query
+			.query("select * from energisers where id = $1", [energiserId])
+			.then((result) => res.json(result.rows))
+			.catch((err) => console.error(err));
+	}
 });
 
 // POST a new energiser from this route "/publish".
@@ -29,18 +33,30 @@ router.post("/publish", (req, res) => {
 	const newUserId = req.body.googleId;
 	const insertPost =
 		"INSERT INTO energisers (name, description, participants, duration, instructions,type,publisher) VALUES ($1, $2, $3, $4, $5, $6, $7);";
-	query
-		.query(insertPost, [
-			newEnergiserName,
-			newEnergiserDescription,
-			newEnergiserParticipants,
-			newEnergiserDuration,
-			newEnergiserInstructions,
-			newEnergiserType,
-			newUserId,
-		])
-		.then(() => res.status(200).send("Energiser Published"))
-		.catch((error) => console.error(error));
+	if (
+		!newEnergiserName ||
+		!newEnergiserDescription ||
+		!newEnergiserParticipants ||
+		!newEnergiserDuration ||
+		!newEnergiserType ||
+		!newEnergiserInstructions ||
+		!newUserId
+	) {
+		return res.status(400).send("Some Missing Info");
+	} else {
+		query
+			.query(insertPost, [
+				newEnergiserName,
+				newEnergiserDescription,
+				newEnergiserParticipants,
+				newEnergiserDuration,
+				newEnergiserInstructions,
+				newEnergiserType,
+				newUserId,
+			])
+			.then(() => res.status(200).send("Energiser Published"))
+			.catch((error) => console.error(error));
+	}
 });
 
 // POST feedback from this route "/feedback".
@@ -49,10 +65,14 @@ router.post("/feedback", (req, res) => {
 	const suggestion = req.body.suggestions;
 	const feedbackQuery =
 		"INSERT INTO feedback (name, suggestion) VALUES ($1, $2);";
-	query
-		.query(feedbackQuery, [name, suggestion])
-		.then(() => res.status(200).send("Feedback Sent"))
-		.catch((error) => console.error(error));
+	if (!name || !suggestion) {
+		return res.status(400).send("Invalid user");
+	} else {
+		query
+			.query(feedbackQuery, [name, suggestion])
+			.then(() => res.status(200).send("Feedback Sent"))
+			.catch((error) => console.error(error));
+	}
 });
 
 // POST rating  detail from this route "/rating".
@@ -101,6 +121,9 @@ router.get("/likes", (req, res) => {
 
 router.get("/star_ratings/:id", (req, res) => {
 	let energiserId = req.params.id;
+	if (!energiserId) {
+		return res.status(400).send("Invalid energiser Id");
+	} else {
 	query
 		.query("SELECT like_status FROM likes WHERE energiser_id=$1", [energiserId])
 		.then((result) => {
@@ -109,5 +132,6 @@ router.get("/star_ratings/:id", (req, res) => {
 			}
 		})
 		.catch((err) => console.error(err));
+	}
 });
 export default router;

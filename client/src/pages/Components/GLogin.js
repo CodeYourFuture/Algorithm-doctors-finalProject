@@ -15,7 +15,7 @@ export default function GLogin({ setIsLoggedIn, setUser }) {
 		console.log("[Login Failed] res:", res);
 	};
 	return (
-		<div>
+		<div className="goolge">
 			<GoogleLogin
 				clientId={clientId}
 				buttonText="Login"

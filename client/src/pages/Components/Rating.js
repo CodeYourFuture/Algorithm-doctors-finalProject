@@ -5,18 +5,6 @@ import StarIcon from "@mui/icons-material/Star";
 import RatingCalculation from "./RatingCalculation";
 import axios from "axios";
 
-const labels = {
-	0.5: "Very Poor",
-	1: "Poor",
-	1.5: "Less Interesting",
-	2: "Ok",
-	2.5: "Good",
-	3: "Good",
-	3.5: "Interesting",
-	4: "Very Interesting",
-	4.5: "Excellent",
-	5: "Excellent",
-};
 
 const StarRating = ({ id , req }) => {
 	const [totalVotes, setTotalVotes] = useState([]);
