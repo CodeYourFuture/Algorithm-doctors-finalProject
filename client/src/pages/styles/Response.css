@@ -1,0 +1,17 @@
+.success-message{
+    height:38vh;
+    width: 100%;
+    text-align: center;
+    color: green;
+    font-size: 2rem;
+    margin: 50px auto;
+}
+.failure-message{
+    height:38vh;
+    width: 100%;
+    text-align: center;
+    color: red;
+    font-size: 2rem;
+    margin: 50px auto;
+   
+}

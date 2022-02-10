@@ -1,8 +1,10 @@
+import "../styles/Response.css";
+
 export default function FailureResponse() {
 	return (
-		<div>
-			<p className="failure" style={{ color: "red" }}>
-				Your submition failed, Please try again!
+		<div className="failure-message">
+			<p className="failure">
+				Your submission failed, Please try again!
 			</p>
 		</div>
 	);
