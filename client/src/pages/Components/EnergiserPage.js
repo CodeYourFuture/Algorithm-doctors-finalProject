@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../styles/EnergiserPage.css";
 import CountdownTimer from "./CountdownTimer";
+import axios from "axios";
 
 const EnergiserPage = () => {
 	const { id } = useParams();
 	const [energiser, setEnergiser] = useState(null);
 	const [split, setSplit] = useState([]);
 	useEffect(() => {
-		fetch(`/api/energisers/${id}`)
+		axios.get(`/api/energisers/${id}`)
 			.then((res) => {
 				if (!res.ok) {
 					throw new Error(res.statusText);
