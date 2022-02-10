@@ -26,13 +26,13 @@ const publishEnergiserSchema = Yup.object().shape({
 
 export const PublishForm = ({ user, setPublishStatus }) => {
 	const handleSubmit = async (obj) => {
-		// if (user && user.googleId) {
-			axios.post("/api/publish",{ ...obj, googleId:"46847548" })
+		if (user && user.googleId) {
+			axios.post("/api/publish",{ ...obj, googleId: user.googleId })
 				.then(() => {
 					setPublishStatus("ok");
 				})
 				.catch(() => setPublishStatus("error"));
-		// }
+		}
 	};
 
 	return (

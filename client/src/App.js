@@ -33,14 +33,14 @@ const App = () => {
 				<Route path="/about" element={<About />} />
 				<Route path="/energisers/:id" element={<EnergiserPage />} />
 				<Route path="/contact" element={<Contact />} />
-				{/* {isLoggedIn ? ( */}
+				{isLoggedIn ? (
 					<Route
 						path="/publish"
 						element={<PublishEnergiserPage user={user} />}
 					/>
-				{/* ) : ( */}
-					{/* <Route path="*" element={<Navigate to="/" />} />
-				)} */}
+				) : (
+					<Route path="*" element={<Navigate to="/" />} />
+				)}
 			</Routes>
 			<Footer isLoggedIn={isLoggedIn} />
 		</>
