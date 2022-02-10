@@ -33,7 +33,6 @@ body {
 	flex-direction: column;
 	background-color: var(--primary);
 	width: 100%;
-	flex-direction: row;
 	margin: 0 auto;
 }
 .sideBar {
@@ -165,6 +164,9 @@ a:hover {
 }
 }
 @media only screen and (max-width: 1200px){
+	.main {
+		flex-direction: column;
+	}
 	.main-content{
 		flex-direction: column;
 	}
