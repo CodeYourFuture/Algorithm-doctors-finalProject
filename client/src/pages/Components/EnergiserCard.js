@@ -43,7 +43,17 @@ const EnergiserCard = ({ energiserCard, handleNavigate, isLoggedIn, user }) => {
 
 	useEffect(() => {
 		const postData = async (vote) => {
-			const res = await axios.post("/api/likes", vote);
+			const res = await axios
+				.post("/api/likes", vote)
+				.then((res) => {
+					if (res.status != 200) {
+						throw new Error(res.statusText);
+					}
+					return res.data;
+				})
+				.catch((err) => {
+					console.error(err);
+				});
 			if (res) {
 				setReq(!req);
 			}
