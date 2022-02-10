@@ -3,7 +3,11 @@ import "../styles/Contact.css";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 // import SuccessResponse from "./SuccessResponse";
+<<<<<<< HEAD
 // import FailureResponse from "./FailureResponse";
+=======
+// import FailureResponse from "./FailureResponse"
+>>>>>>> 43a4e3251e50ffa981a64ecf867f933c5b4b06c3
 import axios from "axios";
 
 const contactFeedbackSchema = Yup.object().shape({
@@ -28,7 +32,11 @@ export default function Contact(){
 			}
 			setResponse("ok");
 		})
+<<<<<<< HEAD
 		.catch(() => setResponse("error"));
+=======
+		.catch(() => setFeedbackStatus("error"));
+>>>>>>> 43a4e3251e50ffa981a64ecf867f933c5b4b06c3
 
 	};
 
