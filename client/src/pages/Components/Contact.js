@@ -3,7 +3,8 @@ import "../styles/Contact.css";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 // import SuccessResponse from "./SuccessResponse";
-// import FailureResponse from "./FailureResponse";
+// import FailureResponse from "./FailureResponse"
+import axios from "axios";
 
 const contactFeedbackSchema = Yup.object().shape({
 	name: Yup.string()
@@ -19,15 +20,15 @@ const contactFeedbackSchema = Yup.object().shape({
 export default function Contact(){
 	const[response, setResponse] = useState(null);
 	const handleSubmit = async (obj) => {
-		await fetch("/api/feedback", {
-			method: "POST",
-			body: JSON.stringify(obj),
-			headers: {
-				"Content-Type": "application/json",
-			},
-		}).then(() => {
-			setResponse("ok");
-		}).catch(() => setResponse("error"));
+
+		axios.post("/api/feedback", obj)
+		.then((res) => {
+			if (res.status != 200) {
+				throw new Error(res.statusText);
+			}
+			setFeedbackStatus("ok");
+		})
+		.catch(() => setFeedbackStatus("error"));
 
 	};
 
