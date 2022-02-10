@@ -2,6 +2,9 @@
 #DC514A red
 #ffffff
 #FFFFFF */
+body {
+	font-family: 'Lato', sans-serif !important;
+}
 .logo {
 	width: 100px;
 }

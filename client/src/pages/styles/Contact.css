@@ -1,7 +1,7 @@
 .form-section{
     width: 40%;
     margin: 2% auto;
-    border: solid 3px #d12f2f;
+    /* border: solid 3px #d12f2f; */
     border-radius: 10px;
     padding: 20px;
 	
@@ -12,7 +12,7 @@
 	text-align: center;
 	width: 50%;
 	margin: 2% auto;
-	border: solid 3px #d12f2f;
+	/* border: solid 3px #d12f2f; */
 	border-radius: 10px;
 	padding: 20px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -33,6 +33,7 @@
 	border-radius: 10px;
 	margin-top: 10px;
 	color: white;
+	cursor: pointer;
 }
 
 .fieldSuggestion {

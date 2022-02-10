@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React,{ useState } from "react";
 import "../styles/Contact.css";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
+// import SuccessResponse from "./SuccessResponse";
+// import FailureResponse from "./FailureResponse";
 
 const contactFeedbackSchema = Yup.object().shape({
 	name: Yup.string()
@@ -15,62 +17,66 @@ const contactFeedbackSchema = Yup.object().shape({
 });
 
 export default function Contact(){
-	const [feedbackStatus, setFeedbackStatus] = useState(null);
+	const[response, setResponse] = useState(null);
 	const handleSubmit = async (obj) => {
-		fetch("/api/feedback", {
+		await fetch("/api/feedback", {
 			method: "POST",
 			body: JSON.stringify(obj),
 			headers: {
 				"Content-Type": "application/json",
 			},
 		}).then(() => {
-			setFeedbackStatus("ok");
-		})
-		.catch(() => setFeedbackStatus("error"));
+			setResponse("ok");
+		}).catch(() => setResponse("error"));
 
 	};
 
-
 	return (
-		<div className="contactPage">
-			<h1 className="contactMessage">Please send us your honest feedback</h1>
-			<Formik
-				initialValues={{
-					name: "",
-					suggestions: "",
-				}}
-				validationSchema={contactFeedbackSchema}
-				onSubmit={(values, { resetForm }) => {
-					handleSubmit(values);
-					resetForm();
-					if(feedbackStatus=="ok"){
-						alert("Thank You For Your Feedback!");
-					} else if (feedbackStatus=="error"){
-						alert("Something went wrong! Please try again.");
-					}
-				}}
-			>
-				{({ errors, touched }) => (
-					<Form className="feedbackForm">
-						<Field
-							className="field"
-							name="name"
-							placeholder="Enter your name..."
-						/>
-						{errors.name && touched.name ? <div className="errorMessage">{errors.name}</div> : null}
-						<Field
-							className="fieldSuggestion"
-							name="suggestions"
-							placeholder="Enter your suggestions here..."
-							as="textarea"
-						/>
-						{errors.suggestions && touched.suggestions ? (
-							<div className="errorMessage">{errors.suggestions}</div>
-						) : null}
-						<button type="submit" className="contact-button">Send Feedback</button>
-					</Form>
-				)}
-			</Formik>
+		<div className="whole-page">
+			<div className="contactPage">
+				<h1 className="contactMessage">Please send us your honest feedback</h1>
+				<Formik
+					initialValues={{
+						name: "",
+						suggestions: "",
+					}}
+					validationSchema={contactFeedbackSchema}
+					onSubmit={(values, { resetForm }) => {
+						handleSubmit(values);
+						resetForm();
+						if (response == "ok") {
+							alert("Thank you for your time. Your submition was successful!");
+						} else if (response == "failure") {
+							alert("Your submition failed, Please try again!");
+						}
+					}}
+				>
+					{({ errors, touched }) => (
+						<Form className="feedbackForm">
+							<Field
+								className="field"
+								name="name"
+								placeholder="Enter your name..."
+							/>
+							{errors.name && touched.name ? (
+								<div className="errorMessage">{errors.name}</div>
+							) : null}
+							<Field
+								className="fieldSuggestion"
+								name="suggestions"
+								placeholder="Enter your suggestions here..."
+								as="textarea"
+							/>
+							{errors.suggestions && touched.suggestions ? (
+								<div className="errorMessage">{errors.suggestions}</div>
+							) : null}
+							<button type="submit" className="contact-button">
+								Send Feedback
+							</button>
+						</Form>
+					)}
+				</Formik>
+			</div>
 		</div>
 	);
 }
