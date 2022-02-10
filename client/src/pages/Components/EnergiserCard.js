@@ -60,6 +60,7 @@ const EnergiserCard = ({ energiserCard, handleNavigate, isLoggedIn, user, theme 
 					minWidth: 275,
 					textAlign: "center",
 					height: "100%",
+					width: "100%",
 				}}
 			>
 				<div style={{ cursor: "pointer" }} onClick={() => handleNavigate(id)}>

@@ -34,62 +34,60 @@ export function Home({ user, isLoggedIn, theme }) {
 	};
 
 	return (
-		<main role="main">
+		<main role="main" className="main">
+			<div className="sideBar">
+				<Sidebar
+					setEnergisersData={setEnergisersData}
+					originalData={originalData}
+				/>
+			</div>
+			<div className="sidebarDrawer">
+				<SideBarDrawer
+					setEnergisersData={setEnergisersData}
+					originalData={originalData}
+				/>
+			</div>
 			<div className="main-content">
-				<div className="sideBar">
-					<Sidebar
+				<h1 className="message" data-qa="message">
+					{isLoggedIn
+						? `${user.givenName}, Welcome to CYF Energisers`
+						: "Welcome to CYF Energisers"}
+				</h1>
+				<div className="randomSearch">
+					<RandomizerBtn
 						setEnergisersData={setEnergisersData}
 						originalData={originalData}
 					/>
-				</div>
-				<div className="sidebarDrawer">
-					<SideBarDrawer
+					<SearchBar
+						energisersData={energisersData}
 						setEnergisersData={setEnergisersData}
 						originalData={originalData}
+						setPage={setPage}
 					/>
 				</div>
-				<div className="homeMain">
-					<h1 className="message" data-qa="message">
-						{isLoggedIn
-							? `${user.givenName}, Welcome to CYF Energisers`
-							: "Welcome to CYF Energisers"}
-					</h1>
-					<div className="randomSearch">
-						<RandomizerBtn
-							setEnergisersData={setEnergisersData}
-							originalData={originalData}
-						/>
-						<SearchBar
+				<div className="cardPag">
+					<ul className="energiserCards">
+						<EnergiserCards
 							energisersData={energisersData}
-							setEnergisersData={setEnergisersData}
-							originalData={originalData}
-							setPage={setPage}
+							page={page}
+							rowsPerPage={rowsPerPage}
+							isLoggedIn={isLoggedIn}
+							user={user}
+							theme={theme}
 						/>
-					</div>
-					<div>
-						<ul className="energiserCards">
-							<EnergiserCards
-								energisersData={energisersData}
-								page={page}
-								rowsPerPage={rowsPerPage}
-								isLoggedIn={isLoggedIn}
-								user={user}
-								theme={theme}
-							/>
-						</ul>
-						<div
-							className="pagDiv"
-							style={{
-								visibility: energisersData.length <= 0 ? "hidden" : "visible",
-							}}
-						>
-							<AppPagination
-								page={page}
-								energisersData={energisersData}
-								handleChangePage={handleChangePage}
-								rowsPerPage={rowsPerPage}
-							/>
-						</div>
+					</ul>
+					<div
+						className="pagDiv"
+						style={{
+							visibility: energisersData.length <= 0 ? "hidden" : "visible",
+						}}
+					>
+						<AppPagination
+							page={page}
+							energisersData={energisersData}
+							handleChangePage={handleChangePage}
+							rowsPerPage={rowsPerPage}
+						/>
 					</div>
 				</div>
 			</div>

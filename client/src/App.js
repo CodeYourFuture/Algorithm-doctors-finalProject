@@ -11,7 +11,10 @@ import Footer from "./pages/Components/Footer";
 
 const App = () => {
 	const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-const [theme, setTheme] = useLocalStorage("theme", defaultDark ? "dark" : "light");
+	const [theme, setTheme] = useLocalStorage(
+		"theme",
+		defaultDark ? "dark" : "light"
+	);
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [user, setUser] = useState({});
 	return (
