@@ -2,6 +2,7 @@ import { React } from "react";
 import "../styles/PublishEnergiserPage.css";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
+import axios from "axios";
 
 const publishEnergiserSchema = Yup.object().shape({
 	name: Yup.string()
@@ -26,13 +27,7 @@ const publishEnergiserSchema = Yup.object().shape({
 export const PublishForm = ({ user, setPublishStatus }) => {
 	const handleSubmit = async (obj) => {
 		if (user && user.googleId) {
-			fetch("/api/publish", {
-				method: "POST",
-				body: JSON.stringify({ ...obj, googleId: user.googleId }),
-				headers: {
-					"Content-Type": "application/json",
-				},
-			})
+			axios.post("/api/publish",{ ...obj, googleId: user.googleId })
 				.then(() => {
 					setPublishStatus("ok");
 				})
