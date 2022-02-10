@@ -1,7 +1,11 @@
-export default function SuccessResponse(){
-return (
-    <div>
-        <p className="success" style={{ color:"blue" }}>Thank you for your time. Your submition was successful!</p>
-    </div>
-);
+import "../styles/Response.css";
+
+export default function SuccessResponse({ message }) {
+	return (
+		<div className="success-message">
+			<p className="success">
+				{message}
+			</p>
+		</div>
+	);
 }
