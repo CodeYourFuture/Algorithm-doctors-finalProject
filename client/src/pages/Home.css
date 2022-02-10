@@ -1,16 +1,30 @@
-/* #231f20 black
-#DC514A red
-#ffffff
-#FFFFFF */
+:root {
+	--primary: #ffffff;
+	--secondary: #18191a;
+	--tertiary: #d12f2f;
+}
+[data-theme='dark'] {
+	--primary: #18191a;
+	--secondary: #ffffff;
+	--tertiary: #d12f2f;
+  }
+
+#root {
+	background-color: var(--primary);
+}
+.app {
+	background-color: var(--primary);
+}
 .logo {
 	width: 100px;
 }
 .main-content {
-display: flex;
+	display: flex;
+	background-color: var(--primary);
 }
 
 .message {
-	color: black;
+	color: var(--secondary);
 	text-align: center;
 	margin-top: 1px;
 	padding: 1%;
@@ -28,7 +42,7 @@ display: flex;
 @media (min-width: 700px) {
 	.energiserCards {
 		flex-direction: row;
-}
+	}
 }
 
 ul {
@@ -70,20 +84,25 @@ a:hover {
 .randomSearch {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 }
 
 .sideBar {
+	color: var(--secondary);
 	border-right: lightgrey solid 0.5px;
 	width: auto;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
 	width: 250px;
-	position: static;
 }
 
 .sidebarDrawer {
 	display: none;
+}
+
+#demo-radio-buttons-group-label {
+	color: var(--secondary);
 }
 
 .resetBtn {
@@ -93,23 +112,22 @@ a:hover {
 	margin: 2rem 0 0 2rem;
 }
 .pagDiv {
-	 display: flex; 
-	 justify-content: center;
-}
-
-.sortFilterInDrawer {
-	width: 100%; 
-	height: 100%;
-}
-
-@media only screen and (max-width: 1300px) {
-.sideBar {
-	display: none;
-}
-
-.sidebarDrawer {
 	display: flex;
 	justify-content: center;
 }
 
+.sortFilterInDrawer {
+	width: 100%;
+	height: 100%;
+}
+
+@media only screen and (max-width: 1300px) {
+	.sideBar {
+		display: none;
+	}
+
+	.sidebarDrawer {
+		display: flex;
+		justify-content: center;
+	}
 }

@@ -9,9 +9,8 @@ import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles(() => ({
 	CardHoverArea: {
-		background: "#FFFFFF",
 		"&:hover": {
-			background: "rgba(214, 214, 214, 0.5)",
+			background: "rgba(214, 214, 214, 0.9)",
 		},
 	},
 	EnergiserName: {
@@ -22,7 +21,7 @@ const useStyles = makeStyles(() => ({
 	},
 }));
 
-const EnergiserCard = ({ energiserCard, handleNavigate, isLoggedIn, user }) => {
+const EnergiserCard = ({ energiserCard, handleNavigate, isLoggedIn, user, theme }) => {
 	const { id, name, description, participants, duration, type } = energiserCard;
 	const [like, setLike] = useState(null);
 	const [voteStatus, setVoteStatus] = useState(null);
@@ -60,12 +59,13 @@ const EnergiserCard = ({ energiserCard, handleNavigate, isLoggedIn, user }) => {
 				sx={{
 					minWidth: 275,
 					textAlign: "center",
+					height: "100%",
 				}}
 			>
 				<div style={{ cursor: "pointer" }} onClick={() => handleNavigate(id)}>
 					<CardContent
 						sx={{
-							minHeight: "100%",
+							background: theme ?? "white",
 							height: "100%",
 							padding: 3,
 							transition: "1s",

@@ -7,7 +7,7 @@ import Sidebar from "./Components/Sidebar";
 import AppPagination from "./Components/Pagination";
 import SideBarDrawer from "./Components/SidebarDrawer";
 
-export function Home({ user, isLoggedIn }) {
+export function Home({ user, isLoggedIn, theme }) {
 	const [energisersData, setEnergisersData] = useState([]);
 	const [originalData, setOriginalData] = useState([]);
 	const [page, setPage] = useState(1);
@@ -74,6 +74,7 @@ export function Home({ user, isLoggedIn }) {
 								rowsPerPage={rowsPerPage}
 								isLoggedIn={isLoggedIn}
 								user={user}
+								theme={theme}
 							/>
 						</ul>
 						<div

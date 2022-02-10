@@ -89,6 +89,7 @@
 		"react-draft-wysiwyg": "^1.14.7",
 		"react-google-login": "^5.2.2",
 		"react-icons": "^4.3.1",
+		"use-local-storage": "^2.2.6",
 		"yup": "^0.32.11"
 	},
 	"engines": {

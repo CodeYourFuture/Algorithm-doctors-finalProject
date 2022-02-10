@@ -1,7 +1,7 @@
 .navbar{
     display:flex;
     justify-content: space-between;
-    background-color: #FFFFFF;
+    background-color: var(--primary);
     border-bottom: lightgrey solid 0.5px;
 }
 
@@ -14,21 +14,17 @@
   height: 80px;
 }
 
-.navbar{
-  display:flex;
-  justify-content: space-between;
-  background-color: transparent;
-}
 .nav-links {
   display: flex;
   align-items:center;
   justify-content:flex-end;
   width: 40%;
   height: 80px;
+  color: var(--secondary);
 }
 .nav-links a{
   padding: 14px 16px;
-  color: rgb(10, 9, 9);
+  color: var(---tertiary);
   transition: 0.5s ease;
 }
 .nav-links a:hover{

@@ -1,6 +1,4 @@
 .search {
-  display: grid;
-  place-items: center;
     margin: auto;
     width: 25%;
     margin-top: 20px;
@@ -26,7 +24,6 @@
 }
 
 .searchIcon {
-  height: 60px;
   width: 50px;
   background-color: white;
   display: grid;

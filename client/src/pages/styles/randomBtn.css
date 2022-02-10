@@ -1,7 +1,3 @@
-.random__energizer{
-  display:grid;
-  place-items: center;
-}
 .new_energizer:hover {
   opacity: 0.6;
 }

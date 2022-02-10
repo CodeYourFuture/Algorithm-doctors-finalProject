@@ -6,8 +6,8 @@
 }
 
 .energiser-page-container {
-	color: white;
-    background-color: #d12f2f;
+	color: var(--primary);
+    background-color: var(--tertiary);
 	border: 3px solid white;
 	width: 65%;
 	text-align: center;

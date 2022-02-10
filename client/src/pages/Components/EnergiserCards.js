@@ -8,6 +8,7 @@ const EnergiserCards = ({
 	rowsPerPage,
 	isLoggedIn,
 	user,
+	theme,
 }) => {
 	const navigate = useNavigate();
 	const handleNavigate = (id) => {
@@ -24,6 +25,7 @@ const EnergiserCards = ({
 					isLoggedIn={isLoggedIn}
 					key={id}
 					user={user}
+					theme={theme}
 				/>
 			);
 		});

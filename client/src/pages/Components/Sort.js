@@ -14,6 +14,9 @@ const useStyles = makeStyles((theme) => ({
 	selectEmpty: {
 		marginTop: theme.spacing(2),
 	},
+	Color: {
+		color: "var(--secondary)",
+	},
 }));
 
 export default function Sort({ originalData, setEnergisersData }) {
@@ -45,21 +48,26 @@ export default function Sort({ originalData, setEnergisersData }) {
 	};
 
 	return (
-		<div>
+		<div className="Sort">
 			<FormControl variant="outlined" className={classes.formControl}>
-				<InputLabel id="demo-simple-select-outlined-label">Sort By</InputLabel>
-					<Select
-						labelId="demo-simple-select-outlined-label"
-						id="demo-simple-select-outlined"
-						value={selected}
-						onChange={(e) => handleChange(e)}
-						label="Sort By"
-					>
-						<MenuItem value="name">Alphabetical Order </MenuItem>
+				<InputLabel
+					id="demo-simple-select-outlined-label"
+					className={classes.Color}
+				>
+					Sort By
+				</InputLabel>
+				<Select
+					labelId="demo-simple-select-outlined-label"
+					id="demo-simple-select-outlined"
+					value={selected}
+					onChange={(e) => handleChange(e)}
+					label="Sort By"
+				>
+					<MenuItem value="name">Alphabetical Order </MenuItem>
 
-						<MenuItem value="duration">Duration: Low To High</MenuItem>
-						<MenuItem value="participants">Participants: Low To High</MenuItem>
-					</Select>
+					<MenuItem value="duration">Duration: Low To High</MenuItem>
+					<MenuItem value="participants">Participants: Low To High</MenuItem>
+				</Select>
 			</FormControl>
 		</div>
 	);
