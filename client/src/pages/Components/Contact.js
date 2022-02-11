@@ -46,9 +46,9 @@ export default function Contact(){
 						handleSubmit(values);
 						resetForm();
 						if (response == "ok") {
-							alert("Thank you for your time. Your submition was successful!");
+							alert("Thank you for your time. Your submission was successful!");
 						} else if (response == "failure") {
-							alert("Your submition failed, Please try again!");
+							alert("Your submission failed, Please try again!");
 						}
 					}}
 				>
