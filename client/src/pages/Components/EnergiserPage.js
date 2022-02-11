@@ -3,8 +3,9 @@ import { useParams } from "react-router-dom";
 import "../styles/EnergiserPage.css";
 import CountdownTimer from "./CountdownTimer";
 import axios from "axios";
+import PostComments from "./PostComments";
 
-const EnergiserPage = () => {
+const EnergiserPage = ({ user }) => {
 	const { id } = useParams();
 	const [energiser, setEnergiser] = useState(null);
 	const [split, setSplit] = useState([]);
@@ -54,6 +55,7 @@ const EnergiserPage = () => {
 							))}
 						</ul>
 					</div>
+					<PostComments user={ user } id={ id } />
 				</div>
 			) : (
 				<div>...Loading</div>

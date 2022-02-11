@@ -40,7 +40,7 @@ const App = () => {
 					}
 				/>
 				<Route path="/about" element={<About />} />
-				<Route path="/energisers/:id" element={<EnergiserPage />} />
+				<Route path="/energisers/:id" element={<EnergiserPage user= {user} />} />
 				<Route path="/contact" element={<Contact />} />
 				{isLoggedIn ? (
 					<Route

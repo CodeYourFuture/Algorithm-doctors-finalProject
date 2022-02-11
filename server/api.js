@@ -134,4 +134,42 @@ router.get("/star_ratings/:id", (req, res) => {
 		.catch((err) => console.error(err));
 	}
 });
+//---------------------------------------
+//POST endpoint for comments
+
+router.post("/comments/:id", (req, res) => {
+    const energiserId = req.params.id;
+    const comments = req.body.comments;
+    const userId = req.body.googleId;
+    const commentQuery =
+        "INSERT INTO comments (user_id, message, energiser_id) VALUES ($1, $2, $3);";
+    if (!comments) {
+        return res.status(400).send("Invalid user");
+    } else {
+        query
+            .query(commentQuery, [userId, comments, energiserId])
+            .then(() => res.status(200).send("Comment Sent"))
+            .catch((error) => console.error(error));
+    }
+});
+
+//get endpoint for comments
+
+router.get("/comments", (req, res) => {
+	let energiserId = req.query.id;
+	let userId = req.query.user;
+	if (!userId && !energiserId) {
+		res.send("invalid login");
+	} else {
+		query
+			.query(
+				"SELECT message FROM comments WHERE energiser_id=$1 AND user_id=$2;",
+				[energiserId, userId]
+			)
+			.then((result) => {
+				res.json(result.rows);
+			})
+			.catch((err) => console.error(err));
+	}
+});
 export default router;
