@@ -1,25 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import Divider from "@material-ui/core/Divider";
-import ListItemText from "@material-ui/core/ListItemText";
-import Typography from "@material-ui/core/Typography";
+import Avatar from "@material-ui/core/Avatar";
 import axios from "axios";
+import { useEffect, useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
 		width: "100%",
-		maxWidth: "36ch",
+		maxWidth: "100%",
 		backgroundColor: theme.palette.background.paper,
 	},
 	inline: {
-		display: "inline",
+		width: "100%",
+		maxWidth: "100%",
+		display: "inline-block",
+		borderBottom: "1px solid lightGray",
+		textAlign: "left",
+		marginLeft: "20px",
+		padding:"20px",
 	},
 }));
 function Comments({ user, id }) {
-    const [allMessage, setAllMessage] = useState([]);
-    const classes = useStyles();
+	const [allMessage, setAllMessage] = useState([]);
+	const classes = useStyles();
 
 	useEffect(() => {
 		axios
@@ -30,39 +33,25 @@ function Comments({ user, id }) {
 				}
 				return res.data;
 			})
-            .then((data) => {
-                setAllMessage([...allMessage, data]);
-            })
+			.then((data) => {
+				setAllMessage(data);
+			})
 			.catch((err) => {
 				console.error(err);
 			});
-	}, [id]);
+	}, []);
 
 	return (
-		<List className={classes.root}>
-			<ListItem alignItems="flex-start">
-				<ListItemText
-					primary="username"
-					secondary={
-						<React.Fragment>
-							<Typography
-								component="span"
-								variant="body2"
-								className={classes.inline}
-								color="textPrimary"
-                            >
-                                    {allMessage.map((elem, index) => {
-                                        <p key={index}>{elem}</p>;
-                                    })
-                                    }
-
-							</Typography>
-						</React.Fragment>
-					}
-				/>
-			</ListItem>
-			<Divider variant="inset" component="li" />
-		</List>
+		<div className={classes.root}>
+			<div alignItems="flex-start">
+				{allMessage.map((elem, index) => (
+					<div key={index}>
+						<Avatar alt="user google img" src={user.imageUrl} />
+						<div className={classes.inline}>{elem.message}</div>
+					</div>
+				))}
+			</div>
+		</div>
 	);
 }
 export default Comments;

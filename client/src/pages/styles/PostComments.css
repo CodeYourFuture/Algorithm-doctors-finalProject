@@ -1,27 +1,52 @@
 .post {
-    display: flex;
-    width: 500px;
-    background-color: white;
-    margin-right: auto;
-    margin-left: auto;
-    border: 1px solid lightgray;
-    margin-top: 20px;
-    margin-bottom: 20px;
+  color: var(--primary);
+    background-color: var(--tertiary);
+	border: 3px solid white;
+	width: 65%;
+	text-align: center;
+	padding: 20px;
+	margin: 2% auto;
+    color: black;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.post__image {
-    max-width: 500px;
+
+.post__header{
+
 }
-.post__text {
- margin: 20px 0px 20px 20px
-}
-.post__text {
-    font-weight: normal;
-    padding: 5px;
+.post__comments{
 }
 .post__form {
     display: flex;
-    margin-top: 20px;
+    margin-top: 5px;
 }
 .post__input {
     flex: 1;
+}
+.post__input ::placeholder {
+    padding-left: 10px;
+}
+.post-button{
+    background-color: var(--primary);
+	height: 55px;
+	border: white 1px solid;
+	padding: 0 20px;
+	margin-left:2px ;
+	color: var(--tertiary);
+	cursor: pointer;
+    font-weight: bold;
+}
+
+@media (max-width:1200px) {
+	
+}
+@media (max-width:900px) {
+
+}
+@media (max-width:789px) {
+
+	
+}
+@media (max-width:481px) {
+
+
 }

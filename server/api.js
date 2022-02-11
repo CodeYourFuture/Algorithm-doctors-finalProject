@@ -1,4 +1,6 @@
-import { Router } from "express";
+import {
+	Router,
+} from "express";
 import query from "./db";
 
 const router = new Router();
@@ -124,34 +126,19 @@ router.get("/star_ratings/:id", (req, res) => {
 	if (!energiserId) {
 		return res.status(400).send("Invalid energiser Id");
 	} else {
-	query
-		.query("SELECT like_status FROM likes WHERE energiser_id=$1", [energiserId])
-		.then((result) => {
-			if (result.rows.length >= 0) {
-				res.json(result.rows);
-			}
-		})
-		.catch((err) => console.error(err));
+		query
+			.query("SELECT like_status FROM likes WHERE energiser_id=$1", [
+				energiserId,
+			])
+			.then((result) => {
+				if (result.rows.length >= 0) {
+					res.json(result.rows);
+				}
+			})
+			.catch((err) => console.error(err));
 	}
 });
 //---------------------------------------
-//POST endpoint for comments
-
-router.post("/comments/:id", (req, res) => {
-    const energiserId = req.params.id;
-    const comments = req.body.comments;
-    const userId = req.body.googleId;
-    const commentQuery =
-        "INSERT INTO comments (user_id, message, energiser_id) VALUES ($1, $2, $3);";
-    if (!comments) {
-        return res.status(400).send("Invalid user");
-    } else {
-        query
-            .query(commentQuery, [userId, comments, energiserId])
-            .then(() => res.status(200).send("Comment Sent"))
-            .catch((error) => console.error(error));
-    }
-});
 
 //get endpoint for comments
 
@@ -172,4 +159,23 @@ router.get("/comments", (req, res) => {
 			.catch((err) => console.error(err));
 	}
 });
+
+//POST endpoint for comments
+
+router.post("/comments/:id", (req, res) => {
+	const energiserId = req.params.id;
+	const comments = req.body.comments;
+	const userId = req.body.googleId;
+	const commentQuery =
+		"INSERT INTO comments (user_id, message, energiser_id) VALUES ($1, $2, $3) RETURNING *;";
+	if (!comments) {
+		return res.status(400).send("Invalid user");
+	} else {
+		query
+			.query(commentQuery, [userId, comments, energiserId])
+			.then(() => res.status(200).send("Comment Sent"))
+			.catch((error) => console.error(error));
+	}
+});
+
 export default router;
