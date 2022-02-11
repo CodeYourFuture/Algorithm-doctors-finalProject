@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import GLogin from "./GLogin";
 import GLogout from "./GLogout";
 import UserImage from "./UserImages";
+import DarkModeSwitch from "./DarkModeSwitch";
 import styled from "styled-components";
 
 const Ul = styled.ul`
@@ -39,7 +40,7 @@ li:hover{
    transform: translateY(-2px);
    transition: 0.5s ease-in-out;
 }
-@media(max-width: 700px){
+@media(max-width: 768px){
   flex-flow: column-reverse nowrap;
   justify-content: space-around;
   height: auto;
@@ -62,12 +63,15 @@ li:hover{
 
 `;
 
-export default function RightNav({ isLoggedIn,handleClick,setIsLoggedIn,setUser,user, openMenu }){
+export default function RightNav({ isLoggedIn,handleClick,setIsLoggedIn,setUser,user, openMenu, theme, setTheme }){
     return (
 			<Ul
 				className="nav-links"
 				openMenu={openMenu}
 			>
+				<li>
+<DarkModeSwitch theme={theme} setTheme={setTheme} />
+				</li>
 				<li>
 					<Link to="/" >Home</Link>
 				</li>

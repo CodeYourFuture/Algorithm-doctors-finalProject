@@ -1,9 +1,5 @@
 .search {
-  margin:auto;
-    /* width: 25%; */
-    margin-top: 20px;
-    bottom:0;
-    /* margin-right: 35%; */
+    margin: 1rem auto;
 }
 
 .searchInputs {
@@ -24,7 +20,6 @@
 }
 
 .searchIcon {
-  height: 60px;
   width: 50px;
   background-color: white;
   display: grid;
@@ -67,14 +62,6 @@ a {
   text-decoration: none;
 }
 
-/* a:hover {
-  background-color: lightgrey;
-} */
-
 #clearBtn {
   cursor: pointer;
-}
-
-@media only screen and (max-width: 700px){
-  
 }

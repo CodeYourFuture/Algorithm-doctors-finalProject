@@ -1,15 +1,14 @@
-
 import "./styles/About.css";
 
 const About = () => (
-	<main role="main">
+	<main role="main" id="main">
 		<div className="about-page">
 			<h1 className="heading">A little bit about us</h1>
-			<p className="about-p">
+			<p className="about-page-intro">
 				We are the Algorithm-docs and we are tasked to build an
-				Enrgiser/Icebreaker app. Our special thank yous first and formost go to
-				CYF, our fantastic tech mentor Orhan and our PMs Rob and Nick. You can
-				reach us via the links bellow which are linked to our linkedin profiles.
+				Energiser/Icebreaker app. Our special thank yous first and foremost go to
+				CYF, our fantastic tech mentor Orhan and our PM Nick. You can
+				reach us via the links below which are linked to our linkedin profiles.
 			</p>
 			<div className="profile-links">
 				<a href="https://www.linkedin.com/in/konika-b-lily-481911216/">

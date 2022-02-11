@@ -1,19 +1,39 @@
-/* #231f20 black
-#DC514A red
-#ffffff
-#FFFFFF */
-body {
-	font-family: 'Lato', sans-serif !important;
+:root {
+	--primary: #ffffff;
+	--secondary: #18191a;
+	--tertiary: #d12f2f;
 }
+[data-theme="dark"] {
+	--primary: #18191a;
+	--secondary: #ffffff;
+	--tertiary: #d12f2f;
+}
+
+#root {
+	background-color: var(--primary);
+}
+.app {
+	background-color: var(--primary);
+}
+
+body {
+	font-family: "Lato", sans-serif !important;
+}
+
 .logo {
 	width: 100px;
 }
-.main-content {
+.main {
 	display: flex;
 	flex-direction: row;
 	width: 100%;
-	margin-right: auto;
-	margin-left: auto;
+}
+.main-content {
+	display: flex;
+	flex-direction: column;
+	background-color: var(--primary);
+	width: 100%;
+	margin: 0 auto;
 }
 .sideBar {
 	border-right: lightgrey solid 0.5px;
@@ -36,26 +56,32 @@ body {
 }
 
 .message {
-	color: black;
+	color: var(--secondary);
 	text-align: center;
 	margin-top: 1px;
 	padding: 1%;
 	width: fit-content;
 	margin: auto;
+	font-size: 2rem;
 }
+
+.cardPag {
+	width: 100%;
+}
+
 .energiserCards {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	flex-wrap: wrap;
 	width: 100%;
-	gap:1.5rem;
+	gap: 1.5rem;
 }
 
 @media (min-width: 700px) {
 	.energiserCards {
 		flex-direction: row;
-}
+	}
 }
 
 ul {
@@ -69,10 +95,11 @@ ul {
 	border-radius: 10px;
 	transition: 1s;
 	height: 100%;
+	min-width: 100%;
 	padding-bottom: 10px;
 }
 .card-container {
-	width:25%;
+	width: 25%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -92,8 +119,33 @@ a:hover {
 .randomSearch {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 }
 
+.sideBar {
+	color: var(--secondary);
+	border-right: lightgrey solid 0.5px;
+	width: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	width: 250px;
+}
+
+.sidebarDrawer {
+	display: none;
+}
+
+#demo-radio-buttons-group-label {
+	color: var(--secondary);
+}
+
+.resetBtn {
+	min-width: 100%;
+}
+.filters {
+	margin: 2rem 0 0 2rem;
+}
 .pagDiv {
 	display: flex;
 	justify-content: center;
@@ -104,22 +156,22 @@ a:hover {
 	height: 100%;
 }
 
-@media only screen and (max-width: 1300px){
-.message {
-	font-size: 3.5rem;
+@media only screen and (max-width: 1300px) {
+	.energiserCards {
+		gap: 4rem;
+	}
 }
-.energiserCards {
-	gap:4rem;
-}
-}
-@media only screen and (max-width: 1200px){
-	.main-content{
+@media only screen and (max-width: 1200px) {
+	.main {
 		flex-direction: column;
 	}
-.energiserCards {
-	gap:2rem;
-}
-.sideBar {
+	.main-content {
+		flex-direction: column;
+	}
+	.energiserCards {
+		gap: 2rem;
+	}
+	.sideBar {
 		display: none;
 	}
 	.sidebarDrawer {
@@ -130,23 +182,18 @@ a:hover {
 	}
 }
 
-@media only screen and (max-width: 1180px){
-.message {
-	font-size: 3rem;
-}
-.energiserCards {
-	gap:1.5rem;
-}
-}
-@media only screen and (max-width: 900px){
-	
+@media only screen and (max-width: 1180px) {
 	.message {
-	font-size: 2.5rem;
+		font-size: 2rem;
+	}
+	.energiserCards {
+		gap: 1.5rem;
+	}
 }
-.energiserCards {
-	gap:5rem;
-}
-
+@media only screen and (max-width: 900px) {
+	.energiserCards {
+		gap: 5rem;
+	}
 }
 @media only screen and (max-width: 768px) {
 	.main-content {
@@ -154,7 +201,7 @@ a:hover {
 		justify-content: center;
 		align-items: center;
 	}
-	
+
 	.message {
 		font-size: 2.5rem;
 		margin-top: 20px;
@@ -163,9 +210,9 @@ a:hover {
 	.energiserCards {
 		width: 100%;
 		justify-content: center;
-		gap:1.5rem;
+		gap: 1.5rem;
 	}
-	
+
 	.card-container {
 		min-width: 30%;
 		max-width: 30%;
@@ -173,25 +220,25 @@ a:hover {
 		margin-right: 3rem;
 	}
 }
-@media only screen and (max-width: 700px){
-	.main-content{
+@media only screen and (max-width: 700px) {
+	.main-content {
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 	}
-.message {
-	font-size: 2rem;
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
+	.message {
+		font-size: 2rem;
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
 
-.energiserCards {
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-}
-.card-container {
+	.energiserCards {
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	.card-container {
 		min-width: 50%;
 		max-width: 50%;
 	}
-} 
+}

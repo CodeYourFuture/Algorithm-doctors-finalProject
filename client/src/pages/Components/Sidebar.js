@@ -32,7 +32,7 @@ export default function Sidebar({ originalData, setEnergisersData }) {
 		<div>
 			<div className="resetBtn">
 				<Button
-					sx={{ width: 250, marginTop: "1rem" }}
+					sx={{ width: 250, marginTop: "1rem", color: "var(--primary)" }}
 					variant="outlined"
 					onClick={handleResetEnergisers}
 				>

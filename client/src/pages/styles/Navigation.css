@@ -1,7 +1,7 @@
 .navbar{
     display:flex;
     justify-content: space-between;
-    background-color: #FFFFFF;
+    background-color: var(--primary);
     border-bottom: lightgrey solid 0.5px;
     background-color: transparent;
     height: 70px; 
@@ -23,7 +23,7 @@
   transform-origin: 1px;
   transition: all 0.35s linear;
 }
-@media screen and (max-width: 700px){
+@media screen and (max-width: 768px){
 
 .burger-menu{
   display: flex;

@@ -9,20 +9,23 @@
 	margin: 1% auto;
 	text-align: center;
 	border: transparent;
-    border: solid 3px #d12f2f;
+    border: solid 3px var(--tertiary);
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     padding: 20px;
+	height: 100%;
 }
 .heading {
-	background-color: #d12f2f;
+	background-color: var(--tertiary);
 	margin-top: 10px;
 	margin-bottom: 20px;
-	color: white;
+	color: var(--primary);
 	text-shadow: 1px 1px 2px rgb(19, 18, 18), 0 0 25px rgb(22, 22, 24),
 		0 0 5px darkblue;
 }
-.about-p {
+.about-page-intro {
+	color: var(--secondary);
 	padding: 5px;
+	text-align: center;
 	margin: 0 auto;
 	text-align: left;
 }
@@ -31,9 +34,3 @@
 	display: flex;
 	justify-content: space-evenly;
 }
-/* .profile-links a{
-    color: black
-}
-.profile-links a:hover{
-    color:blue
-} */

@@ -7,7 +7,7 @@ const useStyles = makeStyles(() => ({
 		bottom: 0,
 		zIndex: 200,
 		padding: "10px 80px",
-		color: "black",
+		color: "var(--secondary)",
 		width: "100%",
 	},
 	container: {
@@ -19,6 +19,11 @@ const useStyles = makeStyles(() => ({
 	center: {
 		display: "flex",
 		justifyContent: "center",
+	},
+	ul: {
+		"& .MuiPaginationItem-root": {
+			color: "var(--secondary)",
+		},
 	},
 }));
 
@@ -34,6 +39,7 @@ const AppPagination = ({
 		<div className={classes.container}>
 			<div className={classes.root}>
 				<Pagination
+					classes={{ ul: classes.ul }}
 					count={pageCount}
 					page={page}
 					onChange={handleChangePage}

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import RightNav from "./RightNav";
 
-export default function BurgerMenu({ setIsLoggedIn,user,isLoggedIn,setUser }){
+export default function BurgerMenu({ setIsLoggedIn,user,isLoggedIn,setUser, theme, setTheme }){
     const [openMenu, setOpenMenu] = useState(false);
 
     const onClick = ()=>{
@@ -42,6 +42,8 @@ export default function BurgerMenu({ setIsLoggedIn,user,isLoggedIn,setUser }){
 					setUser={setUser}
 					user={user}
 					isLoggedIn={isLoggedIn}
+					theme={theme}
+					setTheme={setTheme}
 				/>
 			</>
 		);

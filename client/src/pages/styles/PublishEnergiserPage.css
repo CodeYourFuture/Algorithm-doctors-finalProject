@@ -47,8 +47,13 @@
 	font-size: 16px;
 	margin-top: 20px;
 }
+
+.publishMessage {
+	color: var(--secondary);
+}
+
 .publish-button {
-	background-color: #d12f2f;
+	background-color: var(--tertiary);
 	height: 40px;
 	border: none;
 	border-radius: 10px;
