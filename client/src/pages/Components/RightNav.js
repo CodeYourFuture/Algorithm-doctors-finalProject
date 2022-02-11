@@ -40,7 +40,7 @@ li:hover{
    transform: translateY(-2px);
    transition: 0.5s ease-in-out;
 }
-@media(max-width: 700px){
+@media(max-width: 768px){
   flex-flow: column-reverse nowrap;
   justify-content: space-around;
   height: auto;
