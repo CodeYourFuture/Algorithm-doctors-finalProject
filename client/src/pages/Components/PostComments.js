@@ -53,11 +53,11 @@ function PostComments({ user, id }) {
 							</Form>
 						)}
 					</Formik>
-					{user.googleId && (
+					{/* {user.googleId && ( */}
 						<div className="post__comments">
 							<Comments user={user} id={id} />
 						</div>
-					)}
+					{/* )} */}
 				</div>
 			</div>
 		);

@@ -144,14 +144,13 @@ router.get("/star_ratings/:id", (req, res) => {
 
 router.get("/comments", (req, res) => {
 	let energiserId = req.query.id;
-	let userId = req.query.user;
-	if (!userId && !energiserId) {
-		res.send("invalid login");
+	if (!energiserId) {
+		res.send("invalid energiser Id");
 	} else {
 		query
 			.query(
-				"SELECT message FROM comments WHERE energiser_id=$1 AND user_id=$2;",
-				[energiserId, userId]
+				"SELECT message FROM comments WHERE energiser_id=$1;",
+				[energiserId]
 			)
 			.then((result) => {
 				res.json(result.rows);

@@ -9,12 +9,51 @@
     color: black;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+.comment-container{
+	
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	
+}
+.single-container{
+	display: flex;
+	flex-direction: column;
+    align-items: flex-start;
+	height:120px;
+	min-height: 100%;
+	width:100%;
+	border-bottom: 1px solid lightGray;
+}
+.comment-message{
+		width: 100%;
+		max-width: 100%;
+		text-align: left;
+		margin-left: 20px;
+		font-size: 1.1rem;
+		font-style: italic;
 
-.post__header{
+	
+}
+.user-profile{
+	display: flex;
+	justify-content: space-between;
+	width:22%;
+	margin: 10px 10px;
 
 }
-.post__comments{
+.user-img{
+	position: relative;
+	
 }
+.user-comment-name{
+	position: absolute;
+	font-size: 1.3rem;
+	font-weight:bold;
+	left: 26%;
+	
+}
+
 .post__form {
     display: flex;
     margin-top: 5px;

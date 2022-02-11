@@ -10,15 +10,6 @@ const useStyles = makeStyles((theme) => ({
 		maxWidth: "100%",
 		backgroundColor: theme.palette.background.paper,
 	},
-	inline: {
-		width: "100%",
-		maxWidth: "100%",
-		display: "inline-block",
-		borderBottom: "1px solid lightGray",
-		textAlign: "left",
-		marginLeft: "20px",
-		padding:"20px",
-	},
 }));
 function Comments({ user, id }) {
 	const [allMessage, setAllMessage] = useState([]);
@@ -26,7 +17,7 @@ function Comments({ user, id }) {
 
 	useEffect(() => {
 		axios
-			.get(`/api/comments?id=${id}&user=${user.googleId}`)
+			.get(`/api/comments?id=${id}`)
 			.then((res) => {
 				if (res.status != 200) {
 					throw new Error(res.statusText);
@@ -39,15 +30,19 @@ function Comments({ user, id }) {
 			.catch((err) => {
 				console.error(err);
 			});
-	}, []);
+	}, [id]);
 
 	return (
 		<div className={classes.root}>
-			<div alignItems="flex-start">
+			<div className="comment-container">
 				{allMessage.map((elem, index) => (
-					<div key={index}>
-						<Avatar alt="user google img" src={user.imageUrl} />
-						<div className={classes.inline}>{elem.message}</div>
+					<div className="single-container" key={index}>
+						<div className="user-profile">
+							<Avatar className ="user-img" alt="user google img" src={user.imageUrl} />
+							<p className="user-comment-name">{user.givenName}</p>
+						</div>
+
+						<div className="comment-message">"{elem.message}."</div>
 					</div>
 				))}
 			</div>
