@@ -32,7 +32,7 @@ li{
 	height: 60px;
 }
 li a{
-  color: var(--secondary);
+  color:black;
   font-size:large;
   font-weight: bolder;
 }
