@@ -88,4 +88,4 @@ function PostComments({ user, id }) {
 		</div>
 	);
 }
-export default PostComments;
+export default PostComments ;
