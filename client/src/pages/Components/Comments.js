@@ -1,8 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
-import axios from "axios";
-import { useEffect, useState } from "react";
+
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -11,26 +10,8 @@ const useStyles = makeStyles((theme) => ({
 		backgroundColor: theme.palette.background.paper,
 	},
 }));
-function Comments({ user, id }) {
-	const [allMessage, setAllMessage] = useState([]);
+function Comments({ user, allMessage }) {
 	const classes = useStyles();
-
-	useEffect(() => {
-		axios
-			.get(`/api/comments?id=${id}`)
-			.then((res) => {
-				if (res.status != 200) {
-					throw new Error(res.statusText);
-				}
-				return res.data;
-			})
-			.then((data) => {
-				setAllMessage(data);
-			})
-			.catch((err) => {
-				console.error(err);
-			});
-	}, [id]);
 
 	return (
 		<div className={classes.root}>
@@ -38,8 +19,8 @@ function Comments({ user, id }) {
 				{allMessage.map((elem, index) => (
 					<div className="single-container" key={index}>
 						<div className="user-profile">
-							<Avatar className ="user-img" alt="user google img" src={user.imageUrl} />
-							<p className="user-comment-name">{user.givenName}</p>
+							<Avatar className ="user-img" alt="user google img" src={elem.user_img} />
+							<p className="user-comment-name">{elem.user_id}</p>
 						</div>
 
 						<div className="comment-message">"{elem.message}."</div>

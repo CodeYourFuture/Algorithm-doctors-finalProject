@@ -1,6 +1,4 @@
-import {
-	Router,
-} from "express";
+import { Router } from "express";
 import query from "./db";
 
 const router = new Router();
@@ -144,19 +142,12 @@ router.get("/star_ratings/:id", (req, res) => {
 
 router.get("/comments", (req, res) => {
 	let energiserId = req.query.id;
-	if (!energiserId) {
-		res.send("invalid energiser Id");
-	} else {
 		query
-			.query(
-				"SELECT message FROM comments WHERE energiser_id=$1;",
-				[energiserId]
-			)
+			.query("SELECT * FROM comments WHERE energiser_id=$1;", [energiserId])
 			.then((result) => {
 				res.json(result.rows);
 			})
 			.catch((err) => console.error(err));
-	}
 });
 
 //POST endpoint for comments
@@ -165,16 +156,13 @@ router.post("/comments/:id", (req, res) => {
 	const energiserId = req.params.id;
 	const comments = req.body.comments;
 	const userId = req.body.googleId;
+	const userImg = req.body.userImg;
 	const commentQuery =
-		"INSERT INTO comments (user_id, message, energiser_id) VALUES ($1, $2, $3) RETURNING *;";
-	if (!comments) {
-		return res.status(400).send("Invalid user");
-	} else {
+		"INSERT INTO comments (user_id, message, energiser_id, user_img) VALUES ($1, $2, $3, $4);";
 		query
-			.query(commentQuery, [userId, comments, energiserId])
+			.query(commentQuery, [userId, comments, energiserId, userImg])
 			.then(() => res.status(200).send("Comment Sent"))
 			.catch((error) => console.error(error));
-	}
 });
 
 export default router;

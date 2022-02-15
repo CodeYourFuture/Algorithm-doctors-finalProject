@@ -9,6 +9,7 @@ const EnergiserPage = ({ user }) => {
 	const { id } = useParams();
 	const [energiser, setEnergiser] = useState(null);
 	const [split, setSplit] = useState([]);
+
 	useEffect(() => {
 		axios.get(`/api/energisers/${id}`)
 			.then((res) => {
