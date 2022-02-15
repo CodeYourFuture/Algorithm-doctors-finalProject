@@ -24,6 +24,7 @@ function Comments({ user, allMessage }) {
 						</div>
 
 						<div className="comment-message">"{elem.message}."</div>
+						<div className="comment-date"> {elem.date} </div>
 					</div>
 				))}
 			</div>

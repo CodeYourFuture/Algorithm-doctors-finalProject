@@ -35,6 +35,14 @@
 
 	
 }
+.comment-date{
+	width: 100%;
+		max-width: 100%;
+		text-align: left;
+		margin-left: 20px;
+		font-size: 0.8rem;
+		align-items:flex-end ;
+}
 .user-profile{
 	display: flex;
 	justify-content: space-between;

@@ -158,7 +158,7 @@ router.post("/comments/:id", (req, res) => {
 	const userId = req.body.googleId;
 	const userImg = req.body.userImg;
 	const commentQuery =
-		"INSERT INTO comments (user_id, message, energiser_id, user_img) VALUES ($1, $2, $3, $4);";
+		"INSERT INTO comments (user_id, message, energiser_id, user_img, date) VALUES ($1, $2, $3, $4, $5);";
 		query
 			.query(commentQuery, [userId, comments, energiserId, userImg])
 			.then(() => res.status(200).send("Comment Sent"))

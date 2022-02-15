@@ -56,6 +56,7 @@ const EnergiserPage = ({ user }) => {
 							))}
 						</ul>
 					</div>
+
 					<PostComments user={ user } id={ id } />
 				</div>
 			) : (
