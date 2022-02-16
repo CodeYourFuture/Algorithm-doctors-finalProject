@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
 		backgroundColor: theme.palette.background.paper,
 	},
 }));
-function Comments({ user, allMessage }) {
+function Comments({ allMessage }) {
 	const classes = useStyles();
 
 	return (

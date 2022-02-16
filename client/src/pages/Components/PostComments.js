@@ -81,7 +81,7 @@ function PostComments({ user, id }) {
 				</Formik>
 				{/* {user.googleId && ( */}
 				<div className="post__comments">
-					<Comments user={user} allMessage={allMessage} />
+					<Comments allMessage={allMessage} />
 				</div>
 				{/* )} */}
 			</div>
