@@ -58,7 +58,7 @@
 	position: absolute;
 	font-size: 1.3rem;
 	font-weight:bold;
-	left: 26%;
+	left: 22%;
 	
 }
 
@@ -83,17 +83,30 @@
     font-weight: bold;
 }
 
-@media (max-width:1200px) {
-	
+@media (max-width:1300px) {
+	.user-comment-name{	
+	left: 24%;	
+}
+}
+@media (max-width:1100px) {
+	.user-comment-name{
+	left: 25%;
+}
 }
 @media (max-width:900px) {
-
+	.user-comment-name{
+	left: 29%;
 }
-@media (max-width:789px) {
-
+}
+@media (max-width:700px) {
+	.user-comment-name{
+	left: 32%;
+}
 	
 }
-@media (max-width:481px) {
+@media (max-width:400px) {
 
-
+	.user-comment-name{
+	left: 38%;
+}
 }

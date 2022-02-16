@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
-
+import moment from "moment";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -24,7 +24,7 @@ function Comments({ allMessage }) {
 						</div>
 
 						<div className="comment-message">"{elem.message}."</div>
-						<div className="comment-date"> {elem.date} </div>
+						<div className="comment-date"> {moment(elem.date).format("MMMM Do YYYY, h:mm:ss a")} </div>
 					</div>
 				))}
 			</div>
