@@ -124,14 +124,45 @@ router.get("/star_ratings/:id", (req, res) => {
 	if (!energiserId) {
 		return res.status(400).send("Invalid energiser Id");
 	} else {
-	query
-		.query("SELECT like_status FROM likes WHERE energiser_id=$1", [energiserId])
-		.then((result) => {
-			if (result.rows.length >= 0) {
-				res.json(result.rows);
-			}
-		})
-		.catch((err) => console.error(err));
+		query
+			.query("SELECT like_status FROM likes WHERE energiser_id=$1", [
+				energiserId,
+			])
+			.then((result) => {
+				if (result.rows.length >= 0) {
+					res.json(result.rows);
+				}
+			})
+			.catch((err) => console.error(err));
 	}
 });
+//---------------------------------------
+
+//get endpoint for comments
+
+router.get("/comments", (req, res) => {
+	let energiserId = req.query.id;
+		query
+			.query("SELECT * FROM comments WHERE energiser_id=$1;", [energiserId])
+			.then((result) => {
+				res.json(result.rows);
+			})
+			.catch((err) => console.error(err));
+});
+
+//POST endpoint for comments
+
+router.post("/comments/:id", (req, res) => {
+	const energiserId = req.params.id;
+	const comments = req.body.comments;
+	const userId = req.body.googleId;
+	const userImg = req.body.userImg;
+	const commentQuery =
+		"INSERT INTO comments (user_id, message, energiser_id, user_img) VALUES ($1, $2, $3, $4);";
+		query
+			.query(commentQuery, [userId, comments, energiserId, userImg])
+			.then(() => res.status(200).send("Comment Sent"))
+			.catch((error) => console.error(error));
+});
+
 export default router;
